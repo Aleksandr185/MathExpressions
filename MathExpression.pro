@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     src/abstract_expression.cpp \
+    src/asterix_expression.cpp \
     src/custom_text_expression.cpp \
     src/function_name_expression.cpp \
     src/simple_expression.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     src/abstract_expression.h \
+    src/asterix_expression.h \
     src/custom_text_expression.h \
     src/function_name_expression.h \
     src/global.h \
