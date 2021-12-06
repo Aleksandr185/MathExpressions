@@ -14,6 +14,8 @@ public:
   explicit SimpleExpression(const QString& text);
   explicit SimpleExpression(const QChar& ch);
 
+  inline const QString& text() const { return m_text; }
+
 protected:
   // AbstractExpression interface
   void paint(QPainter *painter, int x, int y) const override;
