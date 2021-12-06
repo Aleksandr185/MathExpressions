@@ -12,12 +12,14 @@ SOURCES += \
     main.cpp \
     src/abstract_expression.cpp \
     src/simple_expression.cpp \
+    src/variable_expression.cpp \
     widget.cpp
 
 HEADERS += \
     src/abstract_expression.h \
     src/global.h \
     src/simple_expression.h \
+    src/variable_expression.h \
     widget.h
 
 # Default rules for deployment.
