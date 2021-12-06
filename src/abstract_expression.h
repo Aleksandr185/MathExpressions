@@ -86,6 +86,11 @@ protected:
                double r_line_width_x, double r_line_width_y);
   void assignColor(const QColor& color);  // NOTE try use 'void setColor()'
 
+  inline int lineWidthX() const { return m_line_width_x; }
+  inline int lineWidthY() const { return m_line_width_y; }
+  inline int rLineWidthX() const { return m_r_line_width_x; }
+  inline int rLineWidthY() const { return m_r_line_width_y; }
+
 private:
   AbstractExpression* m_parent = nullptr;
   AbstractExpression* m_next   = nullptr;
@@ -95,7 +100,7 @@ private:
   
   int m_line_width_x = 0;
   int m_line_width_y = 0;
-  double m_r_line_width_x = 0;
+  double m_r_line_width_x = 0;  // NOTE: what is mean 'r' ?
   double m_r_line_width_y = 0;
 
   mutable int m_width = 0;
