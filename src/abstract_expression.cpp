@@ -188,7 +188,7 @@ void AbstractExpression::setNext(AbstractExpression* next)
   m_next = next;
 
   if ( hasNext() )
-    m_next->setParent(parent());
+    setParent(m_next, parent());
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -255,8 +255,9 @@ void AbstractExpression::colorChanged()
 void AbstractExpression::paintDeviceChanged()
 {
   if (hasNext())
-    next()->setPaintDevice(paintDevice(), m_line_width_x, m_line_width_y,
-                           m_r_line_width_x, m_r_line_width_y);
+    assignPaintDevice(next(), paintDevice(),
+                      m_line_width_x, m_line_width_y,
+                      m_r_line_width_x, m_r_line_width_y);
 }
 
 bool AbstractExpression::isNeedBrackets() const
@@ -321,15 +322,6 @@ void AbstractExpression::calcCapDX(int& DLeft, int& DRight) const
   DRight = 0;
 }
 
-void AbstractExpression::setParent(AbstractExpression* parent)
-{
-  if (m_parent != parent) {
-    m_parent = parent;
-    if (hasNext())
-      next()->setParent(parent);
-  }
-}
-
 void AbstractExpression::convertCoords(int& X, int& Y,
                                        HorizontalAlignment hAligment,
                                        VerticalAlignment vAligment) const
@@ -348,22 +340,7 @@ void AbstractExpression::convertCoords(int& X, int& Y,
   else if (vAligment == VerticalAlignment::Bottom) {
     Y -= height() - 1;
   }
-// if (vAligment == VerticalAlignment::Top) - Do nothing
-}
-
-void AbstractExpression::setPaintDevice(QPaintDevice* paintDevice,
-                                        int line_width_x, int line_width_y,
-                                        double r_line_width_x, double r_line_width_y)
-{
-  if (m_paint_device != paintDevice) {
-    m_paint_device = paintDevice;
-    m_flags.setFlag(CalculateFlag::All);
-    m_line_width_x = line_width_x;
-    m_line_width_y = line_width_y;
-    m_r_line_width_x = r_line_width_x;
-    m_r_line_width_y = r_line_width_y;
-    paintDeviceChanged();
-  }
+  // if (vAligment == VerticalAlignment::Top) - Do nothing
 }
 
 void AbstractExpression::setFont(const QFont& font, int line_width_x, int line_width_y,
@@ -379,10 +356,41 @@ void AbstractExpression::setFont(const QFont& font, int line_width_x, int line_w
   }
 }
 
-void AbstractExpression::assignColor(const QColor& color)
+// protected static
+
+void AbstractExpression::setParent(AbstractExpression* expression, AbstractExpression* parent)
 {
-  m_color = color;
-  colorChanged();
+  if (!expression){
+    qCritical() << "Can't set 'parent' for null 'expression'!";
+    return;
+  }
+
+  if (expression->parent() != parent) {
+    expression->m_parent = parent;
+
+    if (expression->hasNext())
+      setParent(expression->next(), parent);
+  }
+}
+
+void AbstractExpression::assignPaintDevice(AbstractExpression* expression, QPaintDevice* paintDevice,
+                                           int line_width_x, int line_width_y,
+                                           double r_line_width_x, double r_line_width_y)
+{
+  if (!expression){
+    qCritical() << "Can't assign 'paintDevice' for null 'expression'!";
+    return;
+  }
+
+  if (expression->paintDevice() != paintDevice) {
+    expression->m_paint_device = paintDevice;
+    expression->setFlag(CalculateFlag::All);
+    expression->m_line_width_x = line_width_x;
+    expression->m_line_width_y = line_width_y;
+    expression->m_r_line_width_x = r_line_width_x;
+    expression->m_r_line_width_y = r_line_width_y;
+    expression->paintDeviceChanged();
+  }
 }
 
 // private

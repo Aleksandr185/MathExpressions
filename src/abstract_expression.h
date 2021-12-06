@@ -77,19 +77,22 @@ protected:
   virtual int calcCapDY() const;
   virtual void calcCapDX(int& DLeft, int& DRight) const;
 
-  void setParent(AbstractExpression *parent);
   void convertCoords(int& X, int& Y,
                      HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
-  void setPaintDevice(QPaintDevice *paintDevice, int line_width_x, int line_width_y,
-                      double r_line_width_x, double r_line_width_y);
   void setFont(const QFont& font,  int line_width_x, int line_width_y,
                double r_line_width_x, double r_line_width_y);
-  void assignColor(const QColor& color);  // NOTE try use 'void setColor()'
+  inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
+
+  static void setParent(AbstractExpression *expression, AbstractExpression *parent);
+  static void assignPaintDevice(AbstractExpression *expression, QPaintDevice *paintDevice,
+                                int line_width_x, int line_width_y,
+                                double r_line_width_x, double r_line_width_y);
 
   inline int lineWidthX() const { return m_line_width_x; }
   inline int lineWidthY() const { return m_line_width_y; }
   inline double rLineWidthX() const { return m_r_line_width_x; }
   inline double rLineWidthY() const { return m_r_line_width_y; }
+  inline const CalculateFlags& flags() { return m_flags; }
 
 private:
   AbstractExpression* m_parent = nullptr;
