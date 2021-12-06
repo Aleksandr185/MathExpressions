@@ -12,6 +12,7 @@ SOURCES += \
     main.cpp \
     src/abstract_expression.cpp \
     src/custom_text_expression.cpp \
+    src/function_name_expression.cpp \
     src/simple_expression.cpp \
     src/variable_expression.cpp \
     widget.cpp
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     src/abstract_expression.h \
     src/custom_text_expression.h \
+    src/function_name_expression.h \
     src/global.h \
     src/simple_expression.h \
     src/variable_expression.h \
