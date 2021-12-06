@@ -63,7 +63,7 @@ protected:
 
   //virtual void setPainterFont(QPainter* painter);  // NOTE overrided TExprPlank, TExprVar. maybe replase by 'virtual QFont font() const' ?
 
-  virtual void paint(QPainter* painter, int X, int Y) const = 0;
+  virtual void paint(QPainter* painter, int x, int y) const = 0;
   virtual bool isNeedBrackets() const;
   virtual bool isArgNeedBrackets() const;
   virtual int calcWidth() const;
@@ -88,8 +88,8 @@ protected:
 
   inline int lineWidthX() const { return m_line_width_x; }
   inline int lineWidthY() const { return m_line_width_y; }
-  inline int rLineWidthX() const { return m_r_line_width_x; }
-  inline int rLineWidthY() const { return m_r_line_width_y; }
+  inline double rLineWidthX() const { return m_r_line_width_x; }
+  inline double rLineWidthY() const { return m_r_line_width_y; }
 
 private:
   AbstractExpression* m_parent = nullptr;
@@ -100,7 +100,7 @@ private:
   
   int m_line_width_x = 0;
   int m_line_width_y = 0;
-  double m_r_line_width_x = 0;  // NOTE: what is mean 'r' ?
+  double m_r_line_width_x = 0;  // NOTE: what is mean 'r' ? maybe 'cap_factor_*' ?
   double m_r_line_width_y = 0;
 
   mutable int m_width = 0;
