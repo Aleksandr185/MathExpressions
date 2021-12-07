@@ -61,77 +61,77 @@ int VariableExpression::calcSubscriptX() const
   return SimpleExpression::calcSubscriptX() - qRound(DX * rLineWidthX());
 }
 
-void VariableExpression::calcCapDX(int& DLeft, int& DRight) const
+void VariableExpression::calcCapDX(int& dxLeft, int& dxRight) const
 {
-  double DX = 0.0;
+  double dx = 0.0;
   const ushort front = text().isEmpty() ? 0 : text().front().unicode();
 
   switch (front) {
   case 'A': case 'f':
-    DX = 5.0;
+    dx = 5.0;
     break;
   case 'B': case 'D': case 'E': case 'F': case 'L': case 'P': case 'R':
   case 'S': case 'T': case 'Y': case 'Z': case 'q': case 'r': case 's':
   case 't': case 'y': case 'z':
-    DX =1.0;
+    dx =1.0;
     break;
   case 'U': case 'V': case 'W':
-    DX = 1.5;
+    dx = 1.5;
     break;
   case 'u': case 'v': case 'w':
-    DX = 0.5;
+    dx = 0.5;
     break;
   default:
-    DX = 0.0;
+    dx = 0.0;
     break;
   }
 
-  if (DX == 0.0) {
+  if (dx == 0.0) {
     if ( ((front >= 'a') && (front <= 'e'))
         || ((front >= 'g') && (front <= 'o'))) {
-      DX = 1.0;
+      dx = 1.0;
     }
   }
-  DLeft = qRound(DX * rLineWidthX());
+  dxLeft = qRound(dx * rLineWidthX());
 
   const ushort back = text().isEmpty() ? 0 : text().back().unicode();
   switch (back) {
   case 'A': case 'f':
-    DX = 5.0;
+    dx = 5.0;
     break;
   case 'B': case 'D': case 'E': case 'F': case 'I': case 'P': case 'R': case 'X':
-    DX =4.0;
+    dx =4.0;
     break;
   case 'C': case 'G': case 'H': case 'J': case 'K': case 'L': case 'O': case 'Q':
   case 'S': case 'U': case 'V': case 'W': case 'Y': case 'Z': case 'p':
-    DX = 2.0;
+    dx = 2.0;
     break;
   case 'M': case 'N':
-    DX = 1.5;
+    dx = 1.5;
     break;
   case 'T':
-    DX = 2.4;
+    dx = 2.4;
     break;
   case 'g': case 'h': case 'k': case 'm': case 'n': case 'o': case 'q': case 'r':
   case 's':
-    DX = 1.0;
+    dx = 1.0;
     break;
   case 'i': case 'j': case 'l': case 't':
-    DX = 3.0;
+    dx = 3.0;
     break;
   default:
-    DX = 0.0;
+    dx = 0.0;
     break;
   }
 
-  if (DX == 0.0) {
+  if (dx == 0.0) {
     if ( ((back >= 'a') && (back <= 'e'))
          || ((back >= 'u') && (back <= 'z'))) {
-      DX = 1.0;
+      dx = 1.0;
     }
   }
 
-  DRight = qRound(DX * rLineWidthX());
+  dxRight = qRound(dx * rLineWidthX());
 }
 
 } // namespace ExprDraw

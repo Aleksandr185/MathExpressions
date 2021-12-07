@@ -17,7 +17,7 @@ public:
 protected:
   int calcSuperscriptX() const override;
   int calcSubscriptX() const override;
-  void calcCapDX(int& DLeft, int& DRight) const override;
+  void calcCapDX(int& dxLeft, int& dxRight) const override;
 };
 
 } // namespace ExprDraw
