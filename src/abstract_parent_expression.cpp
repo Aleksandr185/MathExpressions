@@ -75,7 +75,7 @@ void AbstractParentExpression::setSonPaintDevice()
 {
   if ( hasSon() && son()->paintDevice() != paintDevice()) {
     assignPaintDevice(son(), paintDevice(), lineWidthX(), lineWidthY(),
-                      rLineWidthX(), rLineWidthY());
+                      capMultiplierX(), capMultiplierY());
   }
 }
 

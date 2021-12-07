@@ -38,7 +38,7 @@ int VariableExpression::calcSuperscriptX() const
     break;
   }
 
-  return SimpleExpression::calcSuperscriptX() + qRound(DX * rLineWidthX());
+  return SimpleExpression::calcSuperscriptX() + qRound(DX * capMultiplierX());
 }
 
 int VariableExpression::calcSubscriptX() const
@@ -58,7 +58,7 @@ int VariableExpression::calcSubscriptX() const
     break;
   }
 
-  return SimpleExpression::calcSubscriptX() - qRound(DX * rLineWidthX());
+  return SimpleExpression::calcSubscriptX() - qRound(DX * capMultiplierX());
 }
 
 void VariableExpression::calcCapDX(int& dxLeft, int& dxRight) const
@@ -92,7 +92,7 @@ void VariableExpression::calcCapDX(int& dxLeft, int& dxRight) const
       dx = 1.0;
     }
   }
-  dxLeft = qRound(dx * rLineWidthX());
+  dxLeft = qRound(dx * capMultiplierX());
 
   const ushort back = text().isEmpty() ? 0 : text().back().unicode();
   switch (back) {
@@ -131,7 +131,7 @@ void VariableExpression::calcCapDX(int& dxLeft, int& dxRight) const
     }
   }
 
-  dxRight = qRound(dx * rLineWidthX());
+  dxRight = qRound(dx * capMultiplierX());
 }
 
 } // namespace ExprDraw

@@ -269,7 +269,7 @@ void AbstractExpression::paintDeviceChanged()
   if (hasNext())
     assignPaintDevice(next(), paintDevice(),
                       m_line_width_x, m_line_width_y,
-                      m_r_line_width_x, m_r_line_width_y);
+                      m_cap_multiplier_x, m_cap_multiplier_y);
 }
 
 bool AbstractExpression::isNeedBrackets() const
@@ -356,14 +356,14 @@ void AbstractExpression::convertCoords(int& X, int& Y,
 }
 
 void AbstractExpression::setFont(const QFont& font, int line_width_x, int line_width_y,
-                                 double r_line_width_x, double r_line_width_y)
+                                 double cap_multiplier_x, double cap_multiplier_y)
 {
   if (m_font != font){
     m_font = font;
     m_line_width_x = line_width_x;
     m_line_width_y = line_width_y;
-    m_r_line_width_x = r_line_width_x;
-    m_r_line_width_y = r_line_width_y;
+    m_cap_multiplier_x = cap_multiplier_x;
+    m_cap_multiplier_y = cap_multiplier_y;
     fontChanged();
   }
 }
@@ -385,9 +385,10 @@ void AbstractExpression::setParent(AbstractExpression* expression, AbstractExpre
   }
 }
 
-void AbstractExpression::assignPaintDevice(AbstractExpression* expression, QPaintDevice* paintDevice,
+void AbstractExpression::assignPaintDevice(AbstractExpression* expression,
+                                           QPaintDevice* paintDevice,
                                            int line_width_x, int line_width_y,
-                                           double r_line_width_x, double r_line_width_y)
+                                           double cap_multiplier_x, double cap_multiplier_y)
 {
   if (!expression){
     qCritical() << "Can't assign 'paintDevice' for null 'expression'!";
@@ -399,8 +400,8 @@ void AbstractExpression::assignPaintDevice(AbstractExpression* expression, QPain
     expression->setFlag(CalculateFlag::All);
     expression->m_line_width_x = line_width_x;
     expression->m_line_width_y = line_width_y;
-    expression->m_r_line_width_x = r_line_width_x;
-    expression->m_r_line_width_y = r_line_width_y;
+    expression->m_cap_multiplier_x = cap_multiplier_x;
+    expression->m_cap_multiplier_y = cap_multiplier_y;
     expression->paintDeviceChanged();
   }
 }
@@ -420,8 +421,8 @@ void AbstractExpression::setLineWidth()
   }
 
   QFontMetricsF fm(font());
-  m_r_line_width_x = fm.height() / 27.6; // NOTE: what is 27.6 ?
-  m_r_line_width_y = m_r_line_width_x * factorDpiX;
+  m_cap_multiplier_x = fm.height() / 27.6; // NOTE: what is 27.6 ?
+  m_cap_multiplier_y = m_cap_multiplier_x * factorDpiX;
 
   m_line_width_y = fm.boundingRect('_').height();
   m_line_width_x = qRound(m_line_width_y * factorDpiY);

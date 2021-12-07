@@ -82,18 +82,18 @@ protected:
   void convertCoords(int& X, int& Y,
                      HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
   void setFont(const QFont& font,  int line_width_x, int line_width_y,
-               double r_line_width_x, double r_line_width_y);
+               double cap_multiplier_x, double cap_multiplier_y);
   inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
 
   static void setParent(AbstractExpression *expression, AbstractExpression *parent);
   static void assignPaintDevice(AbstractExpression *expression, QPaintDevice *paintDevice,
                                 int line_width_x, int line_width_y,
-                                double r_line_width_x, double r_line_width_y);
+                                double cap_multiplier_x, double cap_multiplier_y);
 
   inline int lineWidthX() const { return m_line_width_x; }
   inline int lineWidthY() const { return m_line_width_y; }
-  inline double rLineWidthX() const { return m_r_line_width_x; }
-  inline double rLineWidthY() const { return m_r_line_width_y; }
+  inline double capMultiplierX() const { return m_cap_multiplier_x; }
+  inline double capMultiplierY() const { return m_cap_multiplier_y; }
   inline const CalculateFlags& flags() { return m_flags; }
 
 private:
@@ -105,8 +105,8 @@ private:
   
   int m_line_width_x = 0;
   int m_line_width_y = 0;
-  double m_r_line_width_x = 0;  // NOTE: what is mean 'r' ? maybe 'cap_factor_*' ?
-  double m_r_line_width_y = 0;
+  double m_cap_multiplier_x = 0;
+  double m_cap_multiplier_y = 0;
 
   mutable int m_width = 0;
   mutable int m_height = 0;
