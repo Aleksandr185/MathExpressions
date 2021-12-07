@@ -13,6 +13,7 @@ SOURCES += \
     src/abstract_expression.cpp \
     src/abstract_parent_expression.cpp \
     src/asterix_expression.cpp \
+    src/chain_expression.cpp \
     src/custom_text_expression.cpp \
     src/function_name_expression.cpp \
     src/simple_expression.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     src/abstract_expression.h \
     src/abstract_parent_expression.h \
     src/asterix_expression.h \
+    src/chain_expression.h \
     src/custom_text_expression.h \
     src/function_name_expression.h \
     src/global.h \
