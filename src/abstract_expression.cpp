@@ -172,6 +172,18 @@ void AbstractExpression::draw(int x, int y,
   }
 }
 
+void AbstractExpression::draw(QPainter* painter, int x, int y,
+                              HorizontalAlignment hAligment, VerticalAlignment vAligment) const
+{
+  if (paintDevice() == painter->device()) {
+    convertCoords(x, y, hAligment, vAligment);
+    paint(painter, x, y);
+  }
+  else {
+    qCritical() << "ExprDraw::AbstractExpression::draw. PaintDevice is not equal!";
+  }
+}
+
 void AbstractExpression::setPaintDevice(QPaintDevice* paintDevice)
 {
   if ( m_paint_device != paintDevice) {
@@ -225,7 +237,7 @@ void AbstractExpression::addNext(AbstractExpression* next)
   }
 }
 
-MultiplicationFlags AbstractExpression::multiplicationFlags()
+MultiplicationFlags AbstractExpression::multiplicationFlags() const
 {
   return MultiplicationFlags(MultiplicationFlag::Left | MultiplicationFlag::Right);
 }
@@ -249,7 +261,7 @@ void AbstractExpression::fontChanged()
 void AbstractExpression::colorChanged()
 {
   if (hasNext())
-    next()->assignColor(m_color);
+    next()->setColor(m_color);
 }
 
 void AbstractExpression::paintDeviceChanged()
@@ -316,10 +328,10 @@ int AbstractExpression::calcCapDY() const
   return 0;
 }
 
-void AbstractExpression::calcCapDX(int& DLeft, int& DRight) const
+void AbstractExpression::calcCapDX(int& dxLeft, int& dxRight) const
 {
-  DLeft = 0;
-  DRight = 0;
+  dxLeft = 0;
+  dxRight = 0;
 }
 
 void AbstractExpression::convertCoords(int& X, int& Y,

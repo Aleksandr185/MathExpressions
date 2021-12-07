@@ -47,13 +47,15 @@ public:
   int capDY() const;
 
   void draw(int x, int y, HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
+  void draw(QPainter* painter, int x, int y,
+            HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
   void setPaintDevice(QPaintDevice *paintDevice);
   void setNext(AbstractExpression *next);
   void setFont(const QFont& font);
   void setColor(const QColor& color);
   void addNext(AbstractExpression* next);
 
-  virtual MultiplicationFlags multiplicationFlags();
+  virtual MultiplicationFlags multiplicationFlags() const;
   AbstractExpression* cutOff();
 
 protected:
@@ -75,7 +77,7 @@ protected:
   virtual int calcSubscriptX() const;
   virtual int calcSubscriptY() const;
   virtual int calcCapDY() const;
-  virtual void calcCapDX(int& DLeft, int& DRight) const;
+  virtual void calcCapDX(int& dxLeft, int& dxRight) const;
 
   void convertCoords(int& X, int& Y,
                      HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
