@@ -8,7 +8,7 @@ namespace ExprDraw {
 class EXPRDRAW_EXPORT AbstractParentExpression : public AbstractExpression
 {
 public:
-  explicit AbstractParentExpression(AbstractExpression *son);
+  AbstractParentExpression();
   ~AbstractParentExpression() override;
 
   void setSon(AbstractExpression *son);

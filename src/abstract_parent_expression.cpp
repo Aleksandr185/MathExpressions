@@ -2,9 +2,9 @@
 
 namespace ExprDraw {
 
-AbstractParentExpression::AbstractParentExpression(AbstractExpression* son)
+AbstractParentExpression::AbstractParentExpression()
 {
-  setSon(son);
+
 }
 
 AbstractParentExpression::~AbstractParentExpression()
