@@ -19,8 +19,8 @@ void AbstractParentExpression::setSon(AbstractExpression* son)
 
   if ( hasSon() ) {
     assignParent(m_son, this);
-    setSonFont();
-    setSonPaintDevice();
+    updateSonFont();
+    updateSonPaintDevice();
   }
 
   setFlag(CalculateFlag::All);
@@ -39,22 +39,22 @@ AbstractExpression* AbstractParentExpression::cutOffSun()
 void AbstractParentExpression::fontChanged()
 {
   AbstractExpression::fontChanged();
-  setSonFont();
+  updateSonFont();
 }
 
 void AbstractParentExpression::colorChanged()
 {
   AbstractExpression::colorChanged();
-  setSonColor();
+  updateSonColor();
 }
 
 void AbstractParentExpression::paintDeviceChanged()
 {
   AbstractExpression::paintDeviceChanged();
-  setSonPaintDevice();
+  updateSonPaintDevice();
 }
 
-void AbstractParentExpression::setSonFont()
+void AbstractParentExpression::updateSonFont()
 {
   if ( hasSon() ) {
     const QFont my_font = font();
@@ -64,14 +64,14 @@ void AbstractParentExpression::setSonFont()
   }
 }
 
-void AbstractParentExpression::setSonColor()
+void AbstractParentExpression::updateSonColor()
 {
   if ( hasSon() ) {
     son()->setColor(color());
   }
 }
 
-void AbstractParentExpression::setSonPaintDevice()
+void AbstractParentExpression::updateSonPaintDevice()
 {
   if ( hasSon() && son()->paintDevice() != paintDevice()) {
     assignPaintDevice(son(), paintDevice(), lineWidth(), capMultiplier());

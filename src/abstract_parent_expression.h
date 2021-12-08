@@ -23,9 +23,10 @@ protected:
   void colorChanged() override;
   void paintDeviceChanged() override;
 
-  virtual void setSonFont();
-  virtual void setSonColor();
-  virtual void setSonPaintDevice();
+  // AbstractParentExpression interface
+  virtual void updateSonFont();
+  virtual void updateSonColor();
+  virtual void updateSonPaintDevice();
 
 private:
   AbstractExpression* m_son = nullptr;
