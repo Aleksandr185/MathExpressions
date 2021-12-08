@@ -81,11 +81,12 @@ protected:
 
   void convertCoords(int& X, int& Y,
                      HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
-  void setFont(const QFont& font,  int line_width_x, int line_width_y,
-               double cap_multiplier_x, double cap_multiplier_y);
   inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
 
-  static void setParent(AbstractExpression *expression, AbstractExpression *parent);
+  static void assignFont(AbstractExpression *expression, const QFont& font,
+                      int line_width_x, int line_width_y,
+                      double cap_multiplier_x, double cap_multiplier_y);
+  static void assignParent(AbstractExpression *expression, AbstractExpression *parent);
   static void assignPaintDevice(AbstractExpression *expression, QPaintDevice *paintDevice,
                                 int line_width_x, int line_width_y,
                                 double cap_multiplier_x, double cap_multiplier_y);

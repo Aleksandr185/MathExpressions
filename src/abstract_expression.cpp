@@ -200,7 +200,7 @@ void AbstractExpression::setNext(AbstractExpression* next)
   m_next = next;
 
   if ( hasNext() )
-    setParent(m_next, parent());
+    assignParent(m_next, parent());
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -255,7 +255,7 @@ void AbstractExpression::fontChanged()
 {
   m_flags.setFlag(CalculateFlag::All);
   if (hasNext())
-    next()->setFont(m_font, lineWidthX(), lineWidthY(), capMultiplierX(), capMultiplierY());
+    assignFont(next(), m_font, lineWidthX(), lineWidthY(), capMultiplierX(), capMultiplierY());
 }
 
 void AbstractExpression::colorChanged()
@@ -355,22 +355,28 @@ void AbstractExpression::convertCoords(int& X, int& Y,
   // if (vAligment == VerticalAlignment::Top) - Do nothing
 }
 
-void AbstractExpression::setFont(const QFont& font, int line_width_x, int line_width_y,
+// protected static
+
+void AbstractExpression::assignFont(AbstractExpression* expression, const QFont& font,
+                                 int line_width_x, int line_width_y,
                                  double cap_multiplier_x, double cap_multiplier_y)
 {
-  if (m_font != font){
-    m_font = font;
-    m_line_width_x = line_width_x;
-    m_line_width_y = line_width_y;
-    m_cap_multiplier_x = cap_multiplier_x;
-    m_cap_multiplier_y = cap_multiplier_y;
-    fontChanged();
+  if (!expression){
+    qCritical() << "Can't set font for null 'expression'!";
+    return;
+  }
+
+  if (expression->m_font != font){
+    expression->m_font = font;
+    expression->m_line_width_x = line_width_x;
+    expression->m_line_width_y = line_width_y;
+    expression->m_cap_multiplier_x = cap_multiplier_x;
+    expression->m_cap_multiplier_y = cap_multiplier_y;
+    expression->fontChanged();
   }
 }
 
-// protected static
-
-void AbstractExpression::setParent(AbstractExpression* expression, AbstractExpression* parent)
+void AbstractExpression::assignParent(AbstractExpression* expression, AbstractExpression* parent)
 {
   if (!expression){
     qCritical() << "Can't set 'parent' for null 'expression'!";
@@ -381,7 +387,7 @@ void AbstractExpression::setParent(AbstractExpression* expression, AbstractExpre
     expression->m_parent = parent;
 
     if (expression->hasNext())
-      setParent(expression->next(), parent);
+      assignParent(expression->next(), parent);
   }
 }
 

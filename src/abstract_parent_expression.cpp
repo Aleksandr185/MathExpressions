@@ -18,7 +18,7 @@ void AbstractParentExpression::setSon(AbstractExpression* son)
   m_son = son;
 
   if ( hasSon() ) {
-    setParent(m_son, this);
+    assignParent(m_son, this);
     setSonFont();
     setSonPaintDevice();
   }
@@ -60,7 +60,8 @@ void AbstractParentExpression::setSonFont()
     const QFont my_font = font();
 
     if ( son()->font() != my_font )
-      son()->setFont(my_font);
+      assignFont(son(), my_font, lineWidthX(), lineWidthY(),
+              capMultiplierX(), capMultiplierY());
   }
 }
 
