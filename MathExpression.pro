@@ -9,10 +9,12 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    expression_widget.cpp \
     main.cpp \
     src/abstract_expression.cpp \
     src/abstract_parent_expression.cpp \
     src/asterix_expression.cpp \
+    src/cap_expression.cpp \
     src/chain_expression.cpp \
     src/custom_text_expression.cpp \
     src/function_name_expression.cpp \
@@ -21,9 +23,11 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    expression_widget.h \
     src/abstract_expression.h \
     src/abstract_parent_expression.h \
     src/asterix_expression.h \
+    src/cap_expression.h \
     src/chain_expression.h \
     src/custom_text_expression.h \
     src/function_name_expression.h \
