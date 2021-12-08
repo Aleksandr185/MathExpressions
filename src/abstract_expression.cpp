@@ -163,7 +163,7 @@ void AbstractExpression::draw(int x, int y,
                               VerticalAlignment vAligment) const
 {
   if ( paintDevice() ) {
-    QPainter painter;
+    QPainter painter(paintDevice());
     convertCoords(x, y, hAligment, vAligment);
     paint(&painter, x, y);
   }
@@ -255,7 +255,7 @@ void AbstractExpression::fontChanged()
 {
   m_flags.setFlag(CalculateFlag::All);
   if (hasNext())
-    next()->fontChanged();
+    next()->setFont(m_font, lineWidthX(), lineWidthY(), capMultiplierX(), capMultiplierY());
 }
 
 void AbstractExpression::colorChanged()
