@@ -11,12 +11,14 @@ CONFIG += c++11
 SOURCES += \
     expression_widget.cpp \
     main.cpp \
+    src/abstract_big_parent_expression.cpp \
     src/abstract_expression.cpp \
     src/abstract_parent_expression.cpp \
     src/asterix_expression.cpp \
     src/cap_expression.cpp \
     src/chain_expression.cpp \
     src/custom_text_expression.cpp \
+    src/fraction_expression.cpp \
     src/function_name_expression.cpp \
     src/simple_expression.cpp \
     src/variable_expression.cpp \
@@ -24,12 +26,14 @@ SOURCES += \
 
 HEADERS += \
     expression_widget.h \
+    src/abstract_big_parent_expression.h \
     src/abstract_expression.h \
     src/abstract_parent_expression.h \
     src/asterix_expression.h \
     src/cap_expression.h \
     src/chain_expression.h \
     src/custom_text_expression.h \
+    src/fraction_expression.h \
     src/function_name_expression.h \
     src/global.h \
     src/simple_expression.h \
