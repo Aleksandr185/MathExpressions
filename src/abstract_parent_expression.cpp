@@ -60,8 +60,7 @@ void AbstractParentExpression::setSonFont()
     const QFont my_font = font();
 
     if ( son()->font() != my_font )
-      assignFont(son(), my_font, lineWidthX(), lineWidthY(),
-              capMultiplierX(), capMultiplierY());
+      assignFont(son(), my_font, lineWidth(), capMultiplier());
   }
 }
 
@@ -75,8 +74,7 @@ void AbstractParentExpression::setSonColor()
 void AbstractParentExpression::setSonPaintDevice()
 {
   if ( hasSon() && son()->paintDevice() != paintDevice()) {
-    assignPaintDevice(son(), paintDevice(), lineWidthX(), lineWidthY(),
-                      capMultiplierX(), capMultiplierY());
+    assignPaintDevice(son(), paintDevice(), lineWidth(), capMultiplier());
   }
 }
 

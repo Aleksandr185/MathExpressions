@@ -84,17 +84,14 @@ protected:
   inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
 
   static void assignFont(AbstractExpression *expression, const QFont& font,
-                      int line_width_x, int line_width_y,
-                      double cap_multiplier_x, double cap_multiplier_y);
+                         const LineWidth& line_width, const CapMultiplier& cap_multiplier);
   static void assignParent(AbstractExpression *expression, AbstractExpression *parent);
   static void assignPaintDevice(AbstractExpression *expression, QPaintDevice *paintDevice,
-                                int line_width_x, int line_width_y,
-                                double cap_multiplier_x, double cap_multiplier_y);
+                                const LineWidth& line_width, const CapMultiplier& cap_multiplier);
 
-  inline int lineWidthX() const { return m_line_width_x; }
-  inline int lineWidthY() const { return m_line_width_y; }
-  inline double capMultiplierX() const { return m_cap_multiplier_x; }
-  inline double capMultiplierY() const { return m_cap_multiplier_y; }
+
+  inline const LineWidth& lineWidth() const { return m_line_width; }
+  inline const CapMultiplier& capMultiplier() const { return m_cap_multiplier; }
   inline const CalculateFlags& flags() { return m_flags; }
 
 private:
@@ -103,11 +100,9 @@ private:
   QPaintDevice*       m_paint_device = nullptr;
   QFont               m_font;
   QColor              m_color;
-  
-  int m_line_width_x = 0;
-  int m_line_width_y = 0;
-  double m_cap_multiplier_x = 0;
-  double m_cap_multiplier_y = 0;
+
+  LineWidth     m_line_width;
+  CapMultiplier m_cap_multiplier;
 
   mutable int m_width = 0;
   mutable int m_height = 0;

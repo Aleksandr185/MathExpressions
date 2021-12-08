@@ -255,7 +255,7 @@ void AbstractExpression::fontChanged()
 {
   m_flags.setFlag(CalculateFlag::All);
   if (hasNext())
-    assignFont(next(), m_font, lineWidthX(), lineWidthY(), capMultiplierX(), capMultiplierY());
+    assignFont(next(), m_font, lineWidth(), capMultiplier());
 }
 
 void AbstractExpression::colorChanged()
@@ -267,9 +267,7 @@ void AbstractExpression::colorChanged()
 void AbstractExpression::paintDeviceChanged()
 {
   if (hasNext())
-    assignPaintDevice(next(), paintDevice(),
-                      m_line_width_x, m_line_width_y,
-                      m_cap_multiplier_x, m_cap_multiplier_y);
+    assignPaintDevice(next(), paintDevice(), lineWidth(), capMultiplier());
 }
 
 bool AbstractExpression::isNeedBrackets() const
@@ -304,7 +302,7 @@ int AbstractExpression::calcDescent() const
 
 int AbstractExpression::calcSuperscriptX() const
 {
-  return width() + m_line_width_x;
+  return width() + m_line_width.x();
 }
 
 int AbstractExpression::calcSuperscriptY() const
@@ -358,8 +356,8 @@ void AbstractExpression::convertCoords(int& X, int& Y,
 // protected static
 
 void AbstractExpression::assignFont(AbstractExpression* expression, const QFont& font,
-                                 int line_width_x, int line_width_y,
-                                 double cap_multiplier_x, double cap_multiplier_y)
+                                    const LineWidth& line_width,
+                                    const CapMultiplier& cap_multiplier)
 {
   if (!expression){
     qCritical() << "Can't set font for null 'expression'!";
@@ -368,10 +366,8 @@ void AbstractExpression::assignFont(AbstractExpression* expression, const QFont&
 
   if (expression->m_font != font){
     expression->m_font = font;
-    expression->m_line_width_x = line_width_x;
-    expression->m_line_width_y = line_width_y;
-    expression->m_cap_multiplier_x = cap_multiplier_x;
-    expression->m_cap_multiplier_y = cap_multiplier_y;
+    expression->m_line_width = line_width;
+    expression->m_cap_multiplier = cap_multiplier;
     expression->fontChanged();
   }
 }
@@ -393,8 +389,8 @@ void AbstractExpression::assignParent(AbstractExpression* expression, AbstractEx
 
 void AbstractExpression::assignPaintDevice(AbstractExpression* expression,
                                            QPaintDevice* paintDevice,
-                                           int line_width_x, int line_width_y,
-                                           double cap_multiplier_x, double cap_multiplier_y)
+                                           const LineWidth& line_width,
+                                           const CapMultiplier& cap_multiplier)
 {
   if (!expression){
     qCritical() << "Can't assign 'paintDevice' for null 'expression'!";
@@ -404,10 +400,8 @@ void AbstractExpression::assignPaintDevice(AbstractExpression* expression,
   if (expression->paintDevice() != paintDevice) {
     expression->m_paint_device = paintDevice;
     expression->setFlag(CalculateFlag::All);
-    expression->m_line_width_x = line_width_x;
-    expression->m_line_width_y = line_width_y;
-    expression->m_cap_multiplier_x = cap_multiplier_x;
-    expression->m_cap_multiplier_y = cap_multiplier_y;
+    expression->m_line_width = line_width;
+    expression->m_cap_multiplier = cap_multiplier;
     expression->paintDeviceChanged();
   }
 }
@@ -427,11 +421,11 @@ void AbstractExpression::setLineWidth()
   }
 
   QFontMetricsF fm(font());
-  m_cap_multiplier_x = fm.height() / 27.6; // NOTE: what is 27.6 ?
-  m_cap_multiplier_y = m_cap_multiplier_x * factorDpiX;
+  m_cap_multiplier.setX( fm.height() / 27.6 ); // NOTE: what is 27.6 ?
+  m_cap_multiplier.setY( m_cap_multiplier.x() * factorDpiX );
 
-  m_line_width_y = fm.boundingRect('_').height();
-  m_line_width_x = qRound(m_line_width_y * factorDpiY);
+  m_line_width.setY( fm.boundingRect('_').height() );
+  m_line_width.setX( qRound(m_line_width.y() * factorDpiY));
 }
 
 } // namespace ExprDraw

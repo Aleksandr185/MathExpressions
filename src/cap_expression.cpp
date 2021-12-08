@@ -69,12 +69,12 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
     painter->setBrush(brush());
     painter->setFont(font());
 
-    const int dy = son_y + son()->capDY() - lineWidthY();
+    const int dy = son_y + son()->capDY() - lineWidth().y();
 
     if (m_cap_style == CapStyle::Points) {
       const int pen_width = painter->pen().width();
-      const int line_x = lineWidthX();
-      const int line_y = lineWidthY();
+      const int line_x = lineWidth().x();
+      const int line_y = lineWidth().y();
       const int rec_left_const = x  + dx + center_x - half_cap_width;
 
       QRect rec;
@@ -108,8 +108,8 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
     else if (m_cap_style == CapStyle::Vector) {
       QPolygon polygon;
 
-      const int line_x = lineWidthX();
-      const int line_y = lineWidthY();
+      const int line_x = lineWidth().x();
+      const int line_y = lineWidth().y();
       const int left_x = x + qMax(0, dxLeft);
       const int right_x = x + width() + qMin(0, dxRight);
 
@@ -137,7 +137,7 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
 
       QPoint pos;
       pos.setX(x + dx + center_x - half_cap_width);
-      pos.setY(dy - qRound(15.0 * capMultiplierY()) + fm.ascent());
+      pos.setY(dy - qRound(15.0 * capMultiplier().y()) + fm.ascent());
 
       painter->drawText(pos, CHAR_CAP);
     }
@@ -146,7 +146,7 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
 
       QPoint pos;
       pos.setX(x + dx + center_x - half_cap_width);
-      pos.setY(dy - qRound(18.5 * capMultiplierY()) + fm.ascent());
+      pos.setY(dy - qRound(18.5 * capMultiplier().y()) + fm.ascent());
 
       painter->drawText(pos, CHAR_TILDE);
     }
@@ -158,8 +158,8 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
       QRect rect;
       rect.setLeft(left_x);
       rect.setRight(right_x - pen_width);
-      rect.setTop(dy - 2 * lineWidthY());
-      rect.setBottom(dy - lineWidthY() - pen_width);
+      rect.setTop(dy - 2 * lineWidth().y());
+      rect.setBottom(dy - lineWidth().y() - pen_width);
 
       painter->drawRect(rect);
     }
@@ -265,7 +265,7 @@ int CapExpression::capWidth() const
 #ifdef ORIGINAL_POINT_SIZE
     return lineWidthX() * (4 * m_point_count - 2);
 #else
-    return (capHeight() * m_point_count) + (POINT_SPACE * lineWidthX() * (m_point_count - 1));
+    return (capHeight() * m_point_count) + (POINT_SPACE * lineWidth().x() * (m_point_count - 1));
 #endif
   }
   else if (m_cap_style == CapStyle::Cap) {
@@ -286,17 +286,17 @@ int CapExpression::capHeight() const
 #ifdef ORIGINAL_POINT_SIZE
     return 5 * lineWidthY();
 #else
-    return POINT_SIZE * lineWidthY();
+    return POINT_SIZE * lineWidth().y();
 #endif
   }
   else if (m_cap_style == CapStyle::Vector || m_cap_style == CapStyle::Tilde) {
-    return 6 * lineWidthY();
+    return 6 * lineWidth().y();
   }
   else if (m_cap_style == CapStyle::Cap) {
-    return 11 * lineWidthY();              // NOTE: why not QFontMetrics::height('^') ?
+    return 11 * lineWidth().y();              // NOTE: why not QFontMetrics::height('^') ?
   }
   else if (m_cap_style == CapStyle::Line){
-    return 4 * lineWidthY();
+    return 4 * lineWidth().y();
   }
   else {
     return 0;

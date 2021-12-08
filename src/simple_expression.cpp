@@ -134,7 +134,7 @@ int SimpleExpression::calcCapDY() const
       }
   }
 
-  return qRound(DY * capMultiplierX());
+  return qRound(DY * capMultiplier().x());
 }
 
 } // namespace ExprDraw

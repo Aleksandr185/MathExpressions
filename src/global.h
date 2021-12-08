@@ -98,6 +98,34 @@ constexpr inline QFlags<MultiplicationFlag> operator|(MultiplicationFlag f1, Mul
   return QFlags<MultiplicationFlag>(f1) | f2;
 }
 
+class LineWidth
+{
+public:
+  inline int x() const { return m_x; }
+  inline int y() const { return m_y;}
+
+  inline void setX(int x) { m_x = x; }
+  inline void setY(int y) { m_y = y; }
+
+private:
+  int m_x;
+  int m_y;
+};
+
+class CapMultiplier
+{
+public:
+  inline double x() const { return m_x; }
+  inline double y() const { return m_y;}
+
+  inline void setX(double x) { m_x = x; }
+  inline void setY(double y) { m_y = y; }
+
+private:
+  double m_x;
+  double m_y;
+};
+
 } // namespace ExprDraw
 
 #endif // GLOBAL_H
