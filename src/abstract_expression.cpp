@@ -199,8 +199,9 @@ void AbstractExpression::setNext(AbstractExpression* next)
   delete m_next;
   m_next = next;
 
-  if ( hasNext() )
+  if ( hasNext() ){
     assignParent(m_next, parent());
+  }
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -229,8 +230,8 @@ void AbstractExpression::addNext(AbstractExpression* next)
     }
 
     last_next->m_next = next;
-    last_next->setFont(m_font);
-    last_next->setPaintDevice( paintDevice() );
+    next->setFont(m_font);
+    next->setPaintDevice( paintDevice() );
   }
   else{
     qCritical() << "ExprDraw::AbstractExpression::addNext. Can't add 'null' next!";
