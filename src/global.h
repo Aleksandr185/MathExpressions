@@ -15,10 +15,10 @@
 
 namespace ExprDraw {
 
-//enum class Origin {
-//  Top,        // Ascent
-//  Bottom      // Descent
-//};
+enum Symbol : ushort {
+  Ellipsis = 0x2026,             // …
+  PartialDifferential = 0x2202   // ∂
+};
 
 // Вертикальное выравнивание выражения.
 // Указывает где находится координата X по отношению к выражению.
