@@ -17,7 +17,6 @@ void FractionExpression::paint(QPainter* painter, int x, int y) const
   const int center_x = x + width() / 2;
 
   const int line_x = lineWidth().x();
-  const int half_line_x = line_x / 2;
   const int line_y = lineWidth().y();
   const int half_line_y = line_y / 2;
 
