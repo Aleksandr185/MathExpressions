@@ -1,4 +1,4 @@
-#include "char_expression.h"
+#include "character_expression.h"
 
 #include <QFontMetrics>
 #include <QPainter>
@@ -40,7 +40,7 @@ CharacterExpression::CharacterExpression(const QChar& character)
 
 void CharacterExpression::setCharacter(const QChar& value)
 {
-  if ( canChangeCharacter() && m_character != value){
+  if ( canChangeCharacter(value) && m_character != value){
     m_character = value;
     setFlag(CalculateFlag::Width);
     setFlag(CalculateFlag::CapDY);
@@ -193,7 +193,7 @@ void CharacterExpression::calcCapDX(int& dxLeft, int& dxRight) const
   dxRight = qRound(DX * capMultiplier().x());
 }
 
-bool CharacterExpression::canChangeCharacter() const
+bool CharacterExpression::canChangeCharacter(const QChar& ) const
 {
   return true;
 }

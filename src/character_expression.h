@@ -24,7 +24,7 @@ protected:
   int calcCapDY() const override;
   void calcCapDX(int& dxLeft, int& dxRight) const override;
 
-  virtual bool canChangeCharacter() const;
+  virtual bool canChangeCharacter(const QChar& newCharacter) const;
 
 private:
   QChar m_character;

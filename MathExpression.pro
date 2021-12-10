@@ -17,12 +17,13 @@ SOURCES += \
     src/asterix_expression.cpp \
     src/cap_expression.cpp \
     src/chain_expression.cpp \
-    src/char_expression.cpp \
+    src/character_expression.cpp \
     src/custom_text_expression.cpp \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
     src/function_name_expression.cpp \
     src/number_expresssion.cpp \
+    src/planck_expression.cpp \
     src/simple_expression.cpp \
     src/variable_expression.cpp \
     widget.cpp
@@ -35,13 +36,14 @@ HEADERS += \
     src/asterix_expression.h \
     src/cap_expression.h \
     src/chain_expression.h \
-    src/char_expression.h \
+    src/character_expression.h \
     src/custom_text_expression.h \
     src/extended_number_expresssion.h \
     src/fraction_expression.h \
     src/function_name_expression.h \
     src/global.h \
     src/number_expresssion.h \
+    src/planck_expression.h \
     src/simple_expression.h \
     src/variable_expression.h \
     widget.h
