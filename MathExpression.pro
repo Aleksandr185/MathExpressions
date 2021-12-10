@@ -23,6 +23,7 @@ SOURCES += \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
     src/function_name_expression.cpp \
+    src/lambda_expression.cpp \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
     src/simple_expression.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     src/fraction_expression.h \
     src/function_name_expression.h \
     src/global.h \
+    src/lambda_expression.h \
     src/number_expresssion.h \
     src/planck_expression.h \
     src/simple_expression.h \
