@@ -17,6 +17,7 @@ SOURCES += \
     src/asterix_expression.cpp \
     src/cap_expression.cpp \
     src/chain_expression.cpp \
+    src/char_expression.cpp \
     src/custom_text_expression.cpp \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     src/asterix_expression.h \
     src/cap_expression.h \
     src/chain_expression.h \
+    src/char_expression.h \
     src/custom_text_expression.h \
     src/extended_number_expresssion.h \
     src/fraction_expression.h \
