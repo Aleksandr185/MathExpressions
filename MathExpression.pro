@@ -20,6 +20,7 @@ SOURCES += \
     src/character_expression.cpp \
     src/comma_expression.cpp \
     src/custom_text_expression.cpp \
+    src/empty_expression.cpp \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
     src/function_name_expression.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     src/character_expression.h \
     src/comma_expression.h \
     src/custom_text_expression.h \
+    src/empty_expression.h \
     src/extended_number_expresssion.h \
     src/fraction_expression.h \
     src/function_name_expression.h \
