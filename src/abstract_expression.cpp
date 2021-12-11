@@ -354,6 +354,14 @@ void AbstractExpression::convertCoords(int& X, int& Y,
   // if (vAligment == VerticalAlignment::Top) - Do nothing
 }
 
+void AbstractExpression::setFlag(CalculateFlag flag, bool on)
+{
+  m_flags.setFlag(flag, on);
+  if (on && parent()) {
+    parent()->setFlag(flag, on);
+  }
+}
+
 // protected static
 
 void AbstractExpression::assignFont(AbstractExpression* expression, const QFont& font,

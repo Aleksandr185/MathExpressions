@@ -81,7 +81,8 @@ protected:
 
   void convertCoords(int& X, int& Y,
                      HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
-  inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
+  //inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
+  void setFlag(CalculateFlag flag, bool on = true);
 
   static void assignFont(AbstractExpression *expression, const QFont& font,
                          const LineWidth& line_width, const CapMultiplier& cap_multiplier);
