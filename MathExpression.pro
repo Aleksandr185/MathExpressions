@@ -28,6 +28,7 @@ SOURCES += \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
     src/simple_expression.cpp \
+    src/space_expression.cpp \
     src/variable_expression.cpp \
     widget.cpp
 
@@ -51,6 +52,7 @@ HEADERS += \
     src/number_expresssion.h \
     src/planck_expression.h \
     src/simple_expression.h \
+    src/space_expression.h \
     src/variable_expression.h \
     widget.h
 
