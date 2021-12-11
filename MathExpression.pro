@@ -29,6 +29,7 @@ SOURCES += \
     src/planck_expression.cpp \
     src/simple_expression.cpp \
     src/space_expression.cpp \
+    src/strokes_expression.cpp \
     src/variable_expression.cpp \
     widget.cpp
 
@@ -53,6 +54,7 @@ HEADERS += \
     src/planck_expression.h \
     src/simple_expression.h \
     src/space_expression.h \
+    src/strokes_expression.h \
     src/variable_expression.h \
     widget.h
 
