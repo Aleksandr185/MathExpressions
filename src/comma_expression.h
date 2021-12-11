@@ -5,7 +5,7 @@
 
 namespace ExprDraw {
 
-class CommaExpression : public CharacterExpression
+class EXPRDRAW_EXPORT CommaExpression : public CharacterExpression
 {
 public:
   CommaExpression();

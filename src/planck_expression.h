@@ -5,7 +5,7 @@
 
 namespace ExprDraw {
 
-class PlanckExpression : public CharacterExpression
+class EXPRDRAW_EXPORT PlanckExpression : public CharacterExpression
 {
 public:
   PlanckExpression();

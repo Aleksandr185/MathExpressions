@@ -5,7 +5,7 @@
 
 namespace ExprDraw {
 
-class NablaExpression : public CharacterExpression
+class EXPRDRAW_EXPORT NablaExpression : public CharacterExpression
 {
 public:
   Q_DECL_DEPRECATED_X("Class NablaExpression is deprecated! Use CharacterExpression(0x2207)!")

@@ -5,7 +5,7 @@
 
 namespace ExprDraw {
 
-class ExtendedNumberExpresssion : public NumberExpresssion
+class EXPRDRAW_EXPORT ExtendedNumberExpresssion : public NumberExpresssion
 {
 public:
   ExtendedNumberExpresssion();

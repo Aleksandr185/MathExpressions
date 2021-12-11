@@ -7,7 +7,7 @@
 
 namespace ExprDraw {
 
-class CharacterExpression : public AbstractExpression
+class EXPRDRAW_EXPORT CharacterExpression : public AbstractExpression
 {
 public:
   explicit CharacterExpression(const QChar& character);

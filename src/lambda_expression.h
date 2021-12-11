@@ -5,7 +5,7 @@
 
 namespace ExprDraw {
 
-class LambdaExpression : public CharacterExpression
+class EXPRDRAW_EXPORT LambdaExpression : public CharacterExpression
 {
 public:
   LambdaExpression();
