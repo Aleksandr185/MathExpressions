@@ -123,11 +123,11 @@ int RootExpression::calcDescent() const
 
 void RootExpression::updateDaughterFont()
 {
-  if (hasDaughter()) {
-    QFont fn = font();
-    fn.setPointSize( qRound(0.7 * fn.pointSize()) );
-    daughter()->setFont(fn);
-  }
+  const double FONT_FACTOR = 0.7;
+
+  QFont fn = font();
+  fn.setPointSizeF( qRound(FONT_FACTOR * fn.pointSizeF()) );
+  daughter()->setFont(fn);
 }
 
 } // namespace ExprDraw
