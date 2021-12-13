@@ -243,6 +243,11 @@ MultiplicationFlags AbstractExpression::multiplicationFlags() const
   return MultiplicationFlags(MultiplicationFlag::Left | MultiplicationFlag::Right);
 }
 
+bool AbstractExpression::isArgNeedBrackets() const
+{
+  return true;
+}
+
 AbstractExpression* AbstractExpression::cutOff()
 {
   AbstractExpression* result = m_next;
@@ -274,11 +279,6 @@ void AbstractExpression::paintDeviceChanged()
 bool AbstractExpression::isNeedBrackets() const
 {
   return false;
-}
-
-bool AbstractExpression::isArgNeedBrackets() const
-{
-  return true;
 }
 
 int AbstractExpression::calcWidth() const

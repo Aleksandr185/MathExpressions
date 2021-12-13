@@ -56,6 +56,7 @@ public:
   void addNext(AbstractExpression* next);
 
   virtual MultiplicationFlags multiplicationFlags() const;
+  virtual bool isArgNeedBrackets() const;
   AbstractExpression* cutOff();
 
 protected:
@@ -67,7 +68,6 @@ protected:
 
   virtual void paint(QPainter* painter, int x, int y) const = 0;
   virtual bool isNeedBrackets() const;
-  virtual bool isArgNeedBrackets() const;
   virtual int calcWidth() const;
   virtual int calcHeight() const;
   virtual int calcAscent() const;

@@ -10,7 +10,6 @@ class EXPRDRAW_EXPORT FunctionNameExpression : public SimpleExpression
 public:
   explicit FunctionNameExpression(const QString& text);
 
-protected:
   // AbstractExpression interface
   bool isArgNeedBrackets() const override;
 };
