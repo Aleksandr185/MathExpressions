@@ -72,9 +72,10 @@ int StrokesExpression::calcHeight() const
 
 QFont StrokesExpression::enlargedFont(const QFont& font) const
 {
+  const double FONT_FACTOR = 1.4;
+
   QFont result = font;
-  const auto point_size = result.pointSizeF();
-  result.setPointSizeF(point_size + (point_size * 0.4));
+  result.setPointSizeF(FONT_FACTOR * result.pointSizeF());
   return result;
 }
 
