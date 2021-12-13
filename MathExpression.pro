@@ -25,6 +25,7 @@ SOURCES += \
     src/empty_expression.cpp \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
+    src/function_expression.cpp \
     src/function_name_expression.cpp \
     src/lambda_expression.cpp \
     src/nabla_expression.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     src/empty_expression.h \
     src/extended_number_expresssion.h \
     src/fraction_expression.h \
+    src/function_expression.h \
     src/function_name_expression.h \
     src/global.h \
     src/lambda_expression.h \
