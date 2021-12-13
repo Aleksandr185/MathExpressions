@@ -39,7 +39,9 @@ AbstractExpression* AbstractParentExpression::cutOffSun()
 void AbstractParentExpression::fontChanged()
 {
   AbstractExpression::fontChanged();
-  updateSonFont();
+  if (hasSon()) {
+    updateSonFont();
+  }
 }
 
 void AbstractParentExpression::colorChanged()
@@ -51,29 +53,27 @@ void AbstractParentExpression::colorChanged()
 void AbstractParentExpression::paintDeviceChanged()
 {
   AbstractExpression::paintDeviceChanged();
-  updateSonPaintDevice();
+  if (hasSon()) {
+    updateSonPaintDevice();
+  }
 }
 
 void AbstractParentExpression::updateSonFont()
 {
-  if ( hasSon() ) {
-    const QFont my_font = font();
+  const QFont my_font = font();
 
-    if ( son()->font() != my_font )
-      assignFont(son(), my_font, lineWidth(), capMultiplier());
-  }
+  if ( son()->font() != my_font )
+    assignFont(son(), my_font, lineWidth(), capMultiplier());
 }
 
 void AbstractParentExpression::updateSonColor()
 {
-  if ( hasSon() ) {
-    son()->setColor(color());
-  }
+  son()->setColor(color());
 }
 
 void AbstractParentExpression::updateSonPaintDevice()
 {
-  if ( hasSon() && son()->paintDevice() != paintDevice()) {
+  if ( son()->paintDevice() != paintDevice()) {
     assignPaintDevice(son(), paintDevice(), lineWidth(), capMultiplier());
   }
 }
