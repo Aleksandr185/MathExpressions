@@ -4,6 +4,8 @@
 
 namespace ExprDraw {
 
+const int SPACE = 3;
+
 AtValueExpression::AtValueExpression()
 {
 
@@ -50,23 +52,17 @@ void AtValueExpression::paint(QPainter* painter, int x, int y) const
   painter->restore();
 
   if (hasDaughter()) {
-    daughter()->draw(painter, W + 3 * lineWidth().x(), y + H,
+    daughter()->draw(painter, W + (SPACE * lineWidth().x()), y + H,
                      HorizontalAlignment::Left, VerticalAlignment::Bottom);
   }
 }
 
 int AtValueExpression::calcWidth() const
 {
-  int result = 3 * lineWidth().x();
+  const int son_width = hasSon() ? son()->width() : 0;
+  const int daughter_width = hasDaughter() ? daughter()->width() : 0;
 
-  if (hasSon()) {
-    result += son()->width();
-  }
-  if (hasDaughter()) {
-    result += daughter()->width();
-  }
-
-  return result;
+  return son_width + (SPACE * lineWidth().x()) + daughter_width;
 }
 
 int AtValueExpression::calcHeight() const
