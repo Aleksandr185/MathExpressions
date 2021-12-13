@@ -42,43 +42,45 @@ void AbstractBigParentExpression::setDaughter(AbstractExpression* daughter)
 void AbstractBigParentExpression::fontChanged()
 {
   AbstractParentExpression::fontChanged();
-  updateDaughterFont();
+  if (hasDaughter()) {
+    updateDaughterFont();
+  }
 }
 
 void AbstractBigParentExpression::colorChanged()
 {
   AbstractParentExpression::colorChanged();
-  updateDaughterColor();
+  if (hasDaughter()) {
+    updateDaughterColor();
+  }
 }
 
 void AbstractBigParentExpression::paintDeviceChanged()
 {
   AbstractParentExpression::paintDeviceChanged();
-  updateDaughterPaintDevice();
+  if (hasDaughter()) {
+    updateDaughterPaintDevice();
+  }
 }
 
 // AbstractBigParentExpression interfase
 
 void AbstractBigParentExpression::updateDaughterFont()
 {
-  if ( hasDaughter() ) {
-    const QFont my_font = font();
+  const QFont my_font = font();
 
-    if ( daughter()->font() != my_font )
-      assignFont(daughter(), my_font, lineWidth(), capMultiplier());
-  }
+  if ( daughter()->font() != my_font )
+    assignFont(daughter(), my_font, lineWidth(), capMultiplier());
 }
 
 void AbstractBigParentExpression::updateDaughterColor()
 {
-  if ( hasDaughter() ) {
-    daughter()->setColor(color());
-  }
+  daughter()->setColor(color());
 }
 
 void AbstractBigParentExpression::updateDaughterPaintDevice()
 {
-  if ( hasDaughter() && daughter()->paintDevice() != paintDevice()) {
+  if ( daughter()->paintDevice() != paintDevice()) {
     assignPaintDevice(daughter(), paintDevice(), lineWidth(), capMultiplier());
   }
 }
