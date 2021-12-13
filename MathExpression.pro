@@ -15,6 +15,7 @@ SOURCES += \
     src/abstract_expression.cpp \
     src/abstract_parent_expression.cpp \
     src/asterix_expression.cpp \
+    src/at_value_expression.cpp \
     src/cap_expression.cpp \
     src/chain_expression.cpp \
     src/character_expression.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     src/abstract_expression.h \
     src/abstract_parent_expression.h \
     src/asterix_expression.h \
+    src/at_value_expression.h \
     src/cap_expression.h \
     src/chain_expression.h \
     src/character_expression.h \
