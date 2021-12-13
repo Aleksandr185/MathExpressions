@@ -20,6 +20,7 @@ SOURCES += \
     src/chain_expression.cpp \
     src/character_expression.cpp \
     src/comma_expression.cpp \
+    src/common_function_expression.cpp \
     src/custom_text_expression.cpp \
     src/empty_expression.cpp \
     src/extended_number_expresssion.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     src/chain_expression.h \
     src/character_expression.h \
     src/comma_expression.h \
+    src/common_function_expression.h \
     src/custom_text_expression.h \
     src/empty_expression.h \
     src/extended_number_expresssion.h \
