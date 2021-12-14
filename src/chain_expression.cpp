@@ -2,9 +2,9 @@
 
 namespace ExprDraw {
 
-ChainExpression::ChainExpression(AbstractExpression *son)
+ChainExpression::ChainExpression()
 {
-  setSon(son);
+
 }
 
 // AbstractExpression interface

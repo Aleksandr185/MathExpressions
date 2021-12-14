@@ -8,9 +8,7 @@ namespace ExprDraw {
 class EXPRDRAW_EXPORT ChainExpression : public AbstractParentExpression
 {
 public:
-  explicit ChainExpression(AbstractExpression *son);
-
-  void buidUpChain(AbstractExpression *value);
+  ChainExpression();
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
