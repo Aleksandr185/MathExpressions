@@ -26,10 +26,11 @@ protected:
   // AbstractParentExpression interface
   virtual void updateSonFont();
   virtual void updateSonColor();
-  virtual void updateSonPaintDevice();
 
 private:
   AbstractExpression* m_son = nullptr;
+
+  void updateSonPaintDevice();
 };
 
 } // namespace ExprDraw

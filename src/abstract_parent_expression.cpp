@@ -19,8 +19,8 @@ void AbstractParentExpression::setSon(AbstractExpression* son)
 
   if ( hasSon() ) {
     assignParent(m_son, this);
-    updateSonFont();
     updateSonPaintDevice();
+    updateSonFont();
   }
 
   setFlag(CalculateFlag::All);
@@ -47,7 +47,9 @@ void AbstractParentExpression::fontChanged()
 void AbstractParentExpression::colorChanged()
 {
   AbstractExpression::colorChanged();
-  updateSonColor();
+  if (hasSon()) {
+    updateSonColor();
+  }
 }
 
 void AbstractParentExpression::paintDeviceChanged()
