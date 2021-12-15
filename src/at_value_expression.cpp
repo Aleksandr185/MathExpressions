@@ -32,7 +32,7 @@ void AtValueExpression::paint(QPainter* painter, int x, int y) const
   const int dh = qMax(0, daughter_height - son_height);
 
   if (hasSon()) {
-    son()->draw(painter, x, y + dh, HorizontalAlignment::Left, VerticalAlignment::Top) ;
+    son()->draw(painter, x, y + dh, HorizontalAlignment::Right, VerticalAlignment::Bottom) ;
   }
 
   const int H = qMax(son_height, daughter_height);
@@ -53,7 +53,7 @@ void AtValueExpression::paint(QPainter* painter, int x, int y) const
 
   if (hasDaughter()) {
     daughter()->draw(painter, W + (SPACE * lineWidth().x()), y + H,
-                     HorizontalAlignment::Left, VerticalAlignment::Bottom);
+                     HorizontalAlignment::Right, VerticalAlignment::Top);
   }
 }
 

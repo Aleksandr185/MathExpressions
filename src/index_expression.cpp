@@ -33,18 +33,18 @@ void IndexExpression::paint(QPainter* painter, int x, int y) const
     const int son_superscript_y = hasSon() ? son()->superscriptY() : 0;
     dy = qMax(0, secondTwin()->height() - son_superscript_y);
     secondTwin()->draw(painter, x + son_superscript_x, y + dy + son_superscript_y,
-                       HorizontalAlignment::Left, VerticalAlignment::Bottom);
+                       HorizontalAlignment::Right, VerticalAlignment::Top);
   }
 
   if (hasSon()) {
-    son()->draw(painter, x, y + dy, HorizontalAlignment::Left, VerticalAlignment::Top);
+    son()->draw(painter, x, y + dy, HorizontalAlignment::Right, VerticalAlignment::Bottom);
   }
 
   if (hasFirstTwin()) {
     const int son_subscript_x = hasSon() ? son()->subscriptX() : 0;
     const int son_subscript_y = hasSon() ? son()->subscriptY() : 0;
     firstTwin()->draw(painter, x + son_subscript_x, y + dy + son_subscript_y,
-                      HorizontalAlignment::Left, VerticalAlignment::Top);
+                      HorizontalAlignment::Right, VerticalAlignment::Bottom);
   }
 }
 

@@ -48,11 +48,11 @@ void RootExpression::paint(QPainter* painter, int x, int y) const
       }
 
       daughter()->draw(painter, pl.at(1).x(), pl.at(1).y(),
-                       HorizontalAlignment::Right, VerticalAlignment::Bottom );
+                       HorizontalAlignment::Left, VerticalAlignment::Top );
     }
 
     son()->draw(painter, pl.at(8).x(), pl.at(8).y(),
-                HorizontalAlignment::Left, VerticalAlignment::Top);
+                HorizontalAlignment::Right, VerticalAlignment::Bottom);
 
     painter->save();
     painter->setPen(pen());

@@ -22,12 +22,12 @@ void FractionExpression::paint(QPainter* painter, int x, int y) const
 
   if ( hasSon() ){
     son()->draw(painter, center_x, center_y - line_y - half_line_y,
-                HorizontalAlignment::Center, VerticalAlignment::Bottom);
+                HorizontalAlignment::Center, VerticalAlignment::Top);
   }
 
   if ( hasDaughter() ) {
     daughter()->draw(painter, center_x, center_y + line_y + half_line_y,
-                     HorizontalAlignment::Center, VerticalAlignment::Top);
+                     HorizontalAlignment::Center, VerticalAlignment::Bottom);
   }
 
   // draw line

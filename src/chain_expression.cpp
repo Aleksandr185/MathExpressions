@@ -40,7 +40,7 @@ void ChainExpression::paint(QPainter* painter, int x, int y) const
 
   AbstractExpression* expression = son();
   while (expression) {
-    expression->draw(painter, x, y, HorizontalAlignment::Left, VerticalAlignment::Center);
+    expression->draw(painter, x, y, HorizontalAlignment::Right, VerticalAlignment::Center);
     x += expression->width();
 
     expression = expression->next();

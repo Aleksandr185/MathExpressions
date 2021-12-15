@@ -340,18 +340,18 @@ void AbstractExpression::convertCoords(int& X, int& Y,
   if (hAligment == HorizontalAlignment::Center) {
     X -= width() / 2;
   }
-  else if (hAligment == HorizontalAlignment::Right) {
+  else if (hAligment == HorizontalAlignment::Left) {
     X -= width() - 1;
   }
-// if (hAligment == HorizontalAlignment::Left) - Do nothing
+// if (hAligment == HorizontalAlignment::Right) - Do nothing
 
   if (vAligment == VerticalAlignment::Center) {
     Y -= ascent();
   }
-  else if (vAligment == VerticalAlignment::Bottom) {
+  else if (vAligment == VerticalAlignment::Top) {
     Y -= height() - 1;
   }
-  // if (vAligment == VerticalAlignment::Top) - Do nothing
+  // if (vAligment == VerticalAlignment::Bottom) - Do nothing
 }
 
 void AbstractExpression::setFlag(CalculateFlag flag, bool on)
