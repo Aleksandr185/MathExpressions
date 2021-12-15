@@ -57,6 +57,7 @@ public:
 
   virtual MultiplicationFlags multiplicationFlags() const;
   virtual bool isArgNeedBrackets() const;
+  virtual bool isNeedBrackets() const;
   AbstractExpression* cutOff();
 
 protected:
@@ -67,7 +68,6 @@ protected:
   //virtual void setPainterFont(QPainter* painter);  // NOTE overrided TExprPlank, TExprVar. maybe replase by 'virtual QFont font() const' ?
 
   virtual void paint(QPainter* painter, int x, int y) const = 0;
-  virtual bool isNeedBrackets() const;
   virtual int calcWidth() const;
   virtual int calcHeight() const;
   virtual int calcAscent() const;

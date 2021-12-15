@@ -248,6 +248,11 @@ bool AbstractExpression::isArgNeedBrackets() const
   return true;
 }
 
+bool AbstractExpression::isNeedBrackets() const
+{
+  return false;
+}
+
 AbstractExpression* AbstractExpression::cutOff()
 {
   AbstractExpression* result = m_next;
@@ -274,11 +279,6 @@ void AbstractExpression::paintDeviceChanged()
 {
   if (hasNext())
     assignPaintDevice(next(), paintDevice(), lineWidth(), capMultiplier());
-}
-
-bool AbstractExpression::isNeedBrackets() const
-{
-  return false;
 }
 
 int AbstractExpression::calcWidth() const

@@ -10,9 +10,9 @@ class EXPRDRAW_EXPORT CommaExpression : public CharacterExpression
 public:
   CommaExpression();
 
-protected:
   // AbstractExpression interface
   bool isNeedBrackets() const override;
+protected:
   int calcCapDY() const override;
 
   // CharacterExpression interface
