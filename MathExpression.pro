@@ -14,6 +14,7 @@ SOURCES += \
     src/abstract_big_parent_expression.cpp \
     src/abstract_expression.cpp \
     src/abstract_parent_expression.cpp \
+    src/argument_expression.cpp \
     src/asterix_expression.cpp \
     src/at_value_expression.cpp \
     src/bracketed_expression.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     src/abstract_big_parent_expression.h \
     src/abstract_expression.h \
     src/abstract_parent_expression.h \
+    src/argument_expression.h \
     src/asterix_expression.h \
     src/at_value_expression.h \
     src/bracketed_expression.h \
