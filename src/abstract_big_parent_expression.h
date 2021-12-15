@@ -26,10 +26,11 @@ protected:
   // AbstractBigParentExpression interfase
   virtual void updateDaughterFont();
   virtual void updateDaughterColor();
-  virtual void updateDaughterPaintDevice();
 
 private:
   AbstractExpression* m_daughter = nullptr;
+
+  void updateDaughterPaintDevice();
 };
 
 } // namespace ExprDraw

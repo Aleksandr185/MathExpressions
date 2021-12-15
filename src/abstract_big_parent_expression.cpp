@@ -29,8 +29,8 @@ void AbstractBigParentExpression::setDaughter(AbstractExpression* daughter)
 
   if ( hasDaughter() ) {
     assignParent(m_daughter, this);
-    updateDaughterFont();
     updateDaughterPaintDevice();
+    updateDaughterFont();
   }
 
   setFlag(CalculateFlag::All);
