@@ -23,6 +23,7 @@ SOURCES += \
     src/cap_expression.cpp \
     src/chain_expression.cpp \
     src/character_expression.cpp \
+    src/circulation_expression.cpp \
     src/comma_expression.cpp \
     src/common_function_expression.cpp \
     src/custom_text_expression.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     src/cap_expression.h \
     src/chain_expression.h \
     src/character_expression.h \
+    src/circulation_expression.h \
     src/comma_expression.h \
     src/common_function_expression.h \
     src/custom_text_expression.h \
