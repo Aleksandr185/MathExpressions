@@ -93,7 +93,7 @@ protected:
 
   inline const LineWidth& lineWidth() const { return m_line_width; }
   inline const CapMultiplier& capMultiplier() const { return m_cap_multiplier; }
-  inline const CalculateFlags& flags() { return m_flags; }
+  inline const CalculateFlags& flags() const { return m_flags; }
 
 private:
   AbstractExpression* m_parent = nullptr;
