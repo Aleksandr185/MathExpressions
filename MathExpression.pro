@@ -42,6 +42,7 @@ SOURCES += \
     src/simple_expression.cpp \
     src/space_expression.cpp \
     src/strokes_expression.cpp \
+    src/summa_expression.cpp \
     src/variable_expression.cpp \
     widget.cpp
 
@@ -79,6 +80,7 @@ HEADERS += \
     src/simple_expression.h \
     src/space_expression.h \
     src/strokes_expression.h \
+    src/summa_expression.h \
     src/variable_expression.h \
     widget.h
 
