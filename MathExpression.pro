@@ -31,6 +31,7 @@ SOURCES += \
     src/fraction_expression.cpp \
     src/function_expression.cpp \
     src/function_name_expression.cpp \
+    src/group_expression.cpp \
     src/index_expression.cpp \
     src/lambda_expression.cpp \
     src/nabla_expression.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     src/function_expression.h \
     src/function_name_expression.h \
     src/global.h \
+    src/group_expression.h \
     src/index_expression.h \
     src/lambda_expression.h \
     src/nabla_expression.h \
