@@ -9,12 +9,31 @@
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QButtonGroup>
+#include <QDoubleSpinBox>
 
 #include "expression_widget.h"
 
 #include "src/chain_expression.h"
 #include "src/variable_expression.h"
 #include "src/cap_expression.h"
+#include "src/fraction_expression.h"
+#include "src/extended_number_expresssion.h"
+#include "src/character_expression.h"
+#include "src/planck_expression.h"
+#include "src/comma_expression.h"
+#include "src/lambda_expression.h"
+#include "src/nabla_expression.h"
+#include "src/space_expression.h"
+#include "src/strokes_expression.h"
+#include "src/simple_expression.h"
+#include "src/empty_expression.h"
+#include "src/root_expression.h"
+#include "src/at_value_expression.h"
+#include "src/common_function_expression.h"
+#include "src/function_expression.h"
+#include "src/bracketed_expression.h"
+#include "src/index_expression.h"
+#include "src/group_expression.h"
 
 enum AligmentRole{
   LeftTop = 0,
@@ -34,6 +53,7 @@ Widget::Widget(QWidget *parent)
   // Font
   QHBoxLayout* lay_font = new QHBoxLayout();
   m_fontName = new QFontComboBox(this);
+  m_fontName->setCurrentText("MV Boli");
   m_fontSize = new QSpinBox(this);
   m_fontSize->setMaximumWidth(50);
   m_fontSize->setMinimum(8);
@@ -146,21 +166,144 @@ Widget::Widget(QWidget *parent)
 
 
   // TEMP
+
+
   using namespace ExprDraw;
 
-  AbstractExpression* expr = new CapExpression(new VariableExpression('a'), CapExpression::CapStyle::Vector);
-  expr->addNext(new CapExpression(new VariableExpression('A'), CapExpression::CapStyle::Line));
-  expr->addNext(new CapExpression(new VariableExpression('.'), CapExpression::CapStyle::Tilde));
-  CapExpression* points = new CapExpression(new VariableExpression('d'), CapExpression::CapStyle::Points);
-  points->setPointCount(3);
-  expr->addNext(points);
-  expr->addNext(new CapExpression(new VariableExpression('y'), CapExpression::CapStyle::Cap));
+//  AbstractExpression* expr = new CapExpression(new VariableExpression('a'), CapExpression::CapStyle::Vector);
+//  expr->addNext(new CapExpression(new VariableExpression('A'), CapExpression::CapStyle::Line));
+//  expr->addNext(new CapExpression(new VariableExpression('.'), CapExpression::CapStyle::Tilde));
+//  CapExpression* points = new CapExpression(new VariableExpression('d'), CapExpression::CapStyle::Points);
+//  points->setPointCount(3);
+//  expr->addNext(points);
+//  expr->addNext(new CapExpression(new VariableExpression('y'), CapExpression::CapStyle::Cap));
 
-  ChainExpression* chain = new ChainExpression(expr);
+  // Fraction
+  FractionExpression* fraction = new FractionExpression();
+  fraction->setSon(new VariableExpression('x'));
+  fraction->setDaughter(new VariableExpression('y'));
 
-  chain->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
+//  expr->addNext(fraction);
 
-  m_expression = chain;
+  // Number
+  ExtendedNumberExpresssion* expr_num = new ExtendedNumberExpresssion();
+  //expr_num->setStyle(NumberExpresssion::Style::Exponential);
+  expr_num->setNumber(0.00000000001/3);
+//  expr->addNext(expr_num);
+  expr_num->addNext(new CommaExpression());
+  expr_num->addNext(new PlanckExpression());
+  expr_num->addNext(new CommaExpression());
+  expr_num->addNext(new CharacterExpression(955));
+  expr_num->addNext(new CharacterExpression(0x221a));
+  StrokesExpression* strokes = new StrokesExpression(1);
+  //fraction->setDaughter(strokes);
+
+  RootExpression* root = new RootExpression();
+  root->setSon(new VariableExpression('x'));
+
+  expr_num->addNext(root);
+  expr_num->addNext(strokes);
+
+  expr_num->addNext(new NablaExpression());
+
+  FunctionExpression* func = new FunctionExpression("(f)", new VariableExpression('x'));
+  expr_num->addNext(func);
+
+  AtValueExpression* at_value = new AtValueExpression();
+  at_value->setSon(fraction);
+  at_value->setDaughter(new SimpleExpression("x = 0"));
+
+  expr_num->addNext(at_value);
+
+  IndexExpression* index = new IndexExpression();
+  index->setSon(new VariableExpression('H'));
+  index->setFirstTwin(new SimpleExpression('2'));
+  index->setSeconsTwin(new SimpleExpression('3'));
+
+  expr_num->addNext(index);
+
+  GroupExpression* summa = new GroupExpression(/*0x2211*/0x220f);
+  summa->setFirstTwin(new VariableExpression('a'));
+  summa->setSeconsTwin(new VariableExpression('t'));
+
+  expr_num->addNext(summa);
+
+  BracketedExpression* bracketed = new BracketedExpression();
+  bracketed->setSon(expr_num);
+  bracketed->setRightBracket(BracketedExpression::Square);
+  bracketed->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
+  //expr_num->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
+
+  QDoubleSpinBox* double_spin = new QDoubleSpinBox();
+  double_spin->setValue(expr_num->number());
+  double_spin->setMinimum(-99999999.0);
+  double_spin->setMaximum(9999999.0);
+  double_spin->setDecimals(14);
+  QCheckBox* check_exponent = new QCheckBox("Exponential style");
+
+  QSpinBox* spin_precision = new QSpinBox();
+  spin_precision->setMinimum(-10);
+  spin_precision->setMaximum(100);
+  spin_precision->setValue(expr_num->precision());
+
+  QSpinBox* spin_decimals = new QSpinBox();
+  spin_decimals->setMinimum(-10);
+  spin_decimals->setMaximum(100);
+  spin_decimals->setValue(expr_num->decimals());
+
+  QSpinBox* spin_degree = new QSpinBox();
+  spin_degree->setMinimum(-100);
+  spin_degree->setMaximum(100);
+  //spin_degree->setValue(expr_num->maxDegree());
+  spin_degree->setValue(strokes->count());
+
+  QVBoxLayout* lay_number = new QVBoxLayout();
+  lay_number->addWidget(double_spin);
+  lay_number->addWidget(check_exponent);
+  lay_number->addWidget(spin_precision);
+  lay_number->addWidget(spin_decimals);
+  lay_number->addWidget(spin_degree);
+  lay_rigth->addLayout(lay_number);
+
+  connect(double_spin, static_cast<void (QDoubleSpinBox::*)(double)>( &QDoubleSpinBox::valueChanged),
+          [=](double v)
+  {
+    expr_num->setNumber(v);
+    m_expression_widget->repaint();
+  });
+
+  connect(check_exponent, &QCheckBox::stateChanged,
+          [=](int v)
+  {
+    expr_num->setStyle(v == Qt::Checked ? ExprDraw::NumberExpresssion::Style::Exponential
+                                        : ExprDraw::NumberExpresssion::Style::Regular);
+    m_expression_widget->repaint();
+  });
+
+  connect(spin_precision, static_cast<void (QSpinBox::*)(int)>( &QSpinBox::valueChanged),
+          [=](int v)
+  {
+    expr_num->setPrecision(v);
+    m_expression_widget->repaint();
+  });
+
+  connect(spin_decimals, static_cast<void (QSpinBox::*)(int)>( &QSpinBox::valueChanged),
+          [=](int v)
+  {
+    expr_num->setDecimals(v);
+    m_expression_widget->repaint();
+  });
+
+  connect(spin_degree, static_cast<void (QSpinBox::*)(int)>( &QSpinBox::valueChanged),
+          [=](int v)
+  {
+    //expr_num->setMaxDegree(v);
+    strokes->setCount(v);
+    m_expression_widget->repaint();
+  });
+
+
+  m_expression = bracketed;
   m_expression_widget->setExpression(m_expression);
 
   button = m_aling_buttons->button(AligmentRole::CenterCenter);
@@ -226,3 +369,4 @@ void Widget::_q_align_changed(int align)
 }
 
 
+// TODO: нарисуй знак корня как в 'Times News Roman'
