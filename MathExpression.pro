@@ -37,6 +37,7 @@ SOURCES += \
     src/nabla_expression.cpp \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
+    src/product_expression.cpp \
     src/root_expression.cpp \
     src/round_bracketed_expression.cpp \
     src/simple_expression.cpp \
@@ -75,6 +76,7 @@ HEADERS += \
     src/nabla_expression.h \
     src/number_expresssion.h \
     src/planck_expression.h \
+    src/product_expression.h \
     src/root_expression.h \
     src/round_bracketed_expression.h \
     src/simple_expression.h \
