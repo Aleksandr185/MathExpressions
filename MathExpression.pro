@@ -34,6 +34,7 @@ SOURCES += \
     src/function_name_expression.cpp \
     src/group_expression.cpp \
     src/index_expression.cpp \
+    src/integral_expression.cpp \
     src/lambda_expression.cpp \
     src/nabla_expression.cpp \
     src/number_expresssion.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
     src/global.h \
     src/group_expression.h \
     src/index_expression.h \
+    src/integral_expression.h \
     src/lambda_expression.h \
     src/nabla_expression.h \
     src/number_expresssion.h \
