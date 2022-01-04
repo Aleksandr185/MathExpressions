@@ -37,6 +37,7 @@ SOURCES += \
     src/integral_expression.cpp \
     src/lambda_expression.cpp \
     src/limit_expression.cpp \
+    src/matrix_expression.cpp \
     src/nabla_expression.cpp \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     src/integral_expression.h \
     src/lambda_expression.h \
     src/limit_expression.h \
+    src/matrix_expression.h \
     src/nabla_expression.h \
     src/number_expresssion.h \
     src/planck_expression.h \
