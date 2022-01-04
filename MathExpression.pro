@@ -45,6 +45,7 @@ SOURCES += \
     src/round_bracketed_expression.cpp \
     src/simple_expression.cpp \
     src/space_expression.cpp \
+    src/stand_expression.cpp \
     src/strokes_expression.cpp \
     src/summa_expression.cpp \
     src/variable_expression.cpp \
@@ -87,6 +88,7 @@ HEADERS += \
     src/round_bracketed_expression.h \
     src/simple_expression.h \
     src/space_expression.h \
+    src/stand_expression.h \
     src/strokes_expression.h \
     src/summa_expression.h \
     src/variable_expression.h \
