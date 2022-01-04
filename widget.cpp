@@ -34,6 +34,9 @@
 #include "src/bracketed_expression.h"
 #include "src/index_expression.h"
 #include "src/group_expression.h"
+#include "src/integral_expression.h"
+#include "src/limit_expression.h"
+#include "src/stand_expression.h"
 
 enum AligmentRole{
   LeftTop = 0,
@@ -222,17 +225,19 @@ Widget::Widget(QWidget *parent)
 
   expr_num->addNext(index);
 
-  GroupExpression* summa = new GroupExpression(/*0x2211*/0x220f);
+  IntegralExpression* summa = new IntegralExpression();
   summa->setFirstTwin(new VariableExpression('a'));
   summa->setSeconsTwin(new VariableExpression('t'));
 
   expr_num->addNext(summa);
 
-  BracketedExpression* bracketed = new BracketedExpression();
-  bracketed->setSon(expr_num);
-  bracketed->setRightBracket(BracketedExpression::Square);
-  bracketed->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
-  //expr_num->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
+  LimitExpression* lim = new LimitExpression();
+  lim->setSon(new SimpleExpression("x = 0"));
+  expr_num->addNext(lim);
+
+  StandExpression* stand = new StandExpression(Qt::AlignCenter);
+  stand->setSon(expr_num);
+  stand->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
 
   QDoubleSpinBox* double_spin = new QDoubleSpinBox();
   double_spin->setValue(expr_num->number());
@@ -303,7 +308,7 @@ Widget::Widget(QWidget *parent)
   });
 
 
-  m_expression = bracketed;
+  m_expression = stand;
   m_expression_widget->setExpression(m_expression);
 
   button = m_aling_buttons->button(AligmentRole::CenterCenter);

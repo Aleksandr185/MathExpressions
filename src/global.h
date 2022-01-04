@@ -20,31 +20,6 @@ enum Symbol : ushort {
   PartialDifferential = 0x2202   // ∂
 };
 
-// Вертикальное выравнивание выражения.
-// Указывает где находится координата X по отношению к выражению.
-// Пример:
-// координата          X
-// ehLeft               "выражение"
-// ehCentr        "выражение"
-// ehRight  "выражение"
-enum class HorizontalAlignment {  // NOTE maybe use Qt::AlignmentFlag ?
-  Left,
-  Center,
-  Right
-};
-
-// Горизонтальное выравнивание выражения.
-// Указывает где находится координата Y по отношению к выражению.
-// Пример:
-//               evBottom
-// координата Y  evCenter
-//               evTop
-enum class VerticalAlignment {
-  Top,
-  Center,
-  Bottom
-};
-
 enum class CalculateFlag {
   NoFlag       = 0x00000000,
   Width        = 0x00000001,

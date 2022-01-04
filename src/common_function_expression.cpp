@@ -40,8 +40,7 @@ void CommonFunctionExpression::paint(QPainter* painter, int x, int y) const
   const int dy = y + ascent();
 
   if (hasSon()) {
-    son()->draw(painter, x, dy - son()->ascent(),
-                HorizontalAlignment::Right, VerticalAlignment::Bottom);
+    son()->draw(painter, x, dy - son()->ascent(), Qt::AlignRight | Qt::AlignBottom);
   }
 
   if (hasDaughter()) {
@@ -49,8 +48,7 @@ void CommonFunctionExpression::paint(QPainter* painter, int x, int y) const
 
     daughter()->draw(painter,
                      x + (SPACE * lineWidth().x()) + son_width,
-                     dy - daughter()->ascent(),
-                     HorizontalAlignment::Right, VerticalAlignment::Bottom);
+                     dy - daughter()->ascent(), Qt::AlignRight | Qt::AlignBottom);
   }
 }
 

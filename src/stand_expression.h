@@ -8,10 +8,10 @@ namespace ExprDraw {
 class EXPRDRAW_EXPORT StandExpression : public AbstractParentExpression
 {
 public:
-  StandExpression(HorizontalAlignment _hor_align = HorizontalAlignment::Left);
+  StandExpression(Qt::Alignment horizontal_alignment = Qt::AlignLeft);
 
-  void setHorizontalAlignment(HorizontalAlignment _hor_align);
-  inline HorizontalAlignment horizontalAlignment() const { return m_horizontal_alignment; }
+  void setHorizontalAlignment(Qt::Alignment horizontal_alignment);
+  inline Qt::Alignment horizontalAlignment() const { return m_horizontal_alignment; }
 
 protected:
   // AbstractExpression interface
@@ -20,7 +20,7 @@ protected:
   int calcHeight() const override;
 
 private:
-  HorizontalAlignment m_horizontal_alignment;
+  Qt::Alignment m_horizontal_alignment;
 };
 
 } // namespace ExprDraw

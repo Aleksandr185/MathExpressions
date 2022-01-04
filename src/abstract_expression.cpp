@@ -158,13 +158,11 @@ int AbstractExpression::capDY() const
   return m_cap_dy;
 }
 
-void AbstractExpression::draw(int x, int y,
-                              HorizontalAlignment hAligment,
-                              VerticalAlignment vAligment) const
+void AbstractExpression::draw(int x, int y, Qt::Alignment alignment) const
 {
   if ( paintDevice() ) {
     QPainter painter(paintDevice());
-    convertCoords(x, y, hAligment, vAligment);
+    convertCoords(x, y, alignment);
     paint(&painter, x, y);
   }
   else{
@@ -172,11 +170,10 @@ void AbstractExpression::draw(int x, int y,
   }
 }
 
-void AbstractExpression::draw(QPainter* painter, int x, int y,
-                              HorizontalAlignment hAligment, VerticalAlignment vAligment) const
+void AbstractExpression::draw(QPainter* painter, int x, int y, Qt::Alignment alignment) const
 {
   if (paintDevice() == painter->device()) {
-    convertCoords(x, y, hAligment, vAligment);
+    convertCoords(x, y, alignment);
     paint(painter, x, y);
   }
   else {
@@ -333,25 +330,23 @@ void AbstractExpression::calcCapDX(int& dxLeft, int& dxRight) const
   dxRight = 0;
 }
 
-void AbstractExpression::convertCoords(int& X, int& Y,
-                                       HorizontalAlignment hAligment,
-                                       VerticalAlignment vAligment) const
+void AbstractExpression::convertCoords(int& x, int& y, Qt::Alignment alignment) const
 {
-  if (hAligment == HorizontalAlignment::Center) {
-    X -= width() / 2;
+  if ( alignment.testFlag(Qt::AlignHCenter) ) {
+    x -= width() / 2;
   }
-  else if (hAligment == HorizontalAlignment::Left) {
-    X -= width() - 1;
+  else if ( alignment.testFlag(Qt::AlignLeft) ) {
+    x -= width() - 1;
   }
-// if (hAligment == HorizontalAlignment::Right) - Do nothing
+// if ( alignment.testFlag(Qt::AlignRight) ) - Do nothing
 
-  if (vAligment == VerticalAlignment::Center) {
-    Y -= ascent();
+  if ( alignment.testFlag(Qt::AlignVCenter) ) {
+    y -= ascent();
   }
-  else if (vAligment == VerticalAlignment::Top) {
-    Y -= height() - 1;
+  else if ( alignment.testFlag(Qt::AlignTop) ) {
+    y -= height() - 1;
   }
-  // if (vAligment == VerticalAlignment::Bottom) - Do nothing
+  // if ( alignment.testFlag(Qt::AlignBottom)) - Do nothing
 }
 
 void AbstractExpression::setFlag(CalculateFlag flag, bool on)

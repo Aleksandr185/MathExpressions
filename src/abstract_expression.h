@@ -38,17 +38,14 @@ public:
   int descent() const;
   int superscriptX() const;
   int superscriptY() const;
-  //NOTE add QPoint powerPos() const;
   int subscriptX() const;
   int subscriptY() const;
-  //NOTE add QPoint indexPos() const;
   int capDXLeft() const;
   int capDXRight() const;
   int capDY() const;
 
-  void draw(int x, int y, HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
-  void draw(QPainter* painter, int x, int y,
-            HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
+  void draw(int x, int y, Qt::Alignment alignment) const;
+  void draw(QPainter* painter, int x, int y, Qt::Alignment alignment) const;
   void setPaintDevice(QPaintDevice *paintDevice);
   void setNext(AbstractExpression *next);
   void setFont(const QFont& font);
@@ -65,8 +62,6 @@ protected:
   virtual void colorChanged();
   virtual void paintDeviceChanged();
 
-  //virtual void setPainterFont(QPainter* painter);  // NOTE overrided TExprPlank, TExprVar. maybe replase by 'virtual QFont font() const' ?
-
   virtual void paint(QPainter* painter, int x, int y) const = 0;
   virtual int calcWidth() const;
   virtual int calcHeight() const;
@@ -79,9 +74,7 @@ protected:
   virtual int calcCapDY() const;
   virtual void calcCapDX(int& dxLeft, int& dxRight) const;
 
-  void convertCoords(int& X, int& Y,
-                     HorizontalAlignment hAligment, VerticalAlignment vAligment) const;
-  //inline void setFlag(CalculateFlag flag, bool on = true) { m_flags.setFlag(flag, on); }
+  void convertCoords(int& x, int& y, Qt::Alignment alignment) const;
   void setFlag(CalculateFlag flag, bool on = true);
 
   static void assignFont(AbstractExpression *expression, const QFont& font,

@@ -41,13 +41,13 @@ void GroupExpression::paint(QPainter* painter, int x, int y) const
   if (hasSecondTwin()) {
     secondTwin()->draw(painter,
                        center_x, y - half_symbol_height,
-                       HorizontalAlignment::Center, VerticalAlignment::Top);
+                       Qt::AlignHCenter | Qt::AlignTop);
   }
 
   if (hasFirstTwin()) {
     firstTwin()->draw(painter,
                       center_x, y + half_symbol_height,
-                      HorizontalAlignment::Center, VerticalAlignment::Bottom);
+                      Qt::AlignHCenter | Qt::AlignBottom);
   }
 
   drawSymbol(painter, center_x, y);
@@ -55,7 +55,7 @@ void GroupExpression::paint(QPainter* painter, int x, int y) const
   if (hasSon()) {
     son()->draw(painter,
                 x + max_width + FULL_SPACE_X * lineWidth().x(), y,
-                HorizontalAlignment::Right, VerticalAlignment::Center);
+                Qt::AlignRight | Qt::AlignVCenter);
   }
 }
 
