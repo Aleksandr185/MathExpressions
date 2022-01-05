@@ -25,7 +25,6 @@ private:
   QSize m_size;
   mutable int m_cell_width;
   mutable int m_cell_height;
-  mutable bool m_recalculate_cell;
 
   int cellWidth() const;
   int cellHeight() const;

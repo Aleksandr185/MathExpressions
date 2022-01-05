@@ -7,13 +7,11 @@ constexpr int LEFT_MARGIN  = 2;
 constexpr int RIGHT_MARGIN = LEFT_MARGIN;
 
 MatrixExpression::MatrixExpression(const QSize& size)
-  : m_recalculate_cell(true)
 {
   setSize(size);
 }
 
 MatrixExpression::MatrixExpression(int w, int h)
-  : m_recalculate_cell(true)
 {
   setSize( QSize(w, h) );
 }
@@ -22,7 +20,7 @@ void MatrixExpression::setSize(const QSize& size)
 {
   if (m_size != size) {
     m_size = size;
-    m_recalculate_cell = true;
+    setFlag(CalculateFlag::CellSize);
     setFlag(CalculateFlag::Width);
     setFlag(CalculateFlag::Height);
   }
@@ -78,16 +76,16 @@ int MatrixExpression::calcHeight() const
 void MatrixExpression::fontChanged()
 {
   AbstractParentExpression::fontChanged();
-  m_recalculate_cell = true;
+  setFlag(CalculateFlag::CellSize);
 }
 
 // private
 
 int MatrixExpression::cellWidth() const
 {
-  if (m_recalculate_cell) {
+  if ( flags().testFlag(CalculateFlag::CellSize) ) {
     calcCellSize(m_cell_width, m_cell_height);
-    m_recalculate_cell = false;
+    setFlag(CalculateFlag::CellSize, false);
   }
 
   return m_cell_width;
@@ -95,9 +93,9 @@ int MatrixExpression::cellWidth() const
 
 int MatrixExpression::cellHeight() const
 {
-  if (m_recalculate_cell) {
+  if ( flags().testFlag(CalculateFlag::CellSize) ) {
     calcCellSize(m_cell_width, m_cell_height);
-    m_recalculate_cell = false;
+    setFlag(CalculateFlag::CellSize, false);
   }
 
   return m_cell_height;
