@@ -14,7 +14,7 @@ const int SPACE_SON = 1;
 constexpr const int FULL_SPACE_X = (SPACE_X * 2) + SPACE_SON;
 
 GroupExpression::GroupExpression(const QChar& symbol)
-  : m_symbol(symbol), m_recalculate_symbol_height(true), m_recalculate_symbol_width(true)
+  : m_symbol(symbol)
 {
 
 }
@@ -24,8 +24,8 @@ GroupExpression::GroupExpression(const QChar& symbol)
 void GroupExpression::fontChanged()
 {
   AbstractTwinParentExpression::fontChanged();
-  m_recalculate_symbol_height = true;
-  m_recalculate_symbol_width = true;
+  setFlag(CalculateFlag::SymbolHeight);
+  setFlag(CalculateFlag::SymbolWidth);
 }
 
 void GroupExpression::paint(QPainter* painter, int x, int y) const
@@ -199,9 +199,9 @@ QFont GroupExpression::symbolFont() const
 
 int GroupExpression::symbolWidth() const
 {
-  if (m_recalculate_symbol_width) {
+  if ( flags().testFlag(CalculateFlag::SymbolWidth) ) {
     m_symbol_width = calcSymbolWidth();
-    m_recalculate_symbol_width = false;
+    setFlag(CalculateFlag::SymbolWidth, false);
   }
 
   return m_symbol_width;
@@ -209,9 +209,9 @@ int GroupExpression::symbolWidth() const
 
 int GroupExpression::symbolHeight() const
 {
-  if (m_recalculate_symbol_height) {
+  if ( flags().testFlag(CalculateFlag::SymbolHeight) ) {
     m_symbol_height = calcSymbolHeight();
-    m_recalculate_symbol_height = false;
+    setFlag(CalculateFlag::SymbolHeight, false);
   }
 
   return m_symbol_height;
