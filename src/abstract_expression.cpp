@@ -194,11 +194,9 @@ void AbstractExpression::setPaintDevice(QPaintDevice* paintDevice)
 void AbstractExpression::setNext(AbstractExpression* next)
 {
   delete m_next;
-  m_next = next;
+  m_next = nullptr;
 
-  if ( hasNext() ){
-    assignParent(m_next, parent());
-  }
+  addNext(next);
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -227,6 +225,7 @@ void AbstractExpression::addNext(AbstractExpression* next)
     }
 
     last_next->m_next = next;
+    assignParent(next, parent());
     next->setFont(m_font);
     next->setPaintDevice( paintDevice() );
   }
@@ -254,6 +253,7 @@ AbstractExpression* AbstractExpression::cutOff()
 {
   AbstractExpression* result = m_next;
   m_next = nullptr;
+  assignParent(result, nullptr);
   return result;
 }
 
