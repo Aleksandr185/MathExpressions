@@ -21,6 +21,7 @@ SOURCES += \
     src/base_expression.cpp \
     src/bracketed_expression.cpp \
     src/cap_expression.cpp \
+    src/case_expression.cpp \
     src/chain_expression.cpp \
     src/character_expression.cpp \
     src/circulation_expression.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     src/base_expression.h \
     src/bracketed_expression.h \
     src/cap_expression.h \
+    src/case_expression.h \
     src/chain_expression.h \
     src/character_expression.h \
     src/circulation_expression.h \
