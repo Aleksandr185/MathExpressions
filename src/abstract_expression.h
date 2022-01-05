@@ -75,7 +75,7 @@ protected:
   virtual void calcCapDX(int& dxLeft, int& dxRight) const;
 
   void convertCoords(int& x, int& y, Qt::Alignment alignment) const;
-  void setFlag(CalculateFlag flag, bool on = true);
+  void setFlag(CalculateFlag flag, bool on = true) const;
 
   static void assignFont(AbstractExpression *expression, const QFont& font,
                          const LineWidth& line_width, const CapMultiplier& cap_multiplier);

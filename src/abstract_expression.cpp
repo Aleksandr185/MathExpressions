@@ -9,7 +9,7 @@
 namespace ExprDraw {
 
 AbstractExpression::AbstractExpression()
-  : m_flags(CalculateFlag::NoFlag)
+  : m_flags(CalculateFlag::All)
 {
 
 }
@@ -349,7 +349,7 @@ void AbstractExpression::convertCoords(int& x, int& y, Qt::Alignment alignment) 
   // if ( alignment.testFlag(Qt::AlignBottom)) - Do nothing
 }
 
-void AbstractExpression::setFlag(CalculateFlag flag, bool on)
+void AbstractExpression::setFlag(CalculateFlag flag, bool on) const
 {
   m_flags.setFlag(flag, on);
   if (on && parent()) {
