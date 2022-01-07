@@ -9,7 +9,7 @@
 namespace ExprDraw {
 
 AbstractExpression::AbstractExpression()
-  : m_flags(CalculateFlag::NoFlag)
+  : m_flags(CalculateFlag::All)
 {
 
 }
@@ -158,13 +158,11 @@ int AbstractExpression::capDY() const
   return m_cap_dy;
 }
 
-void AbstractExpression::draw(int x, int y,
-                              HorizontalAlignment hAligment,
-                              VerticalAlignment vAligment) const
+void AbstractExpression::draw(int x, int y, Qt::Alignment alignment) const
 {
   if ( paintDevice() ) {
     QPainter painter(paintDevice());
-    convertCoords(x, y, hAligment, vAligment);
+    convertCoords(x, y, alignment);
     paint(&painter, x, y);
   }
   else{
@@ -172,11 +170,10 @@ void AbstractExpression::draw(int x, int y,
   }
 }
 
-void AbstractExpression::draw(QPainter* painter, int x, int y,
-                              HorizontalAlignment hAligment, VerticalAlignment vAligment) const
+void AbstractExpression::draw(QPainter* painter, int x, int y, Qt::Alignment alignment) const
 {
   if (paintDevice() == painter->device()) {
-    convertCoords(x, y, hAligment, vAligment);
+    convertCoords(x, y, alignment);
     paint(painter, x, y);
   }
   else {
@@ -197,11 +194,9 @@ void AbstractExpression::setPaintDevice(QPaintDevice* paintDevice)
 void AbstractExpression::setNext(AbstractExpression* next)
 {
   delete m_next;
-  m_next = next;
+  m_next = nullptr;
 
-  if ( hasNext() ){
-    assignParent(m_next, parent());
-  }
+  addNext(next);
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -230,6 +225,7 @@ void AbstractExpression::addNext(AbstractExpression* next)
     }
 
     last_next->m_next = next;
+    assignParent(next, parent());
     next->setFont(m_font);
     next->setPaintDevice( paintDevice() );
   }
@@ -257,6 +253,7 @@ AbstractExpression* AbstractExpression::cutOff()
 {
   AbstractExpression* result = m_next;
   m_next = nullptr;
+  assignParent(result, nullptr);
   return result;
 }
 
@@ -333,28 +330,26 @@ void AbstractExpression::calcCapDX(int& dxLeft, int& dxRight) const
   dxRight = 0;
 }
 
-void AbstractExpression::convertCoords(int& X, int& Y,
-                                       HorizontalAlignment hAligment,
-                                       VerticalAlignment vAligment) const
+void AbstractExpression::convertCoords(int& x, int& y, Qt::Alignment alignment) const
 {
-  if (hAligment == HorizontalAlignment::Center) {
-    X -= width() / 2;
+  if ( alignment.testFlag(Qt::AlignHCenter) ) {
+    x -= width() / 2;
   }
-  else if (hAligment == HorizontalAlignment::Left) {
-    X -= width() - 1;
+  else if ( alignment.testFlag(Qt::AlignLeft) ) {
+    x -= width() - 1;
   }
-// if (hAligment == HorizontalAlignment::Right) - Do nothing
+// if ( alignment.testFlag(Qt::AlignRight) ) - Do nothing
 
-  if (vAligment == VerticalAlignment::Center) {
-    Y -= ascent();
+  if ( alignment.testFlag(Qt::AlignVCenter) ) {
+    y -= ascent();
   }
-  else if (vAligment == VerticalAlignment::Top) {
-    Y -= height() - 1;
+  else if ( alignment.testFlag(Qt::AlignTop) ) {
+    y -= height() - 1;
   }
-  // if (vAligment == VerticalAlignment::Bottom) - Do nothing
+  // if ( alignment.testFlag(Qt::AlignBottom)) - Do nothing
 }
 
-void AbstractExpression::setFlag(CalculateFlag flag, bool on)
+void AbstractExpression::setFlag(CalculateFlag flag, bool on) const
 {
   m_flags.setFlag(flag, on);
   if (on && parent()) {

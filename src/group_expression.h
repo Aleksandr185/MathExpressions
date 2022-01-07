@@ -37,9 +37,7 @@ private:
   const QChar m_symbol;
 
   mutable int m_symbol_height;
-  mutable bool m_recalculate_symbol_height;
   mutable int m_symbol_width;
-  mutable bool m_recalculate_symbol_width;
 
   int symbolWidth() const;
   int symbolHeight() const;

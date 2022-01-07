@@ -40,7 +40,7 @@ void ChainExpression::paint(QPainter* painter, int x, int y) const
 
   AbstractExpression* expression = son();
   while (expression) {
-    expression->draw(painter, x, y, HorizontalAlignment::Right, VerticalAlignment::Center);
+    expression->draw(painter, x, y, Qt::AlignRight | Qt::AlignVCenter);
     x += expression->width();
 
     expression = expression->next();
@@ -93,13 +93,13 @@ int ChainExpression::calcCapDY() const
 
   AbstractExpression* expression = son();
   while (expression) {
-    int dy = expression->capDY();
+    const int dy = expression->capDY();
     if (dy < result)
       result = dy;
     expression = expression->next();
   }
 
-  return result; // NOTE: maybe return 0 if !hasSon() or AbstractExpression::calcCapDY() ?
+  return result;
 }
 
 void ChainExpression::calcCapDX(int& dxLeft, int& dxRight) const

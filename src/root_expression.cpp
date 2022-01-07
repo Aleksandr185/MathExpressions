@@ -47,12 +47,16 @@ void RootExpression::paint(QPainter* painter, int x, int y) const
         pl[i].setY(pl.at(i).y() + dy);
       }
 
-      daughter()->draw(painter, pl.at(1).x(), pl.at(1).y(),
-                       HorizontalAlignment::Left, VerticalAlignment::Top );
+      daughter()->draw(painter,
+                       pl.at(1).x(),
+                       pl.at(1).y(),
+                       Qt::AlignLeft | Qt::AlignTop);
     }
 
-    son()->draw(painter, pl.at(8).x(), pl.at(8).y(),
-                HorizontalAlignment::Right, VerticalAlignment::Bottom);
+    son()->draw(painter,
+                pl.at(8).x(),
+                pl.at(8).y(),
+                Qt::AlignRight | Qt::AlignBottom);
 
     painter->save();
     painter->setPen(pen());

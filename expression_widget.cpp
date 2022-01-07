@@ -93,22 +93,6 @@ void ExpressionWidget::paintExpression()
     const int half_width = width() / 2;
     const int half_height = height() / 2;
 
-    ExprDraw::HorizontalAlignment hAlign = ExprDraw::HorizontalAlignment::Center;
-    if (m_alignment.testFlag(Qt::AlignLeft)) {
-      hAlign = ExprDraw::HorizontalAlignment::Left;
-    }
-    else if (m_alignment.testFlag(Qt::AlignRight)) {
-      hAlign = ExprDraw::HorizontalAlignment::Right;
-    }
-
-    ExprDraw::VerticalAlignment vAlign = ExprDraw::VerticalAlignment::Center;
-    if (m_alignment.testFlag(Qt::AlignTop)) {
-      vAlign = ExprDraw::VerticalAlignment::Top;
-    }
-    else if (m_alignment.testFlag(Qt::AlignBottom)) {
-      vAlign = ExprDraw::VerticalAlignment::Bottom;
-    }
-
-    m_expression->draw(half_width, half_height, hAlign, vAlign);
+    m_expression->draw(half_width, half_height, m_alignment);
   }
 }

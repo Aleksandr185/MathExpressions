@@ -21,13 +21,15 @@ void FractionExpression::paint(QPainter* painter, int x, int y) const
   const int half_line_y = line_y / 2;
 
   if ( hasSon() ){
-    son()->draw(painter, center_x, center_y - line_y - half_line_y,
-                HorizontalAlignment::Center, VerticalAlignment::Top);
+    son()->draw(painter,
+                center_x, center_y - line_y - half_line_y,
+                Qt::AlignHCenter | Qt::AlignTop);
   }
 
   if ( hasDaughter() ) {
-    daughter()->draw(painter, center_x, center_y + line_y + half_line_y,
-                     HorizontalAlignment::Center, VerticalAlignment::Bottom);
+    daughter()->draw(painter,
+                     center_x, center_y + line_y + half_line_y,
+                     Qt::AlignHCenter | Qt::AlignBottom);
   }
 
   // draw line

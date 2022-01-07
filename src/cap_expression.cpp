@@ -62,7 +62,7 @@ void CapExpression::paint(QPainter* painter, int x, int y) const
 
     const int son_y = y + selfHeight();
 
-    son()->draw(painter, x + dx, son_y, HorizontalAlignment::Right, VerticalAlignment::Bottom);
+    son()->draw(painter, x + dx, son_y, Qt::AlignRight | Qt::AlignBottom);
 
     painter->save();
     painter->setPen(pen());

@@ -21,6 +21,7 @@ SOURCES += \
     src/base_expression.cpp \
     src/bracketed_expression.cpp \
     src/cap_expression.cpp \
+    src/case_expression.cpp \
     src/chain_expression.cpp \
     src/character_expression.cpp \
     src/circulation_expression.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
     src/integral_expression.cpp \
     src/lambda_expression.cpp \
     src/limit_expression.cpp \
+    src/matrix_expression.cpp \
     src/nabla_expression.cpp \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
@@ -45,6 +47,7 @@ SOURCES += \
     src/round_bracketed_expression.cpp \
     src/simple_expression.cpp \
     src/space_expression.cpp \
+    src/stand_expression.cpp \
     src/strokes_expression.cpp \
     src/summa_expression.cpp \
     src/variable_expression.cpp \
@@ -62,6 +65,7 @@ HEADERS += \
     src/base_expression.h \
     src/bracketed_expression.h \
     src/cap_expression.h \
+    src/case_expression.h \
     src/chain_expression.h \
     src/character_expression.h \
     src/circulation_expression.h \
@@ -79,6 +83,7 @@ HEADERS += \
     src/integral_expression.h \
     src/lambda_expression.h \
     src/limit_expression.h \
+    src/matrix_expression.h \
     src/nabla_expression.h \
     src/number_expresssion.h \
     src/planck_expression.h \
@@ -87,6 +92,7 @@ HEADERS += \
     src/round_bracketed_expression.h \
     src/simple_expression.h \
     src/space_expression.h \
+    src/stand_expression.h \
     src/strokes_expression.h \
     src/summa_expression.h \
     src/variable_expression.h \
