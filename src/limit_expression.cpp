@@ -37,8 +37,7 @@ void LimitExpression::paint(QPainter *painter, int x, int y) const
   if (hasSon()) {
     son()->draw(painter,
               x + qMax(0, (lim_width - son_width) / 2),
-              y + fm.height(),
-              HorizontalAlignment::Right, VerticalAlignment::Bottom);
+              y + fm.height(), Qt::AlignRight | Qt::AlignBottom);
   }
 }
 
