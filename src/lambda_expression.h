@@ -13,9 +13,6 @@ public:
 protected:
   // AbstractExpression interface
   void paint(QPainter* painter, int x, int y) const override;
-
-  // CharacterExpression interface
-  bool canChangeCharacter(const QChar& newCharacter) const override;
 };
 
 } // namespace ExprDraw

@@ -15,9 +15,6 @@ protected:
   int calcCapDY() const override;
   void calcCapDX(int& dxLeft, int& dxRight) const override;
   QFont font() const override;
-
-  // CharacterExpression interface
-  bool canChangeCharacter(const QChar& newCharacter) const override;
 };
 
 } // namespace ExprDraw

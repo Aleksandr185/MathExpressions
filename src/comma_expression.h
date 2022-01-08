@@ -15,8 +15,6 @@ public:
 protected:
   int calcCapDY() const override;
 
-  // CharacterExpression interface
-  bool canChangeCharacter(const QChar& newCharacter) const override;
 };
 
 } // namespace ExprDraw

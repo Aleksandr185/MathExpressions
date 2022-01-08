@@ -7,7 +7,7 @@ namespace ExprDraw {
 const ushort LAMBDA_CODE = 0x03bb; // λ
 
 LambdaExpression::LambdaExpression()
-  : CharacterExpression(QChar(LAMBDA_CODE))
+  : CharacterExpression(QChar(LAMBDA_CODE), true)
 {
 
 }
@@ -33,12 +33,6 @@ void LambdaExpression::paint(QPainter* painter, int x, int y) const
   painter->drawRect(rect);
 
   painter->restore();
-}
-
-// CharacterExpression interface
-bool LambdaExpression::canChangeCharacter(const QChar& newCharacter) const
-{
-  return newCharacter.unicode() == LAMBDA_CODE;
 }
 
 } // namespace ExprDraw

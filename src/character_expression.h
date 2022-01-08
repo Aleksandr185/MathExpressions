@@ -10,10 +10,12 @@ namespace ExprDraw {
 class EXPRDRAW_EXPORT CharacterExpression : public AbstractExpression
 {
 public:
-  explicit CharacterExpression(const QChar& character);
+  explicit CharacterExpression(const QChar& character, bool read_only = false);
 
   inline const QChar& character() const { return m_character; }
   void setCharacter(const QChar& value);
+
+  inline bool isReadOnly() const { return m_read_only; }
 
 protected:
   // AbstractExpression interface
@@ -24,10 +26,9 @@ protected:
   int calcCapDY() const override;
   void calcCapDX(int& dxLeft, int& dxRight) const override;
 
-  virtual bool canChangeCharacter(const QChar& newCharacter) const;
-
 private:
   QChar m_character;
+  bool m_read_only;
 };
 
 } // namespace ExprDraw

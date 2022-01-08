@@ -32,15 +32,15 @@ const ushort CAPITAL_RHO   = 0x3a1; // Ρ
 const ushort CAPITAL_SIGMA = 0x3a3; // Σ
 const ushort CAPITAL_OMEGA = 0x3a9; // Ω
 
-CharacterExpression::CharacterExpression(const QChar& character)
-  :m_character(character)
+CharacterExpression::CharacterExpression(const QChar& character, bool read_only)
+  : m_character(character), m_read_only(read_only)
 {
 
 }
 
 void CharacterExpression::setCharacter(const QChar& value)
 {
-  if ( canChangeCharacter(value) && m_character != value){
+  if ( !isReadOnly() && m_character != value){
     m_character = value;
     setFlag(CalculateFlag::Width);
     setFlag(CalculateFlag::CapDY);
@@ -191,11 +191,6 @@ void CharacterExpression::calcCapDX(int& dxLeft, int& dxRight) const
   }
 
   dxRight = qRound(DX * capMultiplier().x());
-}
-
-bool CharacterExpression::canChangeCharacter(const QChar& ) const
-{
-  return true;
 }
 
 } // namespace ExprDraw
