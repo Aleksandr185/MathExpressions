@@ -2,10 +2,10 @@
 
 namespace ExprDraw {
 
-const ushort PRODUCT_CODE = 0x220f; // ∏
+const ushort CODE_PRODUCT = 0x220f; // ∏
 
 ProductExpression::ProductExpression()
-    :GroupExpression(QChar(PRODUCT_CODE))
+    :GroupExpression(QChar(CODE_PRODUCT))
 {
 
 }

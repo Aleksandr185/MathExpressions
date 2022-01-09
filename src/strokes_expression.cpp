@@ -5,8 +5,8 @@
 
 namespace ExprDraw {
 
-const ushort STROKE_CODE = 0xB4;  // ´
-const QChar STROKE_CHAR = QChar(STROKE_CODE);
+const ushort CODE_STROKE = 0x00B4;  // ´
+const QChar STROKE_CHAR  = QChar(CODE_STROKE);
 
 const int STROKE_SPACE = 2;  // * lineWidth().x()
 

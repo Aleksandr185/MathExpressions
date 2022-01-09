@@ -4,10 +4,10 @@
 
 namespace ExprDraw {
 
-const ushort LAMBDA_CODE = 0x03bb; // λ
+const ushort CODE_LAMBDA = 0x03bb; // λ
 
 LambdaExpression::LambdaExpression()
-  : CharacterExpression(QChar(LAMBDA_CODE), true)
+  : CharacterExpression(QChar(CODE_LAMBDA), true)
 {
 
 }

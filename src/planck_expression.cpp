@@ -2,10 +2,10 @@
 
 namespace ExprDraw {
 
-const ushort PLANCK_CODE = 0x0127; // ħ
+const ushort CODE_PLANCK = 0x0127; // ħ
 
 PlanckExpression::PlanckExpression()
-  : CharacterExpression(QChar(PLANCK_CODE), true)
+  : CharacterExpression(QChar(CODE_PLANCK), true)
 {
 
 }
