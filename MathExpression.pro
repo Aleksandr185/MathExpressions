@@ -45,6 +45,7 @@ SOURCES += \
     src/product_expression.cpp \
     src/root_expression.cpp \
     src/round_bracketed_expression.cpp \
+    src/sign_expression.cpp \
     src/simple_expression.cpp \
     src/space_expression.cpp \
     src/stand_expression.cpp \
@@ -90,6 +91,7 @@ HEADERS += \
     src/product_expression.h \
     src/root_expression.h \
     src/round_bracketed_expression.h \
+    src/sign_expression.h \
     src/simple_expression.h \
     src/space_expression.h \
     src/stand_expression.h \
