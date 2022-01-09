@@ -5,7 +5,8 @@
 
 namespace ExprDraw {
 
-const ushort INTEGRAL_CODE = 0x222b;
+const ushort CODE_INTEGRAL = 0x222b;  // ∫
+const ushort CODE_ELLIPSIS = 0x2026;  // …
 
 IntegralExpression::IntegralExpression(int multiplicity /* = 0 */)
   : GroupExpression(QChar(INTEGRAL_CODE))
@@ -13,7 +14,7 @@ IntegralExpression::IntegralExpression(int multiplicity /* = 0 */)
   if (multiplicity <= 0) {
     m_text.append(symbol());
     m_text.append(symbol());
-    m_text.append(QChar(Symbol::Ellipsis));
+    m_text.append(QChar(CODE_ELLIPSIS));
     m_text.append(symbol());
   }
   else {

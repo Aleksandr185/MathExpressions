@@ -6,10 +6,10 @@
 
 namespace ExprDraw {
 
-const ushort INTEGRAL_CODE = 0x222b;
+const ushort CODE_INTEGRAL = 0x222b;
 
 CirculationExpression::CirculationExpression()
-    : GroupExpression(QChar(INTEGRAL_CODE))
+    : GroupExpression(QChar(CODE_INTEGRAL))
 {
 
 }

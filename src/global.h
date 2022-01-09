@@ -15,11 +15,6 @@
 
 namespace ExprDraw {
 
-enum Symbol : ushort {
-  Ellipsis = 0x2026,             // …
-  PartialDifferential = 0x2202   // ∂
-};
-
 enum class CalculateFlag {
   NoFlag       = 0x00000000,
   Width        = 0x00000001,

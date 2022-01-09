@@ -5,32 +5,35 @@
 
 namespace ExprDraw {
 
-const ushort SMALL_ALPHA   = 0x3b1; // α
-const ushort SMALL_BETTA   = 0x3b2; // β
-const ushort SMALL_GAMMA   = 0x3b3; // γ
-const ushort SMALL_DELTA   = 0x3b4; // δ
-const ushort SMALL_EPSILON = 0x3b5; // ε
-const ushort SMALL_ZETA    = 0x3b6; // ζ
-const ushort SMALL_ETA     = 0x3b7; // η
-const ushort SMALL_THETA   = 0x3b8; // θ
-const ushort SMALL_LOTA    = 0x3b9; // ι
-const ushort SMALL_KAPPA   = 0x3ba; // κ
-const ushort SMALL_LAMDA   = 0x3bb; // λ
-const ushort SMALL_MU      = 0x3bc; // μ
-const ushort SMALL_NU      = 0x3bd; // ν
-const ushort SMALL_XI      = 0x3be; // ξ
-const ushort SMALL_OMICRON = 0x3bf; // ο
-const ushort SMALL_PI      = 0x3c0; // π
-const ushort SMALL_RHO     = 0x3c1; // ρ
+const ushort SMALL_ALPHA   = 0x03b1; // α
+const ushort SMALL_BETTA   = 0x03b2; // β
+const ushort SMALL_GAMMA   = 0x03b3; // γ
+const ushort SMALL_DELTA   = 0x03b4; // δ
+const ushort SMALL_EPSILON = 0x03b5; // ε
+const ushort SMALL_ZETA    = 0x03b6; // ζ
+const ushort SMALL_ETA     = 0x03b7; // η
+const ushort SMALL_THETA   = 0x03b8; // θ
+const ushort SMALL_LOTA    = 0x03b9; // ι
+const ushort SMALL_KAPPA   = 0x03ba; // κ
+const ushort SMALL_LAMDA   = 0x03bb; // λ
+const ushort SMALL_MU      = 0x03bc; // μ
+const ushort SMALL_NU      = 0x03bd; // ν
+const ushort SMALL_XI      = 0x03be; // ξ
+const ushort SMALL_OMICRON = 0x03bf; // ο
+const ushort SMALL_PI      = 0x03c0; // π
+const ushort SMALL_RHO     = 0x03c1; // ρ
 
-const ushort SMALL_SIGMA   = 0x3c3; // σ
-const ushort SMALL_OMEGA   = 0x3c9; // ω
+const ushort SMALL_SIGMA   = 0x03c3; // σ
+const ushort SMALL_OMEGA   = 0x03c9; // ω
 
-const ushort CAPITAL_ALPHA = 0x391; // Α
-const ushort CAPITAL_GAMMA = 0x393; // Γ
-const ushort CAPITAL_RHO   = 0x3a1; // Ρ
-const ushort CAPITAL_SIGMA = 0x3a3; // Σ
-const ushort CAPITAL_OMEGA = 0x3a9; // Ω
+const ushort CAPITAL_ALPHA = 0x0391; // Α
+const ushort CAPITAL_GAMMA = 0x0393; // Γ
+const ushort CAPITAL_RHO   = 0x03a1; // Ρ
+const ushort CAPITAL_SIGMA = 0x03a3; // Σ
+const ushort CAPITAL_OMEGA = 0x03a9; // Ω
+
+const ushort ELLIPSIS      = 0x2026; // …
+const ushort PARTIAL_DIFFERENTIAL = 0x2202; // ∂
 
 CharacterExpression::CharacterExpression(const QChar& character, bool read_only)
   : m_character(character), m_read_only(read_only)
@@ -101,7 +104,7 @@ int CharacterExpression::calcSuperscriptX() const
 {
   int result = AbstractExpression::calcSuperscriptX();
 
-  if (character().unicode() == Symbol::PartialDifferential) {
+  if (character().unicode() == PARTIAL_DIFFERENTIAL) {
     result += qRound(2 * capMultiplier().x());
   }
 
@@ -137,7 +140,7 @@ int CharacterExpression::calcCapDY() const
     DY = 4.0;
     break;
 
-  case Symbol::Ellipsis:
+  case ELLIPSIS:
     DY = capMultiplier().y() == 1.0 ? capMultiplier().y()
                                     : INT_MAX / capMultiplier().y() - 1.0;
     break;
