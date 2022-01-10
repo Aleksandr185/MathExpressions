@@ -9,7 +9,7 @@ const ushort CODE_INTEGRAL = 0x222b;  // ∫
 const ushort CODE_ELLIPSIS = 0x2026;  // …
 
 IntegralExpression::IntegralExpression(int multiplicity /* = 0 */)
-  : GroupExpression(QChar(INTEGRAL_CODE))
+  : GroupExpression(QChar(CODE_INTEGRAL))
 {
   if (multiplicity <= 0) {
     m_text.append(symbol());
