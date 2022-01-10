@@ -110,7 +110,7 @@ void SignExpression::paint(QPainter *painter, int x, int y) const
 
 int SignExpression::calcWidth() const
 {
-  constexpr int MARGINS = LEFT_MARGIN + RIGHT_MARGIN;
+  const int MARGINS = (LEFT_MARGIN + RIGHT_MARGIN) * lineWidth().x();
 
   const ushort code = character().unicode();
 
@@ -126,7 +126,7 @@ int SignExpression::calcWidth() const
     return qRound(MUCH_GREATER_SPACE_FACTOR * char_width) + char_width + MARGINS;
   }
   default:
-    return CharacterExpression::calcWidth() + ( MARGINS * lineWidth().x() );
+    return CharacterExpression::calcWidth() + MARGINS;
   } // switch
 }
 
