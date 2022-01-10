@@ -37,6 +37,8 @@
 #include "src/integral_expression.h"
 #include "src/limit_expression.h"
 #include "src/stand_expression.h"
+#include "src/sign_expression.h"
+#include "src/frame_expression.h"
 
 enum AligmentRole{
   LeftTop = 0,
@@ -192,52 +194,106 @@ Widget::Widget(QWidget *parent)
   ExtendedNumberExpresssion* expr_num = new ExtendedNumberExpresssion();
   //expr_num->setStyle(NumberExpresssion::Style::Exponential);
   expr_num->setNumber(0.00000000001/3);
-//  expr->addNext(expr_num);
-  expr_num->addNext(new CommaExpression());
   expr_num->addNext(new PlanckExpression());
-  expr_num->addNext(new CommaExpression());
-  expr_num->addNext(new CharacterExpression(955));
-  expr_num->addNext(new CharacterExpression(0x221a));
+  expr_num->addNext(new SignExpression(SignExpression::PlusMinus));
+  expr_num->addNext(new SignExpression(SignExpression::MinusPlus));
+  expr_num->addNext(new CharacterExpression(0x2213));
+  FrameExpression* frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::Parallel));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::Perpendicular));
+  expr_num->addNext(frame);
+
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::Angle));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::IdenticalTo));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::Less));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::LessOrEqual));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::MuchLess));
+  expr_num->addNext( frame );
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::MuchGreater));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::ApproxLess));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::ApproxGreater));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new SignExpression(SignExpression::AlmostEqual));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new CharacterExpression(0x226a));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new CharacterExpression(0x2272));
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(new CharacterExpression(0x2243));
+  expr_num->addNext(frame);
+
+
   StrokesExpression* strokes = new StrokesExpression(1);
   //fraction->setDaughter(strokes);
 
   RootExpression* root = new RootExpression();
   root->setSon(new VariableExpression('x'));
 
-  expr_num->addNext(root);
-  expr_num->addNext(strokes);
+  frame = new FrameExpression();
+  frame->setSon(root);
+  expr_num->addNext(frame);
+  frame = new FrameExpression();
+  frame->setSon(strokes);
+  expr_num->addNext(frame);
 
-  expr_num->addNext(new NablaExpression());
+  frame = new FrameExpression();
+  frame->setSon(new NablaExpression());
+  expr_num->addNext(frame);
 
-  FunctionExpression* func = new FunctionExpression("(f)", new VariableExpression('x'));
-  expr_num->addNext(func);
+  frame = new FrameExpression();
+  frame->setSon(new FunctionExpression("(f)", new VariableExpression('x')));
+  expr_num->addNext(frame);
 
   AtValueExpression* at_value = new AtValueExpression();
   at_value->setSon(fraction);
   at_value->setDaughter(new SimpleExpression("x = 0"));
-
-  expr_num->addNext(at_value);
+  frame = new FrameExpression();
+  frame->setSon(at_value);
+  expr_num->addNext(frame);
 
   IndexExpression* index = new IndexExpression();
   index->setSon(new VariableExpression('H'));
   index->setFirstTwin(new SimpleExpression('2'));
   index->setSeconsTwin(new SimpleExpression('3'));
-
-  expr_num->addNext(index);
+  frame = new FrameExpression();
+  frame->setSon(index);
+  expr_num->addNext(frame);
 
   IntegralExpression* summa = new IntegralExpression();
   summa->setFirstTwin(new VariableExpression('a'));
   summa->setSeconsTwin(new VariableExpression('t'));
-
-  expr_num->addNext(summa);
+  frame = new FrameExpression();
+  frame->setSon(summa);
+  expr_num->addNext(frame);
 
   LimitExpression* lim = new LimitExpression();
   lim->setSon(new SimpleExpression("x = 0"));
-  expr_num->addNext(lim);
+  frame = new FrameExpression();
+  frame->setSon(lim);
+  expr_num->addNext(frame);
 
-  StandExpression* stand = new StandExpression(Qt::AlignCenter);
-  stand->setSon(expr_num);
-  stand->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
+  ChainExpression* chain = new ChainExpression();
+  chain->setSon(expr_num);
 
   QDoubleSpinBox* double_spin = new QDoubleSpinBox();
   double_spin->setValue(expr_num->number());
@@ -308,7 +364,8 @@ Widget::Widget(QWidget *parent)
   });
 
 
-  m_expression = stand;
+  m_expression = chain;
+  m_expression->setFont(QFont(m_fontName->currentText(), m_fontSize->value()));
   m_expression_widget->setExpression(m_expression);
 
   button = m_aling_buttons->button(AligmentRole::CenterCenter);
