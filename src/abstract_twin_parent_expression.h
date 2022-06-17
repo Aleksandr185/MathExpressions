@@ -3,22 +3,22 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT AbstractTwinParentExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT AbstractTwinParentExpression : public AbstractParentExpression
 {
 public:
   AbstractTwinParentExpression();
   ~AbstractTwinParentExpression() override;
 
-  inline AbstractExpression* firstTwin() const { return m_first_twin; }
-  inline AbstractExpression* secondTwin() const { return m_second_twin; }
+  inline ExpressionPtr firstTwin() const { return m_first_twin; }
+  inline ExpressionPtr secondTwin() const { return m_second_twin; }
 
   inline bool hasFirstTwin() const { return m_first_twin; }
   inline bool hasSecondTwin() const { return m_second_twin; }
 
-  void setFirstTwin(AbstractExpression* firstTwin);
-  void setSeconsTwin(AbstractExpression* secondTwin);
+  void setFirstTwin(ExpressionPtr firstTwin);
+  void setSeconsTwin(ExpressionPtr secondTwin);
 
 protected:
   // AbstractExpression interface
@@ -34,13 +34,13 @@ protected:
   virtual void updateSecondTwinColor();
 
 private:
-  AbstractExpression* m_first_twin;
-  AbstractExpression* m_second_twin;
+  ExpressionPtr m_first_twin;
+  ExpressionPtr m_second_twin;
 
   void updateFirstTwinPaintDevice();
   void updateSecondTwinPaintDevice();
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ABSTRACTTWINPARENTEXPRESSION_H

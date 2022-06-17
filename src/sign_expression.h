@@ -3,9 +3,9 @@
 
 #include "character_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT SignExpression : public CharacterExpression
+class MATH_EXPRESSIONS_EXPORT SignExpression : public CharacterExpression
 {
 public:
   enum SignType {
@@ -55,6 +55,6 @@ private:
   static ushort codeFromSign(SignType sign);
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // SIGNEXPRESSION_H

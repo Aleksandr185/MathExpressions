@@ -1,6 +1,6 @@
 #include "function_name_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 FunctionNameExpression::FunctionNameExpression(const QString& text)
   :SimpleExpression(text)
@@ -15,4 +15,4 @@ bool FunctionNameExpression::isArgNeedBrackets() const
   return false;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

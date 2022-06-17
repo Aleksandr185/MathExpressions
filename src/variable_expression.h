@@ -3,9 +3,9 @@
 
 #include "simple_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT VariableExpression : public SimpleExpression
+class MATH_EXPRESSIONS_EXPORT VariableExpression : public SimpleExpression
 {
 public:
   explicit VariableExpression(const QString& text);
@@ -20,6 +20,6 @@ protected:
   void calcCapDX(int& dxLeft, int& dxRight) const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // VARIABLEEXPRESSION_H

@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort SMALL_ALPHA   = 0x03b1; // α
 const ushort SMALL_BETTA   = 0x03b2; // β
@@ -196,4 +196,4 @@ void CharacterExpression::calcCapDX(int& dxLeft, int& dxRight) const
   dxRight = qRound(DX * capMultiplier().x());
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

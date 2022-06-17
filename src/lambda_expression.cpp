@@ -2,7 +2,7 @@
 
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort CODE_LAMBDA = 0x03bb; // λ
 
@@ -35,4 +35,4 @@ void LambdaExpression::paint(QPainter* painter, int x, int y) const
   painter->restore();
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

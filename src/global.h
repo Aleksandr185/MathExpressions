@@ -5,15 +5,15 @@
 
 #include <QtCore>
 
-#if defined(EXPRDRAW_EXPORTS)
-#  define EXPRDRAW_EXPORT Q_DECL_EXPORT
-#elif defined (EXPRDRAW_IMPORTS)
-#  define EXPRDRAW_EXPORT Q_DECL_IMPORT
+#if defined(MATH_EXPRESSIONS_EXPORTS)
+#  define MATH_EXPRESSIONS_EXPORT Q_DECL_EXPORT
+#elif defined (MATH_EXPRESSIONS_IMPORTS)
+#  define MATH_EXPRESSIONS_EXPORT Q_DECL_IMPORT
 #else
-#  define EXPRDRAW_EXPORT   /**/
+#  define MATH_EXPRESSIONS_EXPORT   /**/
 #endif
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 enum class CalculateFlag {
   NoFlag       = 0x00000000,
@@ -43,6 +43,7 @@ bool operator==(const QFlags<T> lhs, const CalculateFlag rhs)
 // Данные флаги показывают, может ли выражение быть умножено без
 // знака слева, справа, является ли оно числом и т.д.
 enum class MultiplicationFlag {
+  NoFlag        = 0x00000000,
   Left          = 0x00000001,   // 0000 0001
   Right         = 0x00000002,   // 0000 0010
   Negative      = 0x00000004,   // 0000 0100
@@ -96,6 +97,6 @@ private:
   double m_y;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // GLOBAL_H

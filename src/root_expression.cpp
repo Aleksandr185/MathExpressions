@@ -2,11 +2,17 @@
 
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 RootExpression::RootExpression()
 {
 
+}
+
+RootExpression::RootExpression(AbstractExpression *radical_expression, AbstractExpression *index)
+{
+  setSon(radical_expression);
+  setDaughter(index);
 }
 
 // AbstractExpression interface
@@ -99,11 +105,11 @@ int RootExpression::calcAscent() const
   if (hasSon()) {
     int result = son()->ascent();
 
-    if (hasDaughter() && daughter()->height() > 4 * lineWidth().y()) {
-      result -= lineWidth().y() + daughter()->height();
+    if ( hasDaughter() && daughter()->height() > (4 * lineWidth().y()) ) {
+      result = result - lineWidth().y() + daughter()->height();
     }
     else {
-      result += 3 * lineWidth().y();
+      result = result + (3 * lineWidth().y());
     }
 
     return result;
@@ -134,4 +140,4 @@ void RootExpression::updateDaughterFont()
   daughter()->setFont(fn);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

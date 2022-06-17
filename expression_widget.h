@@ -3,11 +3,11 @@
 
 #include <QtWidgets/QWidget>
 
-namespace ExprDraw {
+namespace MathExpressions {
   class AbstractExpression;
 }
 
-typedef ExprDraw::AbstractExpression* ExpressionPtr;
+typedef MathExpressions::AbstractExpression* ExpressionPtr;
 
 class ExpressionWidget : public QWidget
 {

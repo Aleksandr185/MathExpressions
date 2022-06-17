@@ -6,9 +6,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT SimpleExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT SimpleExpression : public AbstractExpression
 {
 public:
   explicit SimpleExpression(const QString& text);
@@ -27,6 +27,6 @@ private:
   QString m_text;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // SIMPLEEXPRESSION_H

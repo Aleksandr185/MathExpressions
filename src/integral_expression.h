@@ -3,12 +3,14 @@
 
 #include "group_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT IntegralExpression : public GroupExpression
+class MATH_EXPRESSIONS_EXPORT IntegralExpression : public GroupExpression
 {
 public:
-  IntegralExpression(int multiplicity = 0);
+  IntegralExpression(ExpressionPtr expression,
+                     ExpressionPtr lowerLimit, ExpressionPtr upperLimit,
+                     int multiplicity = 0);
 
 protected:
   // GroupExpression interface
@@ -19,6 +21,6 @@ private:
   QString m_text;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // INTEGRALEXPRESSION_H

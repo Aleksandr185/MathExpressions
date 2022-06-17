@@ -1,19 +1,42 @@
 #include "frame_expression.h"
 
 #include <QPainter>
+#include <QDebug>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-const int FRAME_WIDTH = 1;
-
-FrameExpression::FrameExpression()
+FrameExpression::FrameExpression(AbstractExpression *expression)
+  : m_frame_width(1), m_frame_style(Qt::DotLine)
 {
-
+  setSon(expression);
 }
 
 FrameExpression::~FrameExpression()
 {
-  cutOffSun();
+
+}
+
+void FrameExpression::setFrameWidth(int v)
+{
+  if (v < 0) {
+    qWarning() << "frame width can't be less then 0!";
+    return;
+  }
+
+  if (m_frame_width != v) {
+    m_frame_width = v;
+    setFlag(CalculateFlag::Width);
+    setFlag(CalculateFlag::Height);
+    setFlag(CalculateFlag::Ascent);
+    setFlag(CalculateFlag::Descent);
+  }
+}
+
+void FrameExpression::setFrameStyle(Qt::PenStyle v)
+{
+  if (m_frame_style != v) {
+    m_frame_style = v;
+  }
 }
 
 QPen FrameExpression::pen() const
@@ -46,8 +69,8 @@ void FrameExpression::paint(QPainter *painter, int x, int y) const
 {
   painter->save();
   QPen pen;
-  pen.setStyle(Qt::DotLine);
-  pen.setWidth(FRAME_WIDTH);
+  pen.setStyle(m_frame_style);
+  pen.setWidth(m_frame_width);
   pen.setColor(color());
   painter->setPen(pen);
   painter->setBrush(QBrush(Qt::NoBrush));
@@ -61,22 +84,22 @@ void FrameExpression::paint(QPainter *painter, int x, int y) const
 
 int FrameExpression::calcWidth() const
 {
-  return hasSon() ? son()->width() : FRAME_WIDTH * 2;
+  return hasSon() ? son()->width() : m_frame_width * 2;
 }
 
 int FrameExpression::calcHeight() const
 {
-  return hasSon() ? son()->height() : FRAME_WIDTH * 2;
+  return hasSon() ? son()->height() : m_frame_width * 2;
 }
 
 int FrameExpression::calcAscent() const
 {
-  return hasSon() ? son()->ascent() : FRAME_WIDTH;
+  return hasSon() ? son()->ascent() : m_frame_width;
 }
 
 int FrameExpression::calcDescent() const
 {
-  return hasSon() ? son()->descent() : FRAME_WIDTH;
+  return hasSon() ? son()->descent() : m_frame_width;
 }
 
 int FrameExpression::calcSuperscriptX() const
@@ -121,7 +144,7 @@ void FrameExpression::updateSonFont()
   son()->setFont(font());
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 

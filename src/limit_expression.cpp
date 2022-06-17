@@ -3,11 +3,11 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-LimitExpression::LimitExpression()
+LimitExpression::LimitExpression(AbstractExpression *expression)
 {
-
+  setSon(expression);
 }
 
 // AbstractExpression interface
@@ -87,4 +87,4 @@ const QString &LimitExpression::text()
   return LIMIT_TEXT;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

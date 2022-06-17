@@ -1,10 +1,10 @@
 #include "base_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-BaseExpression::BaseExpression()
+BaseExpression::BaseExpression(AbstractExpression *son)
 {
-
+  setSon(son);
 }
 
 
@@ -14,4 +14,4 @@ bool BaseExpression::isBracketed() const
                   : false;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

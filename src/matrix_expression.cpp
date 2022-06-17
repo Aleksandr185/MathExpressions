@@ -1,19 +1,21 @@
 #include "matrix_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 constexpr int CELL_SPACE   = 6;
 constexpr int LEFT_MARGIN  = 2;
 constexpr int RIGHT_MARGIN = LEFT_MARGIN;
 
-MatrixExpression::MatrixExpression(const QSize& size)
+MatrixExpression::MatrixExpression(const QSize& size, AbstractExpression *expression)
 {
   setSize(size);
+  setSon(expression);
 }
 
-MatrixExpression::MatrixExpression(int w, int h)
+MatrixExpression::MatrixExpression(int w, int h, AbstractExpression *expression)
 {
   setSize( QSize(w, h) );
+  setSon(expression);
 }
 
 void MatrixExpression::setSize(const QSize& size)
@@ -36,7 +38,7 @@ void MatrixExpression::paint(QPainter* painter, int x, int y) const
     const int margin = LEFT_MARGIN * lineWidth().x();
     const int space = CELL_SPACE * lineWidth().x();
 
-    AbstractExpression* next_expr = son();
+    ExpressionPtr next_expr = son();
     y += cell_height / 2;
 
     int h = 0;
@@ -112,7 +114,7 @@ void MatrixExpression::calcCellSize(int& cell_width, int& cell_height) const
 
   const int cell_count = size().width() * size().height();
   int i = 0;
-  AbstractExpression* next_expr = son();
+  ExpressionPtr next_expr = son();
   while ( next_expr && (i < cell_count) ) {
     over = qMax(over, next_expr->ascent() + 1);
     above = qMax(above, next_expr->height() - next_expr->ascent() - 1);
@@ -125,4 +127,4 @@ void MatrixExpression::calcCellSize(int& cell_width, int& cell_height) const
   cell_height = over + above;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

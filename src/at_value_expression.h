@@ -3,12 +3,13 @@
 
 #include "abstract_big_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT AtValueExpression : public AbstractBigParentExpression
+class MATH_EXPRESSIONS_EXPORT AtValueExpression : public AbstractBigParentExpression
 {
 public:
   AtValueExpression();
+  AtValueExpression(ExpressionPtr expression, ExpressionPtr condition);
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
@@ -26,6 +27,6 @@ protected:
   void updateDaughterFont() override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ATVALUEEXPRESSION_H

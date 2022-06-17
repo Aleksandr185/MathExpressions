@@ -3,9 +3,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT EmptyExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT EmptyExpression : public AbstractExpression
 {
 public:
   EmptyExpression();
@@ -16,6 +16,6 @@ protected:
   int calcHeight() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // EMPTYEXPRESSION_H

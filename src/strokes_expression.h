@@ -3,9 +3,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT StrokesExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT StrokesExpression : public AbstractExpression
 {
 public:
   StrokesExpression(int count);
@@ -25,6 +25,6 @@ private:
   QFont enlargedFont(const QFont& font) const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // STROKESEXPRESSION_H

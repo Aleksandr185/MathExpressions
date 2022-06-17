@@ -3,18 +3,19 @@
 
 #include "group_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CirculationExpression : public GroupExpression
+class MATH_EXPRESSIONS_EXPORT CirculationExpression : public GroupExpression
 {
 public:
-    CirculationExpression();
+    CirculationExpression(ExpressionPtr expression,
+                          ExpressionPtr lowerLimit, ExpressionPtr upperLimit);
 
 protected:
     // GroupExpression interface
     void drawSymbol(QPainter *painter, int x, int y) const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // CIRCULATIONEXPRESSION_H

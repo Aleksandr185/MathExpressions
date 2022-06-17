@@ -4,17 +4,23 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-NumberExpresssion::NumberExpresssion()
+NumberExpression::NumberExpression()
   : m_number(0.0), m_style(Style::Regular)
 {
 
 }
 
+NumberExpression::NumberExpression(double number, Style style)
+  : m_number(number), m_style(style)
+{
+  update();
+}
+
 // public
 
-void NumberExpresssion::setNumber(double number)
+void NumberExpression::setNumber(double number)
 {
   if ( m_number != number) {
     m_number = number;
@@ -22,7 +28,7 @@ void NumberExpresssion::setNumber(double number)
   }
 }
 
-void NumberExpresssion::setStyle(Style style)
+void NumberExpression::setStyle(Style style)
 {
   if (m_style != style) {
     m_style = style;
@@ -32,14 +38,14 @@ void NumberExpresssion::setStyle(Style style)
 
 // AbstractExpression interface
 
-MultiplicationFlags NumberExpresssion::multiplicationFlags() const
+MultiplicationFlags NumberExpression::multiplicationFlags() const
 {
   MultiplicationFlags result(MultiplicationFlag::Right);
   result.setFlag(MultiplicationFlag::Negative, m_number < 0.0);
   return result;
 }
 
-void NumberExpresssion::paint(QPainter* painter, int x, int y) const
+void NumberExpression::paint(QPainter* painter, int x, int y) const
 {
   painter->save();
   painter->setPen(pen());
@@ -70,7 +76,7 @@ void NumberExpresssion::paint(QPainter* painter, int x, int y) const
   painter->restore();
 }
 
-int NumberExpresssion::calcWidth() const
+int NumberExpression::calcWidth() const
 {
   const QFont my_font = font();
   QFontMetrics fm(my_font);
@@ -86,7 +92,7 @@ int NumberExpresssion::calcWidth() const
   }
 }
 
-int NumberExpresssion::calcHeight() const
+int NumberExpression::calcHeight() const
 {
   const double EXPONENT_HEIGHT_FACTOR = 1.2;
 
@@ -98,7 +104,7 @@ int NumberExpresssion::calcHeight() const
   return result;
 }
 
-int NumberExpresssion::calcAscent() const
+int NumberExpression::calcAscent() const
 {
   if (m_exponent.isEmpty()) {
     return AbstractExpression::calcAscent();
@@ -109,7 +115,7 @@ int NumberExpresssion::calcAscent() const
   }
 }
 
-int NumberExpresssion::calcDescent() const
+int NumberExpression::calcDescent() const
 {
   if (m_exponent.isEmpty()) {
     return AbstractExpression::calcDescent();
@@ -120,7 +126,7 @@ int NumberExpresssion::calcDescent() const
   }
 }
 
-int NumberExpresssion::calcCapDY() const
+int NumberExpression::calcCapDY() const
 {
   const int factor = m_exponent.isEmpty() ? 8 : 3;
   return qRound(factor * capMultiplier().y());
@@ -128,13 +134,13 @@ int NumberExpresssion::calcCapDY() const
 
 // NumberExpresssion interface
 
-QString NumberExpresssion::toString() const
+QString NumberExpression::toString() const
 {
   const char format = m_style == Style::Exponential ? 'E' : 'g';
   return QLocale::system().toString(m_number, format, 14);
 }
 
-void NumberExpresssion::update()
+void NumberExpression::update()
 {
   QString string = toString();
   const int pos_e = string.indexOf('E', 0, Qt::CaseInsensitive);
@@ -183,7 +189,7 @@ void NumberExpresssion::update()
 
 // private
 
-QFont NumberExpresssion::smallFont(const QFont& font) const
+QFont NumberExpression::smallFont(const QFont& font) const
 {
   const double FONT_FACTOR = 0.7;
 
@@ -192,15 +198,15 @@ QFont NumberExpresssion::smallFont(const QFont& font) const
   return small_font;
 }
 
-QString NumberExpresssion::suffixOfMantissa() const
+QString NumberExpression::suffixOfMantissa() const
 {
   return isMantissaEqualOne() ? QStringLiteral("10")
                               : QStringLiteral("·10");
 }
 
-bool NumberExpresssion::isMantissaEqualOne() const
+bool NumberExpression::isMantissaEqualOne() const
 {
   return m_mantissa == "1";
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

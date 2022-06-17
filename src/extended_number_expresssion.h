@@ -3,12 +3,13 @@
 
 #include "number_expresssion.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT ExtendedNumberExpresssion : public NumberExpresssion
+class MATH_EXPRESSIONS_EXPORT ExtendedNumberExpresssion : public NumberExpression
 {
 public:
   ExtendedNumberExpresssion();
+  ExtendedNumberExpresssion(double number, int precision, int decimals, int maxDegree);
 
   inline int precision() const { return m_precision; }
   inline int decimals() const { return m_decimals; }
@@ -29,6 +30,6 @@ private:
 
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // EXTENDEDNUMBEREXPRESSSION_H

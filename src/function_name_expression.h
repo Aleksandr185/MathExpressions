@@ -3,9 +3,9 @@
 
 #include "simple_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT FunctionNameExpression : public SimpleExpression
+class MATH_EXPRESSIONS_EXPORT FunctionNameExpression : public SimpleExpression
 {
 public:
   explicit FunctionNameExpression(const QString& text);
@@ -14,6 +14,6 @@ public:
   bool isArgNeedBrackets() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // FUNCTIONNAMEEXPRESSION_H

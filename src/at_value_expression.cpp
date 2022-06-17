@@ -2,13 +2,19 @@
 
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const int SPACE = 3;
 
 AtValueExpression::AtValueExpression()
 {
 
+}
+
+AtValueExpression::AtValueExpression(AbstractExpression *expression, AbstractExpression *condition)
+{
+  setSon(expression);
+  setDaughter(condition);
 }
 
 // AbstractExpression interface
@@ -102,4 +108,4 @@ void AtValueExpression::updateDaughterFont()
   daughter()->setFont(small_font);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

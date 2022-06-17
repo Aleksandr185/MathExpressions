@@ -3,12 +3,18 @@
 
 #include "abstract_big_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT FractionExpression : public AbstractBigParentExpression
+class MATH_EXPRESSIONS_EXPORT FractionExpression : public AbstractBigParentExpression
 {
 public:
-  FractionExpression();
+  FractionExpression(ExpressionPtr numerator, ExpressionPtr denominator);
+
+  inline ExpressionPtr numerator() const { return son(); }
+  inline ExpressionPtr denominator() const { return daughter(); }
+
+  inline void setNumerator(ExpressionPtr p) { setSon(p); }
+  inline void setDenominator(ExpressionPtr p) { setDaughter(p); }
 
 protected:
   // AbstractExpression interface
@@ -19,6 +25,6 @@ protected:
   int calcDescent() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // FRACTIONEXPRESSION_H

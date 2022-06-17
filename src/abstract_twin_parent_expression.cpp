@@ -1,6 +1,6 @@
 #include "abstract_twin_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 AbstractTwinParentExpression::AbstractTwinParentExpression()
   : m_first_twin(nullptr), m_second_twin(nullptr)
@@ -14,7 +14,7 @@ AbstractTwinParentExpression::~AbstractTwinParentExpression()
   delete m_second_twin;
 }
 
-void AbstractTwinParentExpression::setFirstTwin(AbstractExpression* firstTwin)
+void AbstractTwinParentExpression::setFirstTwin(ExpressionPtr firstTwin)
 {
   delete m_first_twin;
   m_first_twin = firstTwin;
@@ -28,7 +28,7 @@ void AbstractTwinParentExpression::setFirstTwin(AbstractExpression* firstTwin)
   setFlag(CalculateFlag::All);
 }
 
-void AbstractTwinParentExpression::setSeconsTwin(AbstractExpression* secondTwin)
+void AbstractTwinParentExpression::setSeconsTwin(ExpressionPtr secondTwin)
 {
   delete m_second_twin;
   m_second_twin = secondTwin;
@@ -127,4 +127,4 @@ void AbstractTwinParentExpression::updateSecondTwinPaintDevice()
   }
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

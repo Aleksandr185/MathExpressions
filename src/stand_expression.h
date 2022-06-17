@@ -3,12 +3,12 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT StandExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT StandExpression : public AbstractParentExpression
 {
 public:
-  StandExpression(Qt::Alignment horizontal_alignment = Qt::AlignLeft);
+  StandExpression(ExpressionPtr expression, Qt::Alignment horizontal_alignment = Qt::AlignLeft);
 
   void setHorizontalAlignment(Qt::Alignment horizontal_alignment);
   inline Qt::Alignment horizontalAlignment() const { return m_horizontal_alignment; }
@@ -23,6 +23,6 @@ private:
   Qt::Alignment m_horizontal_alignment;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // STANDEXPRESSION_H

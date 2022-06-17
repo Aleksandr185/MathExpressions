@@ -1,10 +1,11 @@
 #include "round_bracketed_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-RoundBracketedExpression::RoundBracketedExpression()
+RoundBracketedExpression::RoundBracketedExpression(ExpressionPtr son)
+  : BracketedExpression()
 {
-
+  setSon(son);
 }
 
 MultiplicationFlags RoundBracketedExpression::multiplicationFlags() const
@@ -14,4 +15,4 @@ MultiplicationFlags RoundBracketedExpression::multiplicationFlags() const
                              | MultiplicationFlag::Brackets);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

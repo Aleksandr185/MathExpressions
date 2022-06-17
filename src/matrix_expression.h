@@ -3,13 +3,13 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT MatrixExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT MatrixExpression : public AbstractParentExpression
 {
 public:
-  explicit MatrixExpression(const QSize& size);
-  MatrixExpression(int w, int h);
+  explicit MatrixExpression(const QSize& size, ExpressionPtr expression);
+  MatrixExpression(int w, int h, ExpressionPtr expression);
 
   inline const QSize& size() const { return m_size; }
   void setSize(const QSize& size);
@@ -31,6 +31,6 @@ private:
   void calcCellSize(int& cell_width, int& cell_height) const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // MATRIXEXPRESSION_H

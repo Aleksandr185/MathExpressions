@@ -1,6 +1,6 @@
 #include "comma_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort COMMA_CODE = 0x002C; // ,
 
@@ -22,7 +22,7 @@ int CommaExpression::calcCapDY() const
   return INT_MAX;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 

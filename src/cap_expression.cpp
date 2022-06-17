@@ -11,7 +11,7 @@
 
 //#define ORIGINAL_POINT_SIZE
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 #ifndef ORIGINAL_POINT_SIZE
   const int POINT_SIZE = 2;
@@ -21,7 +21,7 @@ namespace ExprDraw {
 const QChar CHAR_CAP = QChar('^');
 const QChar CHAR_TILDE = QChar('~');
 
-CapExpression::CapExpression(AbstractExpression* son, CapStyle capStyle)
+CapExpression::CapExpression(ExpressionPtr son, CapStyle capStyle)
   : m_cap_style(capStyle), m_point_count(1)
 {
   setSon(son);
@@ -309,4 +309,4 @@ int CapExpression::selfHeight() const
   return qMax(0, capHeight() - son_dy);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

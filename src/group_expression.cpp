@@ -5,7 +5,7 @@
 
 #include "chain_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const int SPACE_X   = 2;
 const int SPACE_Y   = 2;
@@ -137,7 +137,7 @@ int GroupExpression::calcSymbolHeight() const
   ChainExpression* son_as_chain = dynamic_cast<ChainExpression*>(son());
   if (son_as_chain
       && !son_as_chain->multiplicationFlags().testFlag(MultiplicationFlag::RoundBrackets) ) {
-    AbstractExpression* next = son_as_chain->son();
+    ExpressionPtr next = son_as_chain->son();
 
     while (next) {
       if (GroupExpression* next_as_group = dynamic_cast<GroupExpression*>(next)) {
@@ -217,4 +217,4 @@ int GroupExpression::symbolHeight() const
   return m_symbol_height;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

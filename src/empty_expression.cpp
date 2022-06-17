@@ -2,7 +2,7 @@
 
 #include <QFontMetrics>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 EmptyExpression::EmptyExpression()
 {
@@ -20,4 +20,4 @@ int EmptyExpression::calcHeight() const
   return QFontMetrics(font()).height();
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort CODE_STROKE = 0x00B4;  // ´
 const QChar STROKE_CHAR  = QChar(CODE_STROKE);
@@ -79,4 +79,4 @@ QFont StrokesExpression::enlargedFont(const QFont& font) const
   return result;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

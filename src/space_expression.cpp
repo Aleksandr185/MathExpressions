@@ -1,6 +1,6 @@
 #include "space_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 SpaceExpression::SpaceExpression(int value)
   :m_value(value)
@@ -28,4 +28,4 @@ int SpaceExpression::calcWidth() const
   return m_value * lineWidth().x();
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

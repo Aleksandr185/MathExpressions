@@ -3,14 +3,15 @@
 
 #include "group_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT ProductExpression : public GroupExpression
+class MATH_EXPRESSIONS_EXPORT ProductExpression : public GroupExpression
 {
 public:
-    ProductExpression();
+    ProductExpression(ExpressionPtr expression,
+                      ExpressionPtr lowerLimit, ExpressionPtr upperLimit);
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // PRODUCTEXPRESSION_H

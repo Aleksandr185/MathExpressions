@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 AsterixExpression::AsterixExpression()
   : SimpleExpression('*')
@@ -27,6 +27,6 @@ void AsterixExpression::paint(QPainter* painter, int x, int y) const
   painter->restore();
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 

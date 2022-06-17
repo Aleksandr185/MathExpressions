@@ -3,7 +3,7 @@
 #include "variable_expression.h"
 #include "function_name_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 FunctionExpression::FunctionExpression(const QString &funcName, AbstractExpression *daughter)
 {
@@ -17,4 +17,4 @@ FunctionExpression::FunctionExpression(const QString &funcName, AbstractExpressi
   setDaughter(daughter);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

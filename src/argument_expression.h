@@ -3,12 +3,12 @@
 
 #include "bracketed_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT ArgumentExpression : public BracketedExpression
+class MATH_EXPRESSIONS_EXPORT ArgumentExpression : public BracketedExpression
 {
 public:
-  ArgumentExpression();
+  ArgumentExpression(ExpressionPtr son);
 
   inline bool forsedBrackets() const { return m_forced_brackets; }
   void setForsedBrackets(bool value);
@@ -20,6 +20,6 @@ private:
   bool m_forced_brackets;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ARGUMENTEXPRESSION_H

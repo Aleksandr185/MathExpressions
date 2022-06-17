@@ -3,18 +3,18 @@
 
 #include "bracketed_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT BaseExpression : public BracketedExpression
+class MATH_EXPRESSIONS_EXPORT BaseExpression : public BracketedExpression
 {
 public:
-  BaseExpression();
+  BaseExpression(ExpressionPtr son);
 
 protected:
   // BracketedExpression interface
   bool isBracketed() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // BASEEXPRESSION_H

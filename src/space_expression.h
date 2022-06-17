@@ -3,9 +3,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT SpaceExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT SpaceExpression : public AbstractExpression
 {
 public:
   explicit SpaceExpression(int value);
@@ -22,6 +22,6 @@ private:
   int m_value;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // SPACEEXPRESSION_H

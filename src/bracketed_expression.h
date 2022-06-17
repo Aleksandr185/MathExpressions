@@ -3,9 +3,9 @@
 
 #include "chain_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT BracketedExpression : public ChainExpression
+class MATH_EXPRESSIONS_EXPORT BracketedExpression : public ChainExpression
 {
 public:
   enum BracketStyle {
@@ -17,6 +17,9 @@ public:
   };
 
   BracketedExpression();
+  explicit BracketedExpression(ExpressionPtr expression, BracketStyle bracket_style = Round);
+  BracketedExpression(ExpressionPtr expression,
+                      BracketStyle left_style, BracketStyle rigth_style);
 
   inline BracketStyle leftBracket() const { return m_left_bracket; }
   inline BracketStyle rightBracket() const { return m_right_bracket; }
@@ -55,6 +58,6 @@ private:
 
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // BRACKETEDEXPRESSION_H

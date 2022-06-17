@@ -1,10 +1,11 @@
 #include "stand_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-StandExpression::StandExpression(Qt::Alignment horizontal_alignment)
+StandExpression::StandExpression(AbstractExpression *expression, Qt::Alignment horizontal_alignment)
 {
   setHorizontalAlignment(horizontal_alignment);
+  setSon(expression);
 }
 
 void StandExpression::setHorizontalAlignment(Qt::Alignment horizontal_alignment)
@@ -31,7 +32,7 @@ void StandExpression::paint(QPainter* painter, int x, int y) const
       alignment.setFlag(Qt::AlignRight);
     }
 
-    AbstractExpression* next_expr = son();
+    ExpressionPtr next_expr = son();
     while ( next_expr ) {
       next_expr->draw(painter, x, y, alignment);
 
@@ -48,7 +49,7 @@ int StandExpression::calcWidth() const
   if ( hasSon() ) {
     result = son()->width();
 
-    AbstractExpression* next_expr = son();
+    ExpressionPtr next_expr = son();
     while ( next_expr->hasNext() ) {
       next_expr = next_expr->next();
       result = qMax(result, next_expr->width());
@@ -65,7 +66,7 @@ int StandExpression::calcHeight() const
   if ( hasSon() ) {
     result = son()->height();
 
-    AbstractExpression* next_expr = son();
+    ExpressionPtr next_expr = son();
     while ( next_expr->hasNext() ) {
       next_expr = next_expr->next();
       result += next_expr->height();
@@ -75,4 +76,4 @@ int StandExpression::calcHeight() const
   return result;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

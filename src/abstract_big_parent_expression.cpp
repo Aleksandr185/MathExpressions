@@ -1,6 +1,6 @@
 #include "abstract_big_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 AbstractBigParentExpression::AbstractBigParentExpression()
 {
@@ -14,15 +14,15 @@ AbstractBigParentExpression::~AbstractBigParentExpression()
 
 // public
 
-AbstractExpression* AbstractBigParentExpression::cutOffDaughter()
+ExpressionPtr AbstractBigParentExpression::cutOffDaughter()
 {
-  AbstractExpression* result = m_daughter;
+  ExpressionPtr result = m_daughter;
   m_daughter = nullptr;
   setFlag(CalculateFlag::All);
   return result;
 }
 
-void AbstractBigParentExpression::setDaughter(AbstractExpression* daughter)
+void AbstractBigParentExpression::setDaughter(ExpressionPtr daughter)
 {
   delete m_daughter;
   m_daughter = daughter;
@@ -85,7 +85,7 @@ void AbstractBigParentExpression::updateDaughterPaintDevice()
   }
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 

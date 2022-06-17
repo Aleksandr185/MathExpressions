@@ -2,12 +2,12 @@
 
 #include "common_function_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-ArgumentExpression::ArgumentExpression()
+ArgumentExpression::ArgumentExpression(AbstractExpression *son)
  : m_forced_brackets(false)
 {
-
+  setSon(son);
 }
 
 void ArgumentExpression::setForsedBrackets(bool value)
@@ -28,7 +28,7 @@ bool ArgumentExpression::isBracketed() const
     }
   }
   else {
-    AbstractExpression* expr = son();
+    ExpressionPtr expr = son();
     while (expr) {
       if (expr->isNeedBrackets()) {
         return true;
@@ -41,4 +41,4 @@ bool ArgumentExpression::isBracketed() const
   return false;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

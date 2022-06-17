@@ -3,9 +3,9 @@
 
 #include "character_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT LambdaExpression : public CharacterExpression
+class MATH_EXPRESSIONS_EXPORT LambdaExpression : public CharacterExpression
 {
 public:
   LambdaExpression();
@@ -15,6 +15,6 @@ protected:
   void paint(QPainter* painter, int x, int y) const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // LAMBDAEXPRESSION_H

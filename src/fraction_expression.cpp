@@ -2,11 +2,12 @@
 
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-FractionExpression::FractionExpression()
+FractionExpression::FractionExpression(AbstractExpression *numerator, AbstractExpression *denominator)
 {
-
+  setSon(numerator);
+  setDaughter(denominator);
 }
 
 // AbstractExpression interface
@@ -75,4 +76,4 @@ int FractionExpression::calcDescent() const
   return daughter_height - lineWidth().y() - (lineWidth().y() / 2);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

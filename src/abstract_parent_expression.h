@@ -3,19 +3,19 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT AbstractParentExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT AbstractParentExpression : public AbstractExpression
 {
 public:
   AbstractParentExpression();
   ~AbstractParentExpression() override;
 
   void setSon(AbstractExpression *son);
-  inline AbstractExpression* son() const {return m_son;}
+  inline ExpressionPtr son() const {return m_son;}
   inline bool hasSon() const { return m_son; }
 
-  AbstractExpression* cutOffSun();
+  ExpressionPtr cutOffSun();
 
 protected:
   // AbstractExpression interface
@@ -28,11 +28,11 @@ protected:
   virtual void updateSonColor();
 
 private:
-  AbstractExpression* m_son = nullptr;
+  ExpressionPtr m_son = nullptr;
 
   void updateSonPaintDevice();
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ABSTRACTPARENTEXPRESSION_H

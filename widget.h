@@ -8,12 +8,13 @@ class QFontComboBox;
 class QSpinBox;
 class QCheckBox;
 class QButtonGroup;
+class QCheckBox;
 
 class ExpressionWidget;
-namespace ExprDraw {
+namespace MathExpressions {
   class AbstractExpression;
 }
-typedef ExprDraw::AbstractExpression* ExpressionPtr;
+typedef MathExpressions::AbstractExpression* ExpressionPtr;
 
 class Widget : public QWidget
 {
@@ -28,13 +29,20 @@ private:
   QFontComboBox* m_fontName;
   QSpinBox*      m_fontSize;
   QButtonGroup*  m_aling_buttons;
+  QCheckBox*     m_checkbox_variable_auto_index;
+  QCheckBox*     m_checkbox_function_auto_index;
+  QCheckBox*     m_checkbox_post_symbols;
+  QCheckBox*     m_checkbox_wrap_to_frame;
+
   ExpressionWidget* m_expression_widget;
 
-  ExpressionPtr m_expression = nullptr;
+  std::unique_ptr<MathExpressions::AbstractExpression> m_expression;
 
 private slots:
   void _q_font_size_changed(int );
   void _q_font_name_changed(const QString& );
   void _q_align_changed(int );
+  void _q_text_changed(const QString& );
+  void _q_builder_flag_changed(bool);
 };
 #endif // WIDGET_H

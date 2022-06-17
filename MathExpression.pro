@@ -29,6 +29,7 @@ SOURCES += \
     src/common_function_expression.cpp \
     src/custom_text_expression.cpp \
     src/empty_expression.cpp \
+    src/expression_builder.cpp \
     src/extended_number_expresssion.cpp \
     src/fraction_expression.cpp \
     src/frame_expression.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
     src/limit_expression.cpp \
     src/matrix_expression.cpp \
     src/nabla_expression.cpp \
+    src/null_expression.cpp \
     src/number_expresssion.cpp \
     src/planck_expression.cpp \
     src/product_expression.cpp \
@@ -75,6 +77,7 @@ HEADERS += \
     src/common_function_expression.h \
     src/custom_text_expression.h \
     src/empty_expression.h \
+    src/expression_builder.h \
     src/extended_number_expresssion.h \
     src/fraction_expression.h \
     src/frame_expression.h \
@@ -88,6 +91,7 @@ HEADERS += \
     src/limit_expression.h \
     src/matrix_expression.h \
     src/nabla_expression.h \
+    src/null_expression.h \
     src/number_expresssion.h \
     src/planck_expression.h \
     src/product_expression.h \

@@ -3,12 +3,13 @@
 
 #include "abstract_big_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT RootExpression : public AbstractBigParentExpression
+class MATH_EXPRESSIONS_EXPORT RootExpression : public AbstractBigParentExpression
 {
 public:
   RootExpression();
+  RootExpression(ExpressionPtr radical_expression, ExpressionPtr index = nullptr);
 
 protected:
   // AbstractExpression interface
@@ -22,6 +23,6 @@ protected:
   void updateDaughterFont() override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ROOTEXPRESSION_H

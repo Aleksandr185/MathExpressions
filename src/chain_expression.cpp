@@ -1,10 +1,10 @@
 #include "chain_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-ChainExpression::ChainExpression()
+ChainExpression::ChainExpression(AbstractExpression *son)
 {
-
+  setSon(son);
 }
 
 // AbstractExpression interface
@@ -12,7 +12,7 @@ ChainExpression::ChainExpression()
 MultiplicationFlags ChainExpression::multiplicationFlags() const
 {
 
-  AbstractExpression* right = nullptr;
+  ExpressionPtr right = nullptr;
   if ( hasSon() ) {
     right = son();
 
@@ -38,7 +38,7 @@ void ChainExpression::paint(QPainter* painter, int x, int y) const
 {
   y += ascent();
 
-  AbstractExpression* expression = son();
+  ExpressionPtr expression = son();
   while (expression) {
     expression->draw(painter, x, y, Qt::AlignRight | Qt::AlignVCenter);
     x += expression->width();
@@ -51,7 +51,7 @@ int ChainExpression::calcWidth() const
 {
   int width = 0;
 
-  AbstractExpression* expression = son();
+  ExpressionPtr expression = son();
   while (expression) {
     width += expression->width();
     expression = expression->next();
@@ -91,7 +91,7 @@ int ChainExpression::calcCapDY() const
 {
   int result = INT_MAX;
 
-  AbstractExpression* expression = son();
+  ExpressionPtr expression = son();
   while (expression) {
     const int dy = expression->capDY();
     if (dy < result)
@@ -106,7 +106,7 @@ void ChainExpression::calcCapDX(int& dxLeft, int& dxRight) const
 {
   dxLeft = hasSon() ? son()->capDXLeft() : 0;
 
-  AbstractExpression* right = nullptr;
+  ExpressionPtr right = nullptr;
   if ( hasSon()) {
     right = son();
 
@@ -125,7 +125,7 @@ void ChainExpression::calcOverAbove(int& over, int& above) const
   over = 0;
   above = 0;
 
-  AbstractExpression* expression = son();
+  ExpressionPtr expression = son();
   while (expression) {
     over = qMax(over, expression->ascent() + 1);
     above = qMax(above, expression->height() - expression->ascent() - 1);
@@ -133,7 +133,7 @@ void ChainExpression::calcOverAbove(int& over, int& above) const
   }
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 

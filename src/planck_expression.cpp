@@ -1,6 +1,6 @@
 #include "planck_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort CODE_PLANCK = 0x0127; // ħ
 
@@ -30,4 +30,4 @@ QFont PlanckExpression::font() const
   return my_font;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

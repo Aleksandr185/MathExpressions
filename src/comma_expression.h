@@ -3,9 +3,9 @@
 
 #include "character_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CommaExpression : public CharacterExpression
+class MATH_EXPRESSIONS_EXPORT CommaExpression : public CharacterExpression
 {
 public:
   CommaExpression();
@@ -17,6 +17,6 @@ protected:
 
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // COMMAEXPRESSION_H

@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QFontMetricsF>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 static const QChar BRACKET = QChar('{');
 
@@ -11,9 +11,9 @@ const int BRACKET_SPACE   = 2;
 const int CONDITION_SPACE = 4;
 const int VERTICAL_SPACE  = 4;
 
-CaseExpression::CaseExpression()
+CaseExpression::CaseExpression(AbstractExpression *expression)
 {
-
+  setSon(expression);
 }
 
 void CaseExpression::paint(QPainter* painter, int x, int y) const
@@ -38,8 +38,8 @@ void CaseExpression::paint(QPainter* painter, int x, int y) const
   int max_ascent = 0;
   int max_descent = 0;
 
-  AbstractExpression* expression = son();
-  AbstractExpression* condition = nullptr;
+  ExpressionPtr expression = son();
+  ExpressionPtr condition = nullptr;
   int i = 1;
 
   while ( expression ) {
@@ -72,7 +72,7 @@ int CaseExpression::calcWidth() const
   int width_condition = 0;
 
   int i = 1;
-  AbstractExpression* next_expr = son();
+  ExpressionPtr next_expr = son();
   while (next_expr) {
     if (i & 1) {
       width_expression = qMax(width_expression, next_expr->width());
@@ -100,7 +100,7 @@ int CaseExpression::calcHeight() const
 
   const int space = VERTICAL_SPACE * lineWidth().y();
 
-  AbstractExpression* next_expr = son();
+  ExpressionPtr next_expr = son();
   while (next_expr) {
     if (i & 1) {
       ascent = next_expr->ascent();
@@ -134,5 +134,5 @@ QFont CaseExpression::bracketFont() const
   return bracket_font;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 

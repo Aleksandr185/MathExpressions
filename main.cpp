@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QApplication>
 
-using namespace ExprDraw;
+using namespace MathExpressions;
 
 int main(int argc, char *argv[])
 {

@@ -1,6 +1,6 @@
 #include "variable_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 VariableExpression::VariableExpression(const QString& text)
   :SimpleExpression(text)
@@ -134,4 +134,4 @@ void VariableExpression::calcCapDX(int& dxLeft, int& dxRight) const
   dxRight = qRound(dx * capMultiplier().x());
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

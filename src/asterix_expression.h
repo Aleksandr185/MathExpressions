@@ -3,9 +3,9 @@
 
 #include "simple_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT AsterixExpression : public SimpleExpression
+class MATH_EXPRESSIONS_EXPORT AsterixExpression : public SimpleExpression
 {
 public:
   AsterixExpression();
@@ -15,7 +15,7 @@ protected:
   void paint(QPainter* painter, int x, int y) const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 #endif // ASTERIXEXPRESSION_H

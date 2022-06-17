@@ -3,15 +3,15 @@
 
 #include "character_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT NablaExpression : public CharacterExpression
+class MATH_EXPRESSIONS_EXPORT NablaExpression : public CharacterExpression
 {
 public:
   Q_DECL_DEPRECATED_X("Class NablaExpression is deprecated! Use CharacterExpression(0x2207)!")
   NablaExpression();
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // NABLAEXPRESSION_H

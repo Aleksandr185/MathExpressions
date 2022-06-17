@@ -1,6 +1,6 @@
 #include "common_function_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const int SPACE = 3;
 
@@ -9,16 +9,20 @@ CommonFunctionExpression::CommonFunctionExpression()
 
 }
 
+CommonFunctionExpression::CommonFunctionExpression(AbstractExpression *func_name, AbstractExpression *arg)
+{
+  setSon(func_name);
+  setDaughter(arg);
+}
+
 // AbstractExpression interface
 
 MultiplicationFlags CommonFunctionExpression::multiplicationFlags() const
 {
   MultiplicationFlags result = hasDaughter() ? daughter()->multiplicationFlags()
                                              : MultiplicationFlags();
-  if (result.testFlag(MultiplicationFlag::Brackets)) {
-    result.setFlag(MultiplicationFlag::Right);
-  }
-
+  const bool is_daughter_bracketed = result.testFlag(MultiplicationFlag::Brackets);
+  result.setFlag(MultiplicationFlag::Right, is_daughter_bracketed);
   result.setFlag(MultiplicationFlag::Left);
   return result;
 }
@@ -81,4 +85,4 @@ int CommonFunctionExpression::calcDescent() const
   return qMin(son_descent, daughter_descent);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

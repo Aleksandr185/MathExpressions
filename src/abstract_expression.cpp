@@ -6,7 +6,7 @@
 //#include <QDebug>
 
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 AbstractExpression::AbstractExpression()
   : m_flags(CalculateFlag::All)
@@ -26,7 +26,7 @@ QPen AbstractExpression::pen() const
   QPen pen;
   pen.setStyle(Qt::SolidLine);
   pen.setWidth(1);
-  pen.setColor(m_color);
+  pen.setColor(color());
   return pen;
 }
 
@@ -34,7 +34,7 @@ QBrush AbstractExpression::brush() const
 {
   QBrush brush;
   brush.setStyle(Qt::SolidPattern);
-  brush.setColor(m_color);
+  brush.setColor(color());
   return brush;
 }
 
@@ -166,7 +166,7 @@ void AbstractExpression::draw(int x, int y, Qt::Alignment alignment) const
     paint(&painter, x, y);
   }
   else{
-    qCritical() << "ExprDraw::AbstractExpression::draw. PaintDevice is null!";
+    qCritical() << "MathExpressions::AbstractExpression::draw. PaintDevice is null!";
   }
 }
 
@@ -177,7 +177,7 @@ void AbstractExpression::draw(QPainter* painter, int x, int y, Qt::Alignment ali
     paint(painter, x, y);
   }
   else {
-    qCritical() << "ExprDraw::AbstractExpression::draw. PaintDevice is not equal!";
+    qCritical() << "MathExpressions::AbstractExpression::draw. PaintDevice is not equal!";
   }
 }
 
@@ -191,12 +191,13 @@ void AbstractExpression::setPaintDevice(QPaintDevice* paintDevice)
   }
 }
 
-void AbstractExpression::setNext(AbstractExpression* next)
+void AbstractExpression::setNext(ExpressionPtr next)
 {
   delete m_next;
   m_next = nullptr;
 
-  addNext(next);
+  if (next)
+    addNext(next);
 }
 
 void AbstractExpression::setFont(const QFont& font)
@@ -216,10 +217,10 @@ void AbstractExpression::setColor(const QColor& color)
   }
 }
 
-void AbstractExpression::addNext(AbstractExpression* next)
+void AbstractExpression::addNext(ExpressionPtr next)
 {
   if ( next ) {
-    AbstractExpression* last_next = this;
+    ExpressionPtr last_next = this;
     while (last_next->hasNext()) {
       last_next = last_next->next();
     }
@@ -230,7 +231,7 @@ void AbstractExpression::addNext(AbstractExpression* next)
     next->setPaintDevice( paintDevice() );
   }
   else{
-    qCritical() << "ExprDraw::AbstractExpression::addNext. Can't add 'null' next!";
+    qCritical() << "MathExpressions::AbstractExpression::addNext. Can't add 'null' next!";
   }
 }
 
@@ -249,11 +250,12 @@ bool AbstractExpression::isNeedBrackets() const
   return false;
 }
 
-AbstractExpression* AbstractExpression::cutOff()
+ExpressionPtr AbstractExpression::cutOff()
 {
-  AbstractExpression* result = m_next;
+  ExpressionPtr result = m_next;
   m_next = nullptr;
-  assignParent(result, nullptr);
+  if (result)
+    assignParent(result, nullptr);
   return result;
 }
 
@@ -316,7 +318,9 @@ int AbstractExpression::calcSubscriptX() const
 
 int AbstractExpression::calcSubscriptY() const
 {
-  return AbstractExpression::calcSuperscriptY();
+  //return AbstractExpression::calcSuperscriptY();
+  QFontMetrics fm(font());
+  return height() - (fm.height() / 2) - 2;
 }
 
 int AbstractExpression::calcCapDY() const
@@ -359,7 +363,7 @@ void AbstractExpression::setFlag(CalculateFlag flag, bool on) const
 
 // protected static
 
-void AbstractExpression::assignFont(AbstractExpression* expression, const QFont& font,
+void AbstractExpression::assignFont(ExpressionPtr expression, const QFont& font,
                                     const LineWidth& line_width,
                                     const CapMultiplier& cap_multiplier)
 {
@@ -376,7 +380,7 @@ void AbstractExpression::assignFont(AbstractExpression* expression, const QFont&
   }
 }
 
-void AbstractExpression::assignParent(AbstractExpression* expression, AbstractExpression* parent)
+void AbstractExpression::assignParent(ExpressionPtr expression, ExpressionPtr parent)
 {
   if (!expression){
     qCritical() << "Can't set 'parent' for null 'expression'!";
@@ -391,7 +395,7 @@ void AbstractExpression::assignParent(AbstractExpression* expression, AbstractEx
   }
 }
 
-void AbstractExpression::assignPaintDevice(AbstractExpression* expression,
+void AbstractExpression::assignPaintDevice(ExpressionPtr expression,
                                            QPaintDevice* paintDevice,
                                            const LineWidth& line_width,
                                            const CapMultiplier& cap_multiplier)
@@ -432,4 +436,4 @@ void AbstractExpression::setLineWidth()
   m_line_width.setX( qRound(m_line_width.y() * factorDpiY));
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

@@ -3,12 +3,12 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CaseExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT CaseExpression : public AbstractParentExpression
 {
 public:
-  CaseExpression();
+  CaseExpression(ExpressionPtr expression);
 
 protected:
   // AbstractExpression interface
@@ -20,6 +20,6 @@ private:
   QFont bracketFont() const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // CASEEXPRESSION_H

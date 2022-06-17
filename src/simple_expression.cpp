@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 
 SimpleExpression::SimpleExpression(const QString &text)
@@ -137,4 +137,4 @@ int SimpleExpression::calcCapDY() const
   return qRound(DY * capMultiplier().x());
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

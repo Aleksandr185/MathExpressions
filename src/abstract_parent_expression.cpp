@@ -1,6 +1,6 @@
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 AbstractParentExpression::AbstractParentExpression()
 {
@@ -12,7 +12,7 @@ AbstractParentExpression::~AbstractParentExpression()
   delete m_son;
 }
 
-void AbstractParentExpression::setSon(AbstractExpression* son)
+void AbstractParentExpression::setSon(ExpressionPtr son)
 {
   delete m_son;
   m_son = son;
@@ -26,9 +26,9 @@ void AbstractParentExpression::setSon(AbstractExpression* son)
   setFlag(CalculateFlag::All);
 }
 
-AbstractExpression* AbstractParentExpression::cutOffSun()
+ExpressionPtr AbstractParentExpression::cutOffSun()
 {
-  AbstractExpression* result = m_son;
+  ExpressionPtr result = m_son;
   m_son = nullptr;
   setFlag(CalculateFlag::All);
   return result;
@@ -80,7 +80,7 @@ void AbstractParentExpression::updateSonPaintDevice()
   }
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 
 

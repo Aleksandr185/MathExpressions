@@ -3,9 +3,9 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CapExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT CapExpression : public AbstractParentExpression
 {
 public:
   enum class CapStyle {
@@ -16,7 +16,7 @@ public:
     Line
   };
 
-  CapExpression(AbstractExpression* son, CapStyle capStyle);
+  CapExpression(ExpressionPtr son, CapStyle capStyle);
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
@@ -47,6 +47,6 @@ private:
   int selfHeight() const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // CAPEXPRESSION_H

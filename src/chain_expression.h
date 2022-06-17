@@ -3,12 +3,12 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT ChainExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT ChainExpression : public AbstractParentExpression
 {
 public:
-  ChainExpression();
+  ChainExpression(ExpressionPtr son = nullptr);
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
@@ -27,6 +27,6 @@ private:
   void calcOverAbove(int &over, int &above) const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // CHAINEXPRESSION_H

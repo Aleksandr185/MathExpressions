@@ -5,9 +5,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT NumberExpresssion : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT NumberExpression : public AbstractExpression
 {
 public:
   enum class Style{
@@ -15,7 +15,8 @@ public:
     Exponential
   };
 
-  NumberExpresssion();
+  NumberExpression();
+  explicit NumberExpression(double number, Style style = Style::Regular);
 
   inline double number() const { return m_number; }
   inline Style style() const { return m_style; }
@@ -50,6 +51,6 @@ private:
   bool isMantissaEqualOne() const;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // NUMBEREXPRESSSION_H

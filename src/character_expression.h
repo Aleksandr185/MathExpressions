@@ -5,9 +5,9 @@
 
 #include "abstract_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CharacterExpression : public AbstractExpression
+class MATH_EXPRESSIONS_EXPORT CharacterExpression : public AbstractExpression
 {
 public:
   explicit CharacterExpression(const QChar& character, bool read_only = false);
@@ -31,6 +31,6 @@ private:
   bool m_read_only;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // CHAREXPRESSION_H

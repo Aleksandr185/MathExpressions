@@ -3,9 +3,9 @@
 
 #include "character_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT PlanckExpression : public CharacterExpression
+class MATH_EXPRESSIONS_EXPORT PlanckExpression : public CharacterExpression
 {
 public:
   PlanckExpression();
@@ -17,6 +17,6 @@ protected:
   QFont font() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // PLANCKEXPRESSION_H

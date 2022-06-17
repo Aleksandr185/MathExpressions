@@ -3,17 +3,17 @@
 
 #include "bracketed_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT RoundBracketedExpression : BracketedExpression
+class MATH_EXPRESSIONS_EXPORT RoundBracketedExpression : public BracketedExpression
 {
 public:
-  RoundBracketedExpression();
+  RoundBracketedExpression(ExpressionPtr son);
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ROUNDBRACKETEDEXPRESSION_H

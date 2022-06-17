@@ -3,12 +3,12 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT LimitExpression : public AbstractParentExpression
+class MATH_EXPRESSIONS_EXPORT LimitExpression : public AbstractParentExpression
 {
 public:
-  LimitExpression();
+  explicit LimitExpression(ExpressionPtr expression = nullptr);
 
   // AbstractExpression interface
   bool isArgNeedBrackets() const;
@@ -27,6 +27,6 @@ private:
   static const QString& text();
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // LIMITEXPRESSION_H

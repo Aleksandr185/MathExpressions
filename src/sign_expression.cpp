@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort CODE_PLUS                 = 0x002b; // +
 const ushort CODE_MINUS                = 0x2212; // -
@@ -202,4 +202,4 @@ ushort SignExpression::codeFromSign(SignType sign)
   }
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

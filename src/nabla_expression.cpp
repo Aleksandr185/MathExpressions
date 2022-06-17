@@ -3,7 +3,7 @@
 #include <QFontMetrics>
 #include <QDebug>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort NABLA_CODE = 0x2207; // ∇
 
@@ -13,5 +13,5 @@ NablaExpression::NablaExpression()
 
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 

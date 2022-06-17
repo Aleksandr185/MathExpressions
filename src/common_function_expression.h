@@ -3,12 +3,13 @@
 
 #include "abstract_big_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT CommonFunctionExpression : public AbstractBigParentExpression
+class MATH_EXPRESSIONS_EXPORT CommonFunctionExpression : public AbstractBigParentExpression
 {
 public:
   CommonFunctionExpression();
+  CommonFunctionExpression(ExpressionPtr func_name, ExpressionPtr arg);
 
   // AbstractExpression interface
   MultiplicationFlags multiplicationFlags() const override;
@@ -23,6 +24,6 @@ protected:
   int calcDescent() const override;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // COMMONFUNCTIONEXPRESSION_H

@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const int DEFAULT_PRECISION  = 4;
 const int DEFAULT_DECIMALS   = 4;
@@ -13,6 +13,13 @@ ExtendedNumberExpresssion::ExtendedNumberExpresssion()
   m_precision  = DEFAULT_PRECISION;
   m_decimals   = DEFAULT_DECIMALS;
   m_max_degree = DAFAULT_MAX_DEGREE;
+}
+
+ExtendedNumberExpresssion::ExtendedNumberExpresssion(double number,
+                                                     int precision, int decimals, int maxDegree)
+  : m_precision(precision), m_decimals(decimals), m_max_degree(maxDegree)
+{
+  setNumber(number);
 }
 
 // public
@@ -54,11 +61,15 @@ QString ExtendedNumberExpresssion::toString() const
   QLocale locale = QLocale::system();
   QString result = locale.toString(number(), 'E', m_precision);
 
-  if ( (number() == 0.0) || (log10(fabs(number())) > (m_max_degree)) ) {
-    result = locale.toString(locale.toDouble(result), 'f', m_decimals);
+  if ( (number() != 0.0) && ( log10(fabs(number())) <= -m_max_degree) ) {
+    return result;
+  }
+  else {
+    const double R = locale.toDouble(result);
+    result = locale.toString(R, 'f', m_decimals);
+    return result;
   }
 
-  return result;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

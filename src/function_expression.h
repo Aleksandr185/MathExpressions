@@ -3,14 +3,14 @@
 
 #include "common_function_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT FunctionExpression : public CommonFunctionExpression
+class MATH_EXPRESSIONS_EXPORT FunctionExpression : public CommonFunctionExpression
 {
 public:
-  FunctionExpression(const QString& funcName, AbstractExpression* daughter);
+  FunctionExpression(const QString& funcName, ExpressionPtr daughter);
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // FUNCTIONEXPRESSION_H

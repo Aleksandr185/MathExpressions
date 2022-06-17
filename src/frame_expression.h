@@ -3,13 +3,19 @@
 
 #include "abstract_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 class FrameExpression : public AbstractParentExpression
 {
 public:
-  FrameExpression();
+  FrameExpression(ExpressionPtr expression);
   ~FrameExpression() override;
+
+  inline int frameWidth() const { return m_frame_width; }
+  inline Qt::PenStyle frameStyle() const { return m_frame_style; }
+
+  void setFrameWidth(int);
+  void setFrameStyle(Qt::PenStyle);
 
   // AbstractExpression interface
   QPen pen() const override;
@@ -31,8 +37,12 @@ protected:
   int calcCapDY() const override;
   void calcCapDX(int &dxLeft, int &dxRight) const override;
   void updateSonFont() override;
+
+private:
+  int m_frame_width;
+  Qt::PenStyle m_frame_style;
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // FRAMEEXPRESSION_H

@@ -1,13 +1,16 @@
 #include "summa_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
 const ushort CODE_SUMMA = 0x2211; // ∑
 
-SummaExpression::SummaExpression()
+SummaExpression::SummaExpression(AbstractExpression *expression,
+                                 AbstractExpression *lowerLimit, AbstractExpression *upperLimit)
     : GroupExpression(QChar(CODE_SUMMA))
 {
-
+  setSon(expression);
+  setFirstTwin(lowerLimit);
+  setSeconsTwin(upperLimit);
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

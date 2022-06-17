@@ -2,11 +2,14 @@
 
 #include "function_name_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-IndexExpression::IndexExpression()
+IndexExpression::IndexExpression(AbstractExpression *expression,
+                                 AbstractExpression *subscript, AbstractExpression *superscript)
 {
-
+  setSon(expression);
+  setFirstTwin(subscript);
+  setSeconsTwin(superscript);
 }
 
 // AbstractExpression interface
@@ -72,7 +75,7 @@ int IndexExpression::calcHeight() const
 
   if (hasFirstTwin()) {
     const int son_superscript_y = hasSon() ? son()->superscriptY() : 0;
-    height += qMax(0, firstTwin()->height() + son_superscript_y);
+    height += qMax(0, firstTwin()->height() - height + son_superscript_y);
   }
 
   if (hasSecondTwin()) {
@@ -144,4 +147,4 @@ QFont IndexExpression::smallFont() const
   return small_font;
 }
 
-} // namespace ExprDraw
+} // namespace MathExpressions

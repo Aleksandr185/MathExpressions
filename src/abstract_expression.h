@@ -13,17 +13,20 @@ class QColor;
 class QPainter;
 class QPaintDevice;
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class  EXPRDRAW_EXPORT AbstractExpression
+class AbstractExpression;
+typedef AbstractExpression* ExpressionPtr;
+
+class  MATH_EXPRESSIONS_EXPORT AbstractExpression
 {
 public:
   AbstractExpression();
   virtual ~AbstractExpression();
 
   inline QPaintDevice* paintDevice() const { return m_paint_device; }
-  inline AbstractExpression* next() const { return m_next; }
-  inline AbstractExpression* parent() const { return m_parent; }
+  inline ExpressionPtr next() const { return m_next; }
+  inline ExpressionPtr parent() const { return m_parent; }
   virtual QFont font() const { return m_font; }
   virtual QPen pen() const;
   virtual QBrush brush() const;
@@ -50,12 +53,12 @@ public:
   void setNext(AbstractExpression *next);
   void setFont(const QFont& font);
   void setColor(const QColor& color);
-  void addNext(AbstractExpression* next);
+  void addNext(ExpressionPtr next);
 
   virtual MultiplicationFlags multiplicationFlags() const;
   virtual bool isArgNeedBrackets() const;
   virtual bool isNeedBrackets() const;
-  AbstractExpression* cutOff();
+  ExpressionPtr cutOff();
 
 protected:
   virtual void fontChanged();
@@ -89,8 +92,8 @@ protected:
   inline const CalculateFlags& flags() const { return m_flags; }
 
 private:
-  AbstractExpression* m_parent = nullptr;
-  AbstractExpression* m_next   = nullptr;
+  ExpressionPtr m_parent = nullptr;
+  ExpressionPtr m_next   = nullptr;
   QPaintDevice*       m_paint_device = nullptr;
   QFont               m_font;
   QColor              m_color;
@@ -114,6 +117,6 @@ private:
   void setLineWidth();
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // ABSTRACTEXPRESSION_H

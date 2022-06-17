@@ -3,9 +3,9 @@
 
 #include "abstract_twin_parent_expression.h"
 
-namespace ExprDraw {
+namespace MathExpressions {
 
-class EXPRDRAW_EXPORT GroupExpression : public AbstractTwinParentExpression
+class MATH_EXPRESSIONS_EXPORT GroupExpression : public AbstractTwinParentExpression
 {
 public:
   explicit GroupExpression(const QChar& symbol);
@@ -44,6 +44,6 @@ private:
 
 };
 
-} // namespace ExprDraw
+} // namespace MathExpressions
 
 #endif // GROUPEXPRESSION_H
