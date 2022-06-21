@@ -5,7 +5,7 @@
 
 # MathExpressions
 
-**MathExpressions** небольшая C++ библиотека для отрисовки математических формул с использованием фрэймворка Qt. Изначально она была написана на Pascal(Delphi 5) Григорьевым Антоном и называлась **ExprDraw**.
+**MathExpressions** небольшая C++ библиотека для отрисовки математических формул с использованием фрэймворка Qt. Изначально она была написана на Pascal(Delphi 5) Григорьевым Антоном и называлась [**ExprDraw**](https://github.com/Aleksandr185/ExprDraw).
 
 Библиотека содержит классы, позволяющие отображать любые математические формулы. Базовым классом для всех классов библиотеки является **AbstractExpression**. Для отображения выражения необходимо построить дерево выражения, узлами и листьями которого являются экземпляры класса **AbstractExpression**. Так, например, для отображения  простой дроби используется класс **FractionExpression**, имеющий две ветви: для числителя и знаменателя. Сами ветви также могут быть составными. Класс **AbstractExpression** сообщает свои геометрические размеры, координаты надстрочных и подстрочных символов, шрифт и цвет выражения, а также содержит указатель на своего
 родителя и на следующее выражение в цепочке. Геометрические размеры могут быть расчитаны только после установки шрифта и указателя на **QPaintDevice**.
@@ -43,7 +43,7 @@
 </p>
 
 
-```{c++}
+```C++
   using namespace MathExpressions;
 
   ExpressionPtr expr = new VariableExpression('a');
@@ -69,7 +69,7 @@
 <img src="./doc/exemple_2.jpg" width="15%">
 </p>
 
-```{c++}
+```C++
   ExpressionPtr radical_expr = new VariableExpression('x');
   radical_expr->addNext(new SignExpression(SignExpression::SignType::Minus));
   radical_expr->addNext(new NumberExpression(1));
@@ -93,7 +93,7 @@
 <img src="./doc/exemple_1.jpg" width="15%">
 </p>
 
-```
+```C++
   ExpressionBuilder builder;
   ExpressionUniquePtr expr = builder.exec("a+b*(c/d+1)");
 ```
@@ -106,7 +106,7 @@
 <img src="./doc/exemple_2.jpg" width="15%">
 </p>
 
-```
+```C++
   ExpressionBuilder builder;
   ExpressionUniquePtr expr = builder.exec("y=root(3, x-1)");
 ```
