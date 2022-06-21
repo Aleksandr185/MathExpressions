@@ -1,0 +1,3 @@
+- нарисуй знак корня как в 'Times News Roman'
+- write doc
+
