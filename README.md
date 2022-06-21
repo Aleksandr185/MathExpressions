@@ -1,4 +1,10 @@
+
+<p align="center">
+<img src="./doc/ScreenShot.jpg" width="100%">
+</p>
+
 # MathExpressions
+
 **MathExpressions** небольшая C++ библиотека для отрисовки математических формул с использованием фрэймворка Qt. Изначально она была написана на Pascal(Delphi 5) Григорьевым Антоном и называлась **ExprDraw**.
 
 Библиотека содержит классы, позволяющие отображать любые математические формулы. Базовым классом для всех классов библиотеки является **AbstractExpression**. Для отображения выражения необходимо построить дерево выражения, узлами и листьями которого являются экземпляры класса **AbstractExpression**. Так, например, для отображения  простой дроби используется класс **FractionExpression**, имеющий две ветви: для числителя и знаменателя. Сами ветви также могут быть составными. Класс **AbstractExpression** сообщает свои геометрические размеры, координаты надстрочных и подстрочных символов, шрифт и цвет выражения, а также содержит указатель на своего
@@ -31,9 +37,12 @@
 #### Пример 1:
 
 Выражение:
-$$
-a+b(\frac{c}{d}+1)
-$$
+
+<p align="center">
+<img src="./doc/exemple_1.jpg" width="15%">
+</p>
+
+
 ```{c++}
   using namespace MathExpressions;
 
@@ -55,9 +64,10 @@ $$
 #### Пример 2:
 
 Выражение:
-$$
-y=\sqrt[3]{x-1}
-$$
+
+<p align="center">
+<img src="./doc/exemple_2.jpg" width="15%">
+</p>
 
 ```{c++}
   ExpressionPtr radical_expr = new VariableExpression('x');
@@ -78,9 +88,11 @@ $$
 #### Пример 1:
 
 Выражение:
-$$
-a+b(\frac{c}{d}+1)
-$$
+
+<p align="center">
+<img src="./doc/exemple_1.jpg" width="15%">
+</p>
+
 ```
   ExpressionBuilder builder;
   ExpressionUniquePtr expr = builder.exec("a+b*(c/d+1)");
@@ -89,17 +101,17 @@ $$
 #### Пример 2:
 
 Выражение:
-$$
-y=\sqrt[3]{x-1}
-$$
+
+<p align="center">
+<img src="./doc/exemple_2.jpg" width="15%">
+</p>
+
 ```
   ExpressionBuilder builder;
   ExpressionUniquePtr expr = builder.exec("y=root(3, x-1)");
 ```
-  
-
-## Иерархия классов
-
+  ## Иерархия классов
+```
 AbstractExpression
 |-AbstractParentExpression
 | |-AbstractBigParentExpression
@@ -142,3 +154,4 @@ AbstractExpression
 |-StrokesExpression
 |-EmptyExpression
 |-NullExpression
+```
