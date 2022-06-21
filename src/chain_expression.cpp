@@ -2,7 +2,7 @@
 
 namespace MathExpressions {
 
-ChainExpression::ChainExpression(AbstractExpression *son)
+ChainExpression::ChainExpression(ExpressionPtr son)
 {
   setSon(son);
 }

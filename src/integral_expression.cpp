@@ -8,9 +8,9 @@ namespace MathExpressions {
 const ushort CODE_INTEGRAL = 0x222b;  // ∫
 const ushort CODE_ELLIPSIS = 0x2026;  // …
 
-IntegralExpression::IntegralExpression(AbstractExpression *expression,
-                                       AbstractExpression *lowerLimit,
-                                       AbstractExpression *upperLimit,
+IntegralExpression::IntegralExpression(ExpressionPtr expression,
+                                       ExpressionPtr lowerLimit,
+                                       ExpressionPtr upperLimit,
                                        int multiplicity /* = 0 */)
   : GroupExpression(QChar(CODE_INTEGRAL))
 {

@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef WIDGETDEMO_H
+#define WIDGETDEMO_H
 
 #include <QtWidgets/QWidget>
 
@@ -10,24 +10,28 @@ class QCheckBox;
 class QButtonGroup;
 class QCheckBox;
 
+
 class ExpressionWidget;
 namespace MathExpressions {
   class AbstractExpression;
 }
 typedef MathExpressions::AbstractExpression* ExpressionPtr;
 
-class Widget : public QWidget
+class WidgetDemo : public QWidget
 {
   Q_OBJECT
 
 public:
-  Widget(QWidget *parent = nullptr);
-  ~Widget() override;
+  WidgetDemo(QWidget *parent = nullptr);
+  ~WidgetDemo() override;
+
+signals:
+  void errorMessage(const QString&);
 
 private:
-  QLineEdit*     m_lineEdit;
-  QFontComboBox* m_fontName;
-  QSpinBox*      m_fontSize;
+  QLineEdit*     m_line_edit;
+  QFontComboBox* m_font_name;
+  QSpinBox*      m_font_size;
   QButtonGroup*  m_aling_buttons;
   QCheckBox*     m_checkbox_variable_auto_index;
   QCheckBox*     m_checkbox_function_auto_index;
@@ -45,4 +49,4 @@ private slots:
   void _q_text_changed(const QString& );
   void _q_builder_flag_changed(bool);
 };
-#endif // WIDGET_H
+#endif // WIDGETDEMO_H

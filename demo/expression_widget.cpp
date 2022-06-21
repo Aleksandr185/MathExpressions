@@ -2,11 +2,12 @@
 
 #include <QPainter>
 
-#include "src/abstract_expression.h"
+#include "abstract_expression.h"
 
 ExpressionWidget::ExpressionWidget(QWidget *parent)
   : QWidget(parent)
 {
+  m_expression_alignment.setFlag(Qt::AlignCenter);
   m_alignment.setFlag(Qt::AlignCenter);
 }
 
@@ -35,6 +36,8 @@ void ExpressionWidget::setExpression(ExpressionPtr expression)
 
     if (m_expression) {
       m_expression->setPaintDevice(this);
+      this->setMinimumHeight(m_expression->height());
+      this->setMinimumWidth(m_expression->width());
     }
 
     repaint();
@@ -42,6 +45,14 @@ void ExpressionWidget::setExpression(ExpressionPtr expression)
 }
 
 void ExpressionWidget::setExpressionAlignment(Qt::Alignment alignment)
+{
+  if (m_expression_alignment != alignment) {
+    m_expression_alignment = alignment;
+    repaint();
+  }
+}
+
+void ExpressionWidget::setAlignment(Qt::Alignment alignment)
 {
   if (m_alignment != alignment) {
     m_alignment = alignment;
@@ -90,9 +101,18 @@ void ExpressionWidget::paintAxiss()
 void ExpressionWidget::paintExpression()
 {
   if (m_expression) {
-    const int half_width = width() / 2;
-    const int half_height = height() / 2;
+    int x = 0;
+    if (m_alignment.testFlag(Qt::AlignHCenter))
+      x = width()/2;
+    else if (m_alignment.testFlag(Qt::AlignRight))
+      x = width();
 
-    m_expression->draw(half_width, half_height, m_alignment);
+    int y = 0;
+    if (m_alignment.testFlag(Qt::AlignVCenter))
+      y = height()/2;
+    else if (m_alignment.testFlag(Qt::AlignBottom))
+      y = height();
+
+    m_expression->draw(x, y, m_expression_alignment);
   }
 }

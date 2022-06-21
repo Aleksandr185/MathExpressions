@@ -9,7 +9,7 @@ CommonFunctionExpression::CommonFunctionExpression()
 
 }
 
-CommonFunctionExpression::CommonFunctionExpression(AbstractExpression *func_name, AbstractExpression *arg)
+CommonFunctionExpression::CommonFunctionExpression(ExpressionPtr func_name, ExpressionPtr arg)
 {
   setSon(func_name);
   setDaughter(arg);

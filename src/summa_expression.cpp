@@ -4,8 +4,8 @@ namespace MathExpressions {
 
 const ushort CODE_SUMMA = 0x2211; // ∑
 
-SummaExpression::SummaExpression(AbstractExpression *expression,
-                                 AbstractExpression *lowerLimit, AbstractExpression *upperLimit)
+SummaExpression::SummaExpression(ExpressionPtr expression,
+                                 ExpressionPtr lowerLimit, ExpressionPtr upperLimit)
     : GroupExpression(QChar(CODE_SUMMA))
 {
   setSon(expression);

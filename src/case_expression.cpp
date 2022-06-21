@@ -11,7 +11,7 @@ const int BRACKET_SPACE   = 2;
 const int CONDITION_SPACE = 4;
 const int VERTICAL_SPACE  = 4;
 
-CaseExpression::CaseExpression(AbstractExpression *expression)
+CaseExpression::CaseExpression(ExpressionPtr expression)
 {
   setSon(expression);
 }

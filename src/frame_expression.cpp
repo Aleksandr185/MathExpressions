@@ -5,7 +5,7 @@
 
 namespace MathExpressions {
 
-FrameExpression::FrameExpression(AbstractExpression *expression)
+FrameExpression::FrameExpression(ExpressionPtr expression)
   : m_frame_width(1), m_frame_style(Qt::DotLine)
 {
   setSon(expression);

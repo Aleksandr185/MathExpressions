@@ -2,7 +2,7 @@
 
 namespace MathExpressions {
 
-BaseExpression::BaseExpression(AbstractExpression *son)
+BaseExpression::BaseExpression(ExpressionPtr son)
 {
   setSon(son);
 }

@@ -4,8 +4,8 @@
 
 namespace MathExpressions {
 
-IndexExpression::IndexExpression(AbstractExpression *expression,
-                                 AbstractExpression *subscript, AbstractExpression *superscript)
+IndexExpression::IndexExpression(ExpressionPtr expression,
+                                 ExpressionPtr subscript, ExpressionPtr superscript)
 {
   setSon(expression);
   setFirstTwin(subscript);

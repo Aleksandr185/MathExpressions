@@ -13,24 +13,29 @@
 #  define MATH_EXPRESSIONS_EXPORT   /**/
 #endif
 
+/*! \file global.h
+    \brief Сontains global flags and helper classes.
+ */
+
 namespace MathExpressions {
 
+/// Used to recalculate cached parameters for width, height, index coordinates, degree coordinates, etc.
 enum class CalculateFlag {
-  NoFlag       = 0x00000000,
-  Width        = 0x00000001,
-  Height       = 0x00000002,
-  SuperscriptX = 0x00000004,
-  SuperscriptY = 0x00000008,
-  SubscriptX   = 0x00000010,
-  SubscriptY   = 0x00000020,
-  CapDX        = 0x00000040,
-  CapDY        = 0x00000080,
-  Ascent       = 0x00000100,
-  Descent      = 0x00000200,
-  CellSize     = 0x00000400,
-  SymbolWidth  = 0x00000800,
-  SymbolHeight = 0x00001000,
-  All          = 0x7fffffff
+  NoFlag       = 0x00000000,  ///< Empty flag
+  Width        = 0x00000001,  ///< Recalculate width of expression
+  Height       = 0x00000002,  ///< Recalculate height of expression
+  SuperscriptX = 0x00000004,  ///< Recalculate superscript X position
+  SuperscriptY = 0x00000008,  ///< Recalculate superscript Y position
+  SubscriptX   = 0x00000010,  ///< Recalculate subscript X position
+  SubscriptY   = 0x00000020,  ///< Recalculate subscript Y position
+  CapDX        = 0x00000040,  ///< Recalculate caption dX position
+  CapDY        = 0x00000080,  ///< Recalculate caption dY position
+  Ascent       = 0x00000100,  ///< Recalculate ascent
+  Descent      = 0x00000200,  ///< Recalculate descent
+  CellSize     = 0x00000400,  ///< Recalculate cell size (for MatrixExpression only)
+  SymbolWidth  = 0x00000800,  ///< Recalculate width of symbol (for GroupExpression only)
+  SymbolHeight = 0x00001000,  ///< Recalculate height of symbol (for GroupExpression only)
+  All          = 0x7fffffff   ///< Recalculate all
 };
 Q_DECLARE_FLAGS(CalculateFlags, CalculateFlag)
 
@@ -40,16 +45,15 @@ bool operator==(const QFlags<T> lhs, const CalculateFlag rhs)
     return (QFlags<T>::Int(lhs) == static_cast<int>(rhs));
 }
 
-// Данные флаги показывают, может ли выражение быть умножено без
-// знака слева, справа, является ли оно числом и т.д.
+/// These flags indicate whether the expression can be multiplied without the sign on the left, on the right, whether the expression is a number, etc.
 enum class MultiplicationFlag {
-  NoFlag        = 0x00000000,
-  Left          = 0x00000001,   // 0000 0001
-  Right         = 0x00000002,   // 0000 0010
-  Negative      = 0x00000004,   // 0000 0100
-  Brackets      = 0x00000010,   // 0001 0000
-  RoundBrackets = 0x00000018,   // 0001 1000
-  Number        = 0x00000020    // 0010 0000
+  NoFlag        = 0x00000000,   ///< Empty flag
+  Left          = 0x00000001,   ///< The expression can be multiplied without the sign on the left
+  Right         = 0x00000002,   ///< The expression can be multiplied without the sign on the right
+  Negative      = 0x00000004,   ///< The expression is negative
+  Brackets      = 0x00000010,   ///< The expression has brackets
+  RoundBrackets = 0x00000018,   ///< The expression has round brackets
+  Number        = 0x00000020    ///< The expression is a number
 };
 Q_DECLARE_FLAGS(MultiplicationFlags, MultiplicationFlag)
 
@@ -69,13 +73,37 @@ constexpr inline QFlags<MultiplicationFlag> operator|(MultiplicationFlag f1, Mul
   return QFlags<MultiplicationFlag>(f1) | f2;
 }
 
+/*!
+   \brief Helper class for storing the line widths in coordinates x ans y.
+*/
+
 class LineWidth
 {
 public:
+/*!
+  @brief Returns the line width for x coordinate.
+  @returns {int}
+  \sa y(), setX()
+*/
   inline int x() const { return m_x; }
+
+  /*!
+  \return Returns the line width for y coordinate.
+  \sa x(), setY()
+*/
   inline int y() const { return m_y;}
 
+
+/*!
+  Sets the line width for x coordinate.
+  \sa x(), setY()
+*/
   inline void setX(int x) { m_x = x; }
+
+  /*!
+  Sets the line width for y coordinate.
+  \sa y(), setX()
+*/
   inline void setY(int y) { m_y = y; }
 
 private:
@@ -83,13 +111,36 @@ private:
   int m_y;
 };
 
+
+/*!
+   \brief Helper class for storing the multiplier for diacritic in coordinates x ans y.
+*/
+
 class CapMultiplier
 {
 public:
+/*!
+  \return Returns the multiplier for x coordinate.
+  \sa y(), setX()
+*/
   inline double x() const { return m_x; }
+
+    /*!
+  \return Returns the multiplier for y coordinate.
+  \sa x(), setY()
+*/
   inline double y() const { return m_y;}
 
+/*!
+  Sets the multiplier for x coordinate.
+  \sa x(), setY()
+*/
   inline void setX(double x) { m_x = x; }
+
+    /*!
+  Sets the multiplier for y coordinate.
+  \sa y(), setX()
+*/
   inline void setY(double y) { m_y = y; }
 
 private:

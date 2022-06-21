@@ -4,7 +4,7 @@
 
 namespace MathExpressions {
 
-FractionExpression::FractionExpression(AbstractExpression *numerator, AbstractExpression *denominator)
+FractionExpression::FractionExpression(ExpressionPtr numerator, ExpressionPtr denominator)
 {
   setSon(numerator);
   setDaughter(denominator);

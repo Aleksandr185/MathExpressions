@@ -8,9 +8,9 @@ namespace MathExpressions {
 
 const ushort CODE_INTEGRAL = 0x222b;  // ∫
 
-CirculationExpression::CirculationExpression(AbstractExpression *expression,
-                                             AbstractExpression *lowerLimit,
-                                             AbstractExpression *upperLimit)
+CirculationExpression::CirculationExpression(ExpressionPtr expression,
+                                             ExpressionPtr lowerLimit,
+                                             ExpressionPtr upperLimit)
     : GroupExpression(QChar(CODE_INTEGRAL))
 {
   setSon(expression);

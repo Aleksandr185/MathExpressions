@@ -6,13 +6,13 @@ constexpr int CELL_SPACE   = 6;
 constexpr int LEFT_MARGIN  = 2;
 constexpr int RIGHT_MARGIN = LEFT_MARGIN;
 
-MatrixExpression::MatrixExpression(const QSize& size, AbstractExpression *expression)
+MatrixExpression::MatrixExpression(const QSize& size, ExpressionPtr expression)
 {
   setSize(size);
   setSon(expression);
 }
 
-MatrixExpression::MatrixExpression(int w, int h, AbstractExpression *expression)
+MatrixExpression::MatrixExpression(int w, int h, ExpressionPtr expression)
 {
   setSize( QSize(w, h) );
   setSon(expression);

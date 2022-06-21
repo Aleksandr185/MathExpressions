@@ -9,7 +9,7 @@ RootExpression::RootExpression()
 
 }
 
-RootExpression::RootExpression(AbstractExpression *radical_expression, AbstractExpression *index)
+RootExpression::RootExpression(ExpressionPtr radical_expression, ExpressionPtr index)
 {
   setSon(radical_expression);
   setDaughter(index);

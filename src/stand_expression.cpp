@@ -2,7 +2,7 @@
 
 namespace MathExpressions {
 
-StandExpression::StandExpression(AbstractExpression *expression, Qt::Alignment horizontal_alignment)
+StandExpression::StandExpression(ExpressionPtr expression, Qt::Alignment horizontal_alignment)
 {
   setHorizontalAlignment(horizontal_alignment);
   setSon(expression);

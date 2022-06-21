@@ -4,7 +4,7 @@
 
 namespace MathExpressions {
 
-ArgumentExpression::ArgumentExpression(AbstractExpression *son)
+ArgumentExpression::ArgumentExpression(ExpressionPtr son)
  : m_forced_brackets(false)
 {
   setSon(son);

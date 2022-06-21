@@ -5,7 +5,7 @@
 
 namespace MathExpressions {
 
-FunctionExpression::FunctionExpression(const QString &funcName, AbstractExpression *daughter)
+FunctionExpression::FunctionExpression(const QString &funcName, ExpressionPtr daughter)
 {
   if (funcName.length() == 1) {
     setSon(new VariableExpression(funcName));

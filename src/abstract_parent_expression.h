@@ -11,7 +11,7 @@ public:
   AbstractParentExpression();
   ~AbstractParentExpression() override;
 
-  void setSon(AbstractExpression *son);
+  void setSon(ExpressionPtr son);
   inline ExpressionPtr son() const {return m_son;}
   inline bool hasSon() const { return m_son; }
 

@@ -50,7 +50,7 @@ public:
   void draw(int x, int y, Qt::Alignment alignment) const;
   void draw(QPainter* painter, int x, int y, Qt::Alignment alignment) const;
   void setPaintDevice(QPaintDevice *paintDevice);
-  void setNext(AbstractExpression *next);
+  void setNext(ExpressionPtr next);
   void setFont(const QFont& font);
   void setColor(const QColor& color);
   void addNext(ExpressionPtr next);
@@ -80,10 +80,10 @@ protected:
   void convertCoords(int& x, int& y, Qt::Alignment alignment) const;
   void setFlag(CalculateFlag flag, bool on = true) const;
 
-  static void assignFont(AbstractExpression *expression, const QFont& font,
+  static void assignFont(ExpressionPtr expression, const QFont& font,
                          const LineWidth& line_width, const CapMultiplier& cap_multiplier);
-  static void assignParent(AbstractExpression *expression, AbstractExpression *parent);
-  static void assignPaintDevice(AbstractExpression *expression, QPaintDevice *paintDevice,
+  static void assignParent(ExpressionPtr expression, ExpressionPtr parent);
+  static void assignPaintDevice(ExpressionPtr expression, QPaintDevice *paintDevice,
                                 const LineWidth& line_width, const CapMultiplier& cap_multiplier);
 
 

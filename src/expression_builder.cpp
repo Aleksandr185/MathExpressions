@@ -1127,7 +1127,6 @@ ExpressionPtr ExpressionBuilder::makeCap(ExpressionPtr base, CapExpression::CapS
 
 ExpressionPtr ExpressionBuilder::makePower(ExpressionPtr base, ExpressionPtr exponent) const
 {
-  // TODO rename makePower -> makeSuperscript
   if ( CommonFunctionExpression* com_func = dynamic_cast<CommonFunctionExpression*>(base) ) {
     IndexExpression* son_as_index = dynamic_cast<IndexExpression*>(com_func->son());
     if (son_as_index && !son_as_index->hasSuperscript()) {
@@ -1158,7 +1157,6 @@ ExpressionPtr ExpressionBuilder::makePower(ExpressionPtr base, ExpressionPtr exp
 
 ExpressionPtr ExpressionBuilder::makeIndex(ExpressionPtr base, ExpressionPtr index) const
 {
-  // TODO rename makeIndex -> makeSubscript
   if ( CommonFunctionExpression* com_func = dynamic_cast<CommonFunctionExpression*>(base) ) {
     IndexExpression* son_as_index = dynamic_cast<IndexExpression*>(com_func->son());
     if (son_as_index && !son_as_index->hasSubscript()) {

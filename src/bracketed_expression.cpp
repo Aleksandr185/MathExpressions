@@ -11,13 +11,13 @@ BracketedExpression::BracketedExpression()
 
 }
 
-BracketedExpression::BracketedExpression(AbstractExpression *expression, BracketStyle bracket_style)
+BracketedExpression::BracketedExpression(ExpressionPtr expression, BracketStyle bracket_style)
   : m_left_bracket(bracket_style), m_right_bracket(bracket_style)
 {
   setSon(expression);
 }
 
-BracketedExpression::BracketedExpression(AbstractExpression *expression,
+BracketedExpression::BracketedExpression(ExpressionPtr expression,
                                          BracketStyle left_style, BracketStyle rigth_style)
   : m_left_bracket(left_style), m_right_bracket(rigth_style)
 {

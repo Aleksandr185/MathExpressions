@@ -11,7 +11,7 @@ AtValueExpression::AtValueExpression()
 
 }
 
-AtValueExpression::AtValueExpression(AbstractExpression *expression, AbstractExpression *condition)
+AtValueExpression::AtValueExpression(ExpressionPtr expression, ExpressionPtr condition)
 {
   setSon(expression);
   setDaughter(condition);

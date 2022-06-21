@@ -5,7 +5,7 @@
 
 namespace MathExpressions {
 
-LimitExpression::LimitExpression(AbstractExpression *expression)
+LimitExpression::LimitExpression(ExpressionPtr expression)
 {
   setSon(expression);
 }

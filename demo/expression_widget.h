@@ -20,6 +20,7 @@ public slots:
   void setVisibleAxisY(bool value);
   void setExpression(ExpressionPtr );
   void setExpressionAlignment(Qt::Alignment alignment);
+  void setAlignment(Qt::Alignment alignment);
 
 protected:
   void paintEvent(QPaintEvent *event);
@@ -29,6 +30,7 @@ private:
   bool m_show_axis_y = false;
 
   ExpressionPtr m_expression = nullptr;
+  Qt::Alignment m_expression_alignment;
   Qt::Alignment m_alignment;
 
   void paintAxiss();
